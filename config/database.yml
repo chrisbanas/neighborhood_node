@@ -84,3 +84,4 @@ production:
   database: neighborhood_node_production
   username: neighborhood_node
   password: <%= ENV["NEIGHBORHOOD_NODE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

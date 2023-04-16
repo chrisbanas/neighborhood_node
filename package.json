@@ -1,0 +1,25 @@
+{
+  "name": "neighborhood_node",
+  "version": "1.0.0",
+  "description": "![logo](./assets/neighborhood_node_text_logo.png)",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisbanas/neighborhood_node.git"
+  },
+  "engines": {
+    "node": "16.19"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisbanas/neighborhood_node/issues"
+  },
+  "homepage": "https://github.com/chrisbanas/neighborhood_node#readme"
+}
