@@ -1,0 +1,201 @@
+.about-us-content-container {
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-description-container {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #6f7681;
+  font-size: 16px;
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-description-content-container {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 34px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-headline {
+  vertical-align: top;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-headline-text {
+  font-size: 34px;
+  line-height: 40px;
+  color: #000000;
+  padding-top: 28px;
+  margin-bottom: 24px;
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 900;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-headline-description-container {
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-headline-description {
+  white-space: pre-wrap;
+  color: #000000;
+  font-size: 17px;
+  line-height: 24px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.three-icons-container {
+  display: flex;
+  background-color: #ffffff;
+  color: #000000;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.icon-container {
+  width: 300px;
+  margin: 8px;
+  padding: 75px 0;
+  box-sizing: border-box;
+  display: block;
+}
+
+.individual-icon {
+  height: 120px;
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+}
+
+.icon {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 100px;
+  transform: translateX(-50%);
+  vertical-align: middle;
+  border: 0;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+  box-sizing: border-box;
+}
+
+.icon-title {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 28px;
+  margin-top: 16px;
+  display: flex;
+  background-color: #ffffff;
+  color: #000000;
+  justify-content: center;
+  text-align: center;
+}
+
+.icon-description {
+  font-size: 17px;
+  font-weight: 400;
+  margin: 4px 20px 0;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  display: flex;
+  background-color: #ffffff;
+  color: #000000;
+  justify-content: center;
+  text-align: center;
+}
+
+.about-us-bottom-signup {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #6f7681;
+  font-size: 16px;
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-bottom-signup-content {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-bottom-signup-content-header {
+  padding-top: 1px;
+  margin-bottom: 24px;
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 28px;
+  color: #000000;
+  line-height: 32px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-bottom-signup-button-container {
+  color: #000000;
+  margin: 8px auto 24px;
+  width: 500px;
+}
+
+.sub-about-us-bottom-signup-button-container {
+  margin-top: 24px;
+  padding-bottom: 84px;
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+}
+
+.about-us-bottom-signup-button{
+  box-sizing: border-box;
+    margin-block: 0px;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+    appearance: none;
+    border: 0.5px solid rgb(184, 236, 81);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+    background-color: rgb(184, 236, 81);
+    color: rgb(0, 97, 66);
+    border-radius: 12px;
+    font-size: 17px;
+    line-height: 24px;
+    padding: 12px 20px;
+    min-width: 150px;
+    text-transform: none;
+    overflow: visible;
+    margin: 0;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: center;
+}

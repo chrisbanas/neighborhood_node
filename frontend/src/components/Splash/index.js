@@ -6,6 +6,8 @@ import LoginFormModal from '../LoginFormModal';
 import './Splash.css';
 import SignupBar from './SignupBar/SignupBar'
 import Hero from './Hero/Hero'
+import About from './About/About'
+import Footer from './Footer/Footer'
 
 
 
@@ -41,6 +43,8 @@ export default function Splash() {
         <div className="splash-page-default-style">
             <SignupBar />
             <Hero />
+            <About />
+            <Footer />
         </div>
         </>
     );

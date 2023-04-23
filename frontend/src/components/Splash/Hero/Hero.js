@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import * as sessionActions from "../../../store/session";
 import './Hero.css';
 // import header from '../../../assets/header.jpg'
 
+
+
+
 export default function Hero() {
+
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+
+  if (sessionUser) return <Redirect to="/" />;
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      if (password) {
+          setErrors([]);
+          return dispatch(sessionActions.signup({ email, password }))
+              .catch(async (res) => {
+                  let data;
+                  try {
+                      // .clone() essentially allows you to read the response body twice
+                      data = await res.clone().json();
+                  } catch {
+                      data = await res.text(); // Will hit this case if, e.g., server is down
+                  }
+                  if (data?.errors) setErrors(data.errors);
+                  else if (data) setErrors([data]);
+                  else setErrors([res.statusText]);
+              });
+      }
+      return setErrors(['Please input a password with atleast 6 characters']);
+  };
+
+
+
+
   return (
     <>
       <div className="hero">
@@ -42,12 +81,17 @@ export default function Hero() {
                       <span>OR</span>
                     </div>
                   </div>
-                  <form className="email-password">
+{/* ------------------------Where the signup credentials go--------------------- */}
+                  <form className="email-password" onSubmit={handleSubmit}>
                     <div className="sub-email-password">
                       <div className="email-input">
                         <div className="sub-email-input">
                           <div className="deep-sub-email-input">
-                            <input className="actual-email-input" aria-disabled="false" aria-label="Email address" type="email" value="" />
+                            <ul>
+                              {errors.map((error) => <li key={error}>{error}</li>)}
+                            </ul>
+                            <input className="actual-email-input" aria-disabled="false" aria-label="Email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                            required />
                             <label className="email-input-label">Email address</label>
                           </div>
                         </div>
@@ -55,7 +99,8 @@ export default function Hero() {
                       <div className="password-input">
                         <div className="sub-password-input">
                           <div className="deep-sub-password-input">
-                            <input className="actual-password-input" aria-disabled="false" aria-label="Password" type="password" value="" />
+                            <input className="actual-password-input" aria-disabled="false" aria-label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                            required/>
                             <label className="password-input-label">Password</label>
                           </div>
                         </div>
