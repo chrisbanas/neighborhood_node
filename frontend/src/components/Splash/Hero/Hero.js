@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import header from '../../../assets/header.jpg'
+// import header from '../../../assets/header.jpg'
 
 export default function Hero() {
   return (
@@ -8,7 +8,7 @@ export default function Hero() {
       <div class="hero">
         <span>
           <div className="hero-img">
-            <img src={header} alt="Neighborhood Node Banner"/>
+
           </div>
         </span>
         <div className="hero-info-box">
@@ -42,7 +42,7 @@ export default function Hero() {
                       <span>OR</span>
                     </div>
                   </div>
-                  <form className="email-password" role="form">
+                  <form className="email-password">
                     <div className="sub-email-password">
                       <div className="email-input">
                         <div className="sub-email-input">
@@ -51,11 +51,44 @@ export default function Hero() {
                             <label className="email-input-label">Email address</label>
                           </div>
                         </div>
-
                       </div>
-
+                      <div className="password-input">
+                        <div className="sub-password-input">
+                          <div className="deep-sub-password-input">
+                            <input className="actual-password-input" aria-disabled="false" aria-label="Password" type="password" value="" />
+                            <label className="password-input-label">Password</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="signup-continue-button">
+                      <button className="signup-continue-button-style" aria-disabled="false" type="submit">
+                        Continue
+                      </button>
                     </div>
                   </form>
+                  <p className="signup-disclamier">
+                    <span>By signing up, you agree to our&nbsp;
+                      <a className="signup-disclamier-content" href="/" target="_blank">
+                        Privacy Policy
+                      </a>,&nbsp;
+                      <a className="signup-disclamier-content" href="/" target="_blank">
+                        Cookie Policy
+                      </a>,&nbsp;
+                      <a className="signup-disclamier-content" href="/" target="_blank">
+                        Member Agreement
+                      </a>
+                      , and that we may share your personal information with our&nbsp;
+                      <a className="signup-disclamier-content" href="/" target="_blank">
+                        partners&nbsp;
+                      </a>
+                      to verify your account.
+                      </span>
+                  </p>
+                  <div className="have-a-business-prompt">
+                    <span className="have-a-business-prompt-label">Have a business?</span>
+                    <a className="have-a-business-prompt-label-link" href="/login">Get started</a>
+                  </div>
                 </div>
               </div>
 
@@ -63,7 +96,10 @@ export default function Hero() {
 
           </div>
           <div className="hero-login-box">
-
+            <div className="have-an-account-prompt">
+              <span className="have-an-account-prompt-label">Have an account?</span>
+              <a className="have-an-account-prompt-label-link" href="/login">Log in</a>
+            </div>
 
           </div>
 

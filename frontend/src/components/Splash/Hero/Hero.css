@@ -1,28 +1,35 @@
 .hero {
   height: 1000px;
   background: rgba(0, 0, 0, 0.1);
-  display: block;
-  color: #6f7681;
   font-size: 16px;
   position: relative;
   padding: 0;
+  margin: 0;
   text-align: center;
   display: block;
+  z-index: 0; /* this makes sure that the image is behind the signup box */
   box-sizing: border-box;
 }
 
-div > .hero-img{
+.hero-img {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 0;
+  margin: 0;
   width: 100%;
   height: 100%;
+  background-image: url('../../../assets/header.jpg');
   background-size: cover;
   background-position: center top;
-  z-index: -1;
+  background-repeat: no-repeat;
   display: block;
+  z-index: -1; /* this makes sure that the image is behind the signup box */
   box-sizing: border-box;
 }
+
+
+/* Everything beneth here has to do with the sign up box in the center of the page */
 
 .hero-info-box {
   max-width: 445px;
@@ -57,7 +64,7 @@ div > .hero-img{
   box-sizing: border-box;
 }
 
-.sub-hero-signup-box{
+.sub-hero-signup-box {
   background-color: #ffffff;
   border-radius: 16px;
   padding: 24px;
@@ -174,13 +181,13 @@ div > .hero-img{
   overflow: clip;
 }
 
-.social-registration-label{
+.social-registration-label {
   flex-grow: 1;
   display: block;
   box-sizing: border-box;
 }
 
-.divider{
+.divider {
   position: relative;
   z-index: 1;
   margin-bottom: 24px;
@@ -222,7 +229,7 @@ div > .hero-img{
   font-size: 14px;
 }
 
-.email-password{
+.email-password {
   box-sizing: border-box;
   margin-block: 0px;
   text-rendering: optimizelegibility;
@@ -254,7 +261,7 @@ div > .hero-img{
   display: block;
 }
 
-.sub-email-input{
+.sub-email-input {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -268,7 +275,7 @@ div > .hero-img{
   width: auto;
 }
 
-.deep-sub-email-input{
+.deep-sub-email-input {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -334,4 +341,230 @@ div > .hero-img{
   margin-bottom: 5px;
   box-sizing: border-box;
   cursor: default;
+}
+
+
+.password-input {
+  padding-bottom: 16px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.sub-password-input {
+  width: auto;
+  box-sizing: border-box;
+  display: block;
+}
+
+.deep-sub-password-input {
+  position: relative;
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.actual-password-input {
+  animation-name: onAutoFillCancel;
+  animation-duration: 0.001s;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: rgb(229, 229, 229);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 22px 16px 8px;
+  box-sizing: border-box;
+  height: 56px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0px;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+}
+
+.password-input-label {
+  z-index: 1;
+  position: absolute;
+  top: -4px;
+  left: 4px;
+  pointer-events: none;
+  transform-origin: left top;
+  transform: translate(12px, 20px) scale(1);
+  color: rgb(102, 102, 102);
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  cursor: default;
+}
+
+.signup-continue-button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: block;
+}
+
+.signup-continue-button-style {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  appearance: none;
+  border: 0.5px solid rgb(184, 236, 81);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(184, 236, 81);
+  color: rgb(0, 97, 66);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 24px;
+  padding: 12px 20px;
+  margin-top: 24px;
+  width: 100%;
+  text-transform: none;
+  overflow: visible;
+  margin: 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+}
+
+.signup-disclamier {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  margin-top: 24px;
+  margin: 0 0 10px;
+  display: block;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-top: 24px;
+}
+
+.signup-disclamier-content {
+
+  color: #007b99;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.have-a-business-prompt {
+  font-size: 12px;
+  color: #333333;
+  text-align: center;
+  padding-top: 22px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  display: block;
+}
+
+.have-a-business-prompt-label {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.have-a-business-prompt-label-link {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  color: rgb(0, 118, 182);
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 4px;
+  background-color: transparent;
+}
+
+.have-an-account-prompt {
+  font-size: 12px;
+  color: #333333;
+  text-align: center;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  display: block;
+}
+
+.have-an-account-prompt-label {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.have-an-account-prompt-label-link {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  color: rgb(0, 118, 182);
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 4px;
+  background-color: transparent;
 }
