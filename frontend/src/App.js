@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
+import LoginFormPage from "./components/LoginFormPage";
 import Splash from "./components/Splash";
+
 
 
 export default function App() {
@@ -14,8 +15,8 @@ export default function App() {
         </Route>
 
 
-        <Route path="/signup">
-          <SignupFormPage />
+        <Route path="/login">
+          <LoginFormPage />
         </Route>
 
 

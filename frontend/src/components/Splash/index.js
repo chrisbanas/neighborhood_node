@@ -11,6 +11,7 @@ import Hero from './Hero/Hero'
 
 
 
+
 export default function Splash() {
     const sessionUser = useSelector(state => state.session.user);
 
@@ -28,12 +29,12 @@ export default function Splash() {
         );
     }
 
-    //     <ul>
-    //     <li>
-    //         <NavLink exact to="/">Home</NavLink>
-    //         {sessionLinks}
-    //     </li>
-    // </ul>
+        <ul>
+        <li>
+            <NavLink exact to="/">Home</NavLink>
+            {sessionLinks}
+        </li>
+    </ul>
 
     return (
         <>

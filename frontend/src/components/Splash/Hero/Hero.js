@@ -5,7 +5,7 @@ import './Hero.css';
 export default function Hero() {
   return (
     <>
-      <div class="hero">
+      <div className="hero">
         <span>
           <div className="hero-img">
 
