@@ -145,7 +145,11 @@ export default function Hero() {
               <span className="have-an-account-prompt-label">Have an account?</span>
               <a className="have-an-account-prompt-label-link" href="/login">Log in</a>
             </div>
-
+            <div className="signup-continue-button">
+              <button className="signup-continue-button-style" aria-disabled="false" type="submit">
+                Demo User Log In
+                </button>
+            </div>
           </div>
 
         </div>

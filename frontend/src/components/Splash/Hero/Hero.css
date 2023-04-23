@@ -187,14 +187,6 @@
   box-sizing: border-box;
 }
 
-.divider {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 24px;
-  display: block;
-  box-sizing: border-box;
-}
-
 .divider::before {
   border-top: 1px solid #949494;
   content: '';
@@ -206,6 +198,14 @@
   width: 100%;
   z-index: -1;
   margin: 10px auto 0;
+  box-sizing: border-box;
+}
+
+.divider {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+  display: block;
   box-sizing: border-box;
 }
 
@@ -536,6 +536,7 @@
   line-height: 20px;
   box-sizing: border-box;
   margin-block: 0px;
+  padding-bottom: 16px;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
