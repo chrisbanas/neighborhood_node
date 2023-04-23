@@ -3,9 +3,15 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import './Navigation.css';
+import './Splash.css';
+import SignupBar from './SignupBar/SignupBar'
+import Hero from './Hero/Hero'
 
-function Navigation() {
+
+
+
+
+export default function Splash() {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -22,14 +28,19 @@ function Navigation() {
         );
     }
 
+    //     <ul>
+    //     <li>
+    //         <NavLink exact to="/">Home</NavLink>
+    //         {sessionLinks}
+    //     </li>
+    // </ul>
+
     return (
-        <ul>
-            <li>
-                <NavLink exact to="/">Home</NavLink>
-                {sessionLinks}
-            </li>
-        </ul>
+        <>
+        <div className="splash-page-default-style">
+            <SignupBar />
+            <Hero />
+        </div>
+        </>
     );
 }
-
-export default Navigation;
