@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import ProfileButton from '../NewsFeed/ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Splash.css';
 import SignupBar from './SignupBar/SignupBar'

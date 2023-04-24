@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# rails db:seed:replant - replants the database if you want to update it
+
+mission_district = Neighborhood.create(
+  name: "Mission District"
+)
+
+marina_district = Neighborhood.create(
+  name: "Marina District"
+)
+
+pacific_heights = Neighborhood.create(
+  name: "Pacific Heights"
+)
