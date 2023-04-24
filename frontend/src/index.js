@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ModalProvider } from './context/Modal';
+import './Reset.css';
 import './index.css';
 import App from './App';
 import configureStore from './store';
@@ -33,6 +34,7 @@ function Root() {
   );
 }
 
+function render() {
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -40,12 +42,13 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+}
 
 if (
   sessionStorage.getItem("currentUser") === null ||
   sessionStorage.getItem("X-CSRF-Token") === null
 ) {
-  store.dispatch(sessionActions.restoreSession()).then(root);
+  store.dispatch(sessionActions.restoreSession()).then(render);
 } else {
-  root();
+  render();
 }

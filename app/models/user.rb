@@ -20,7 +20,7 @@ class User < ApplicationRecord
     validates :email,
         uniqueness: true,
         length: { in: 3..255 },
-        format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
+        format: { with: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..255 }, allow_nil: true
 

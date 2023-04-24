@@ -13,7 +13,7 @@ export default function Hero() {
   const sessionUser = useSelector(state => state.session.user);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  let [neighborhood, setNeighborhood] = useState(""); // this is a let for passing through Id
+  const [neighborhoodId, setNeighborhoodId] = useState(""); // this is a let for passing through Id
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -24,7 +24,7 @@ export default function Hero() {
     e.preventDefault();
     if (password) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, password, firstName, lastName, neighborhood }))
+      return dispatch(sessionActions.signup({ email, password, firstName, lastName, neighborhoodId }))
         .catch(async (res) => {
           let data;
           try {
@@ -107,11 +107,11 @@ export default function Hero() {
                           <div className="password-input">
                             <div className="sub-password-input">
                               <div className="deep-sub-password-input">
-                                <select className="actual-password-input">
+                                <select className="actual-password-input" value={neighborhoodId} onChange={(e) => setNeighborhoodId(e.target.value)}>
                                   <option value="">Select a neighborhood</option>
-                                  <option value={neighborhood = 1} onChange={(e) => setNeighborhood(e.target.value)}>Mission District</option>
-                                  <option value={neighborhood = 2} onChange={(e) => setNeighborhood(e.target.value)}>Marina District</option>
-                                  <option value={neighborhood = 3} onChange={(e) => setNeighborhood(e.target.value)}>Pacific Heights</option>
+                                  <option value={1} >Mission District</option>
+                                  <option value={2} >Marina District</option>
+                                  <option value={3} >Pacific Heights</option>
                                 </select>
                               </div>
                             </div>
