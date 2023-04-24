@@ -32,6 +32,14 @@ export default function Form() {
       });
   };
 
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(
+      sessionActions.login({ email: "demouser@gmail.com", password: "123456" })
+    );
+  };
+
   return (
     <>
       <div>
@@ -73,7 +81,7 @@ export default function Form() {
                     </button>
                   </div>
                   <div className="signup-continue-button-2">
-                    <button className="signup-continue-button-style" aria-disabled="false" type="submit">
+                    <button className="signup-continue-button-style" aria-disabled="false" type="submit" onClick={handleDemo}>
                       Demo User Log In
                     </button>
                   </div>

@@ -48,7 +48,7 @@ export const restoreSession = () => async dispatch => {
 // thunk action
 
 export const signup = (user) => async (dispatch) => {
-    const { email, password, firstName, lastName, neighborhood } = user;
+    // const { email, password, firstName, lastName, neighborhood } = user;
     const response = await csrfFetch("/api/users", {
         method: "POST",
         body: JSON.stringify({

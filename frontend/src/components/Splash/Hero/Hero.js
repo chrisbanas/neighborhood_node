@@ -13,7 +13,7 @@ export default function Hero() {
   const sessionUser = useSelector(state => state.session.user);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [neighborhoodId, setNeighborhoodId] = useState(""); // this is a let for passing through Id
+  const [neighborhoodId, setNeighborhoodId] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -39,6 +39,14 @@ export default function Hero() {
         });
     }
     return setErrors(['Please input a password with atleast 6 characters']);
+  };
+
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(
+      sessionActions.login({ email: "demouser@gmail.com", password: "123456" })
+    );
   };
 
   return (
@@ -175,7 +183,7 @@ export default function Hero() {
               <a className="have-an-account-prompt-label-link" href="/login">Log in</a>
             </div>
             <div className="signup-continue-button">
-              <button className="signup-continue-button-style" aria-disabled="false" type="submit">
+              <button className="signup-continue-button-style" aria-disabled="false" type="submit" onClick={handleDemo}>
                 Demo User Log In
               </button>
             </div>

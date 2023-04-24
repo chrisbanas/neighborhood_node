@@ -11,7 +11,7 @@ export default function App() {
 
         <Switch>
 
-        <Route path={"/feed"}>
+        <Route path={"/news_feed"}>
             <NewsFeed />
           </Route>
 
