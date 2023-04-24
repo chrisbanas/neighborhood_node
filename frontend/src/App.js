@@ -8,19 +8,21 @@ import Splash from "./components/Splash";
 export default function App() {
   return (
     <>
-      <Switch>
 
-        <Route path="/">
-          <Splash />
-        </Route>
+        <Switch>
+
+        <Route path={"/login"}>
+            <LoginFormPage />
+          </Route>
+
+        <Route path={"/"}>
+            <Splash />
+          </Route>
 
 
-        <Route path="/login">
-          <LoginFormPage />
-        </Route>
 
+        </Switch>
 
-      </Switch>
     </>
 
   );

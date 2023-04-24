@@ -9,7 +9,6 @@ import './Hero.css';
 
 
 export default function Hero() {
-
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
@@ -38,9 +37,6 @@ export default function Hero() {
       }
       return setErrors(['Please input a password with atleast 6 characters']);
   };
-
-
-
 
   return (
     <>
@@ -78,7 +74,7 @@ export default function Hero() {
                   </div>
                   <div className="divider">
                     <div className="or">
-                      <span>OR</span>
+                      <span>Or Signup Below</span>
                     </div>
                   </div>
 {/* ------------------------Where the signup credentials go--------------------- */}
@@ -90,18 +86,16 @@ export default function Hero() {
                             <ul>
                               {errors.map((error) => <li key={error}>{error}</li>)}
                             </ul>
-                            <input className="actual-email-input" aria-disabled="false" aria-label="Email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                            <input className="actual-email-input" aria-disabled="false" aria-label="Email address" placeholder="Email Address" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
                             required />
-                            <label className="email-input-label">Email address</label>
                           </div>
                         </div>
                       </div>
                       <div className="password-input">
                         <div className="sub-password-input">
                           <div className="deep-sub-password-input">
-                            <input className="actual-password-input" aria-disabled="false" aria-label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+                            <input className="actual-password-input" aria-disabled="false" aria-label="Password" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}
                             required/>
-                            <label className="password-input-label">Password</label>
                           </div>
                         </div>
                       </div>
