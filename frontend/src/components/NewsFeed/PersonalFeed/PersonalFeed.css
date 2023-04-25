@@ -97,24 +97,23 @@
   z-index: 1;
 }
 
-.logout button {
+.news-feed-profile-button {
   background-color: #ffffff;
   border: 1px solid #0072c6;
   color: #0072c6;
   font-weight: bold;
   padding: 6px 32px 6px 16px;
-  margin-top: 15%;
   border-radius: 20px;
 }
 
-.profile-button:hover,
-.profile-button:focus {
+.news-feed-profile-button:hover,
+.news-feed-profile-button:focus {
   background-color: #333;
   color: #FFF;
   cursor: pointer;
 }
 
-.profile-dropdown{
+.news-feed-profile-dropdown{
   position: absolute;
 }
 
