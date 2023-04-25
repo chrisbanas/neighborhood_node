@@ -1,5 +1,5 @@
-.container {
-  max-width: 1100px; /* Set the maximum width of the container */
+.news-feed-navbar-container {
+  max-width: 70%; /* Set the maximum width of the container */
   margin: 0 auto; /* Center the container horizontally */
   display: flex; /* Use flexbox for positioning the child elements */
   justify-content: space-between; /* Space out the child elements */
@@ -39,7 +39,6 @@
   flex-grow: 1;
 }
 
-
 .news-feed-search-bar-form {
   box-sizing: border-box;
   display: block;
@@ -51,7 +50,6 @@
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
 }
-
 
 .news-feed-search-input-field {
   background: rgb(229, 229, 229);
@@ -83,7 +81,6 @@
   -webkit-rtl-ordering: logical;
   cursor: text;
 }
-
 
 .news-feed-search-input-field-container {
   border: none;
@@ -122,35 +119,512 @@
 }
 
 
+/* Main section below the nav bar */
 
 
-
-.container {
-  margin-top: 50px;
+.news-feed-main-container {
+  max-width: 70%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px;
+  align-items: center;
+  padding-top: 20px;
+  padding: 20 2%;
 }
 
-.index {
-  background-color: #f8f9fa;
-  height: 500px;
+/* Control the size of the index */
+
+.news-feed-index {
+  height: 100vh;
   width: calc(19% - 20px);
   margin-bottom: 20px;
 }
 
-.news-feed {
+/* Control the size of the scroll */
+
+.news-feed-scroll {
   background-color: #f8f9fa;
-  height: 500px;
+  height: 100vh;
   width: calc(55% - 20px);
   margin-bottom: 20px;
 }
 
-.user-content {
-  background-color: #f8f9fa;
-  height: 500px;
+/* Control the size of the user content */
+
+.news-feed-user-content {
+  height: 100vh;
   width: calc(26% - 20px);
   margin-bottom: 20px;
+}
+
+/* Left Box */
+
+.news-feed-index-list {
+  height: calc(100vh - 204px);
+  min-height: 460px;
+  width: 240px;
+  color: #000000;
+}
+
+.news-feed-index-list-item {
+  margin-bottom: 4px;
+  list-style-type: none;
+  position: relative;
+  display: list-item;
+  color: #000000;
+}
+
+.news-feed-index-list-item-container {
+  padding-right: 6px;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: #000000;
+  height: 40px;
+  margin-bottom: 16px;
+  margin-left: 0px;
+  border: 1px inset transparent;
+  border-radius: 16px;
+}
+
+.news-feed-index-list-item-icon {
+  height: 32px;
+  width: 32px;
+  margin-right: 0px;
+  vertical-align: top;
+  overflow: hidden;
+  fill: none;
+  color: #000000;
+}
+
+.news-feed-index-list-item-title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 1px;
+  margin-right: -1px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  color: rgb(0, 0, 0);
+  margin-left: 12px;
+}
+
+.news-feed-index-post-button-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  max-width: 200px;
+  padding-top: 4px;
+}
+
+.news-feed-index-post-button {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  appearance: none;
+  border: 0.5px solid rgb(184, 236, 81);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(184, 236, 81);
+  color: rgb(0, 97, 66);
+  border-radius: 100vh;
+  padding: 7px 8px;
+  width: 100%;
+  text-transform: none;
+  overflow: visible;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+}
+
+.news-feed-index-post-button-content {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-feed-index-post-button-symbol {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  vertical-align: text-bottom;
+  margin-left: -4px;
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  fill: none;
+}
+
+.news-feed-index-footer-menue-container {
+  box-sizing: border-box;
+  display: block;
+  color: #000000;
+}
+
+.news-feed-index-footer {
+  margin: 15px 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.news-feed-index-footer-ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-feed-index-footer-li {
+  color: #000000;
+  display: inline;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.news-feed-footer-copyright {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6f7681;
+  margin-top: 12px;
+  box-sizing: border-box;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Right box */
+
+.parent-news-feed-create-event-container {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: none;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.child-news-feed-create-event-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  background-blend-mode: darken;
+  object-fit: cover;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background: url(https://d19rpgkrjeba2z.cloudfront.net/static/images/local_events/rhr_local_events_banner.png) center center / cover no-repeat, rgba(0, 0, 0, 0.3);
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 8px;
+}
+
+.news-feed-create-event-container-title {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: Lato, "Lucida Grande", Tahoma, sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 40px;
+  font-style: italic;
+  color: rgb(255, 255, 255);
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.news-feed-create-event-container-button{
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  appearance: none;
+  border: 0.5px solid rgb(184, 236, 81);
+  cursor: pointer;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(184, 236, 81);
+  color: rgb(0, 97, 66);
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 8px 16px;
+  display: block;
+  width: 90%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  text-transform: none;
+  overflow: visible;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+}
+
+.parent-news-feed-create-business-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  background-color: #ffffff;
+  width: 280px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: none;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+}
+
+.parent-news-feed-create-business-img-box {
+  padding-top: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #f9fff0;
+  width: 100%;
+}
+
+.child-news-feed-create-business-img-box {
+  background-color: #f9fff0;
+  text-align: center;
+}
+
+.news-feed-create-business-img {
+  width: 80%;
+  vertical-align: middle;
+  border: 0;
+  overflow: clip;
+}
+
+.news-feed-create-business-title-container {
+  padding: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.news-feed-create-business-title {
+  box-sizing: border-box;
+    margin-block: 0px;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.news-feed-create-business-description {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 8px 0px 16px;
+  margin: 0 0 10px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.news-feed-create-business-button {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  appearance: none;
+  border: 0.5px solid rgb(184, 236, 81);
+  cursor: pointer;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(184, 236, 81);
+  color: rgb(0, 97, 66);
+  font-size: 15px;
+  line-height: 20px;
+  padding: 8px 16px;
+  display: block;
+  width: 100%;
+  border-radius: 100px;
+  text-transform: none;
+  overflow: visible;
+  margin: 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+}
+
+.parent-news-feed-neighbors-reccomendations-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 20px;
+}
+
+.child-news-feed-neighbors-reccomendations-container {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: none;
+}
+
+.grandchild-news-feed-neighbors-reccomendations-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  padding-left: 6px;
+  padding-top: 18px;
+  padding-bottom: 12px;
+}
+
+.news-feed-neighbors-reccomendations-title-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-right: 3%;
+  margin-bottom: 10px;
+}
+
+.news-feed-neighbors-reccomendations-title {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: Lato, "Lucida Grande", Tahoma, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 28px;
+  font-style: italic;
+  margin-left: 12px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
