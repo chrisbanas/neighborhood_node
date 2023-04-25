@@ -1,0 +1,78 @@
+.splash-signup-bar {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #6f7681;
+  font-size: 16px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  padding: 12px 2%;
+  text-align: unset;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: url(../../../assets/text_logo.png);
+  background-size: 350px 40px; /* size of the logo */
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  box-sizing: border-box;
+}
+
+.splash-signup-side-nav-menu {
+  height: 36px;
+}
+
+.side-nav-menu-icon {
+  background-image: url(https://d19rpgkrjeba2z.cloudfront.net/static/gen/6a809d16d48482a94c26.png);
+  width: 36px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: inherit;
+  width: 33px;
+  vertical-align: middle;
+}
+
+.signup-bar-login-button {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  appearance: none;
+  border: 0.5px solid rgb(229, 229, 229);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(229, 229, 229);
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 8px 16px;
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  overflow: visible;
+  text-transform: none;
+  margin: 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+}
