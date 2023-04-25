@@ -10,7 +10,7 @@
 #  session_token   :string           not null
 #  password_digest :string           not null
 #  neighborhood_id :bigint           not null
-#  last_login      :datetime         not null
+#  last_login      :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

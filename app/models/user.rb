@@ -10,21 +10,31 @@
 #  session_token   :string           not null
 #  password_digest :string           not null
 #  neighborhood_id :bigint           not null
-#  last_login      :datetime         not null
+#  last_login      :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
+
     has_secure_password
 
     validates :email,
+        presence: true,
         uniqueness: true,
         length: { in: 3..255 },
         format: { with: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..255 }, allow_nil: true
+    validates :first_name, presence: true
+    validates :lastt_name, presence: true
 
     before_validation :ensure_session_token
+
+
+    belongs_to :neighborhood,
+    foreign_key: :neighborhood_id,
+    class_name: :Neighborhood
+
 
     def self.find_by_credentials(credential, password)
         field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :email # this had username
