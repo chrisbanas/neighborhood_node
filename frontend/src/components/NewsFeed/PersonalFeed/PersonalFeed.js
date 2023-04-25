@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../../store/session';
 import textLogo from '../../../assets/text_logo.png'
-import houseIcon from '../../../assets/house_icon.jpg'
 
 import './PersonalFeed.css';
 
@@ -48,7 +47,10 @@ export default function PersonalFeed() {
       <div className="news-feed-index-list">
         <li className="news-feed-index-list-item">
           <a className="news-feed-index-list-item-container" href="/news_feed">
-            <img src={houseIcon} className="news-feed-index-list-item-icon" alt="house icon"></img>
+            <svg className="news-feed-index-list-item-icon">
+              <path fill="currentColor" d="M16.669 4.257a1 1 0 0 0-1.338 0l-10 9A1 1 0 0 0 5 14v12a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h6v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V14a1 1 0 0 0-.331-.743l-10-9Z">
+              </path>
+            </svg>
             <span className="news-feed-index-list-item-title" data-testid="Home">Home</span>
           </a>
         </li>
@@ -75,13 +77,20 @@ export default function PersonalFeed() {
         </li>
         <li className="news-feed-index-list-item">
           <a className="news-feed-index-list-item-container" href="/news_feed">
-            <img src={houseIcon} className="news-feed-index-list-item-icon" alt="house icon"></img>
+            <svg className="news-feed-index-list-item-icon" viewBox="0 0 32 32" role="img">
+              <path fill="currentColor" fill-rule="evenodd" d="M16 3.5c-2.071 0-4 1.657-4 3.85v.004C9.167 8.774 7.5 11.68 7.5 15v3.197l-2.832 4.248A1 1 0 0 0 5.5 24H12c0 2.212 1.788 4 4 4 2.212 0 4-1.788 4-4h6.5a1 1 0 0 0 .832-1.555L24.5 18.197V15c0-3.32-1.667-6.225-4.5-7.646V7.35c0-2.193-1.929-3.85-4-3.85ZM18 24h-4c0 1.108.892 2 2 2s2-.892 2-2Zm6.631-2-1.963-2.945a1 1 0 0 1-.168-.555V15c0-2.825-1.491-5.118-3.872-6.072A1 1 0 0 1 18 8v-.65c0-.961-.902-1.85-2-1.85-1.098 0-2 .889-2 1.85V8a1 1 0 0 1-.628.928C10.992 9.882 9.5 12.175 9.5 15v3.5a1 1 0 0 1-.168.555L7.37 22H24.63Z" clip-rule="evenodd"></path>
+            </svg>
             <span className="news-feed-index-list-item-title" data-testid="Notifications">Notifications</span>
           </a>
         </li>
         <li className="news-feed-index-list-item">
           <a className="news-feed-index-list-item-container" href="/news_feed">
-            <img src={houseIcon} className="news-feed-index-list-item-icon" alt="house icon"></img>
+            <svg class="news-feed-index-list-item-icon" viewBox="0 0 32 32" role="img">
+              <path fill="currentColor" d="M17.328 25.23C18.623 26.48 20.401 28 23 28a1 1 0 0 0 .896-1.443v-.001l-.009-.019a4.48 4.48 0 0 1-.181-.488 4.766 4.766 0 0 1-.175-.81c1.184-.881 2.444-2.027 3.455-3.37C28.126 20.358 29 18.525 29 16.5a8.37 8.37 0 0 0-1.071-4.15c.047.426.071.859.071 1.297 0 3.778-1.893 7.132-4.75 9.26-.441.377-.89.72-1.323 1.024a1 1 0 0 0-.427.819c0 .365.035.71.088 1.02-.67-.224-1.264-.6-1.832-1.056-.78.254-1.593.429-2.428.516Z">
+              </path>
+              <path fill="currentColor" fill-rule="evenodd" d="M3 13.647A9.64 9.64 0 0 1 12.647 4h3.706A9.64 9.64 0 0 1 26 13.647a9.64 9.64 0 0 1-9.465 9.645C14.77 25.542 12.035 27 8.941 27a1 1 0 0 1-.895-1.447l.002-.002.007-.016.034-.07a12.128 12.128 0 0 0 .491-1.229c.193-.576.34-1.173.374-1.683A9.628 9.628 0 0 1 3 13.647Zm7.486 11.196a7.675 7.675 0 0 0 4.727-3.123 1 1 0 0 1 .819-.426h.32A7.64 7.64 0 0 0 24 13.647 7.64 7.64 0 0 0 16.353 6h-3.706A7.64 7.64 0 0 0 5 13.647a7.63 7.63 0 0 0 5.243 7.253 1 1 0 0 1 .676.804c.158 1.076-.15 2.29-.433 3.14Z" clip-rule="evenodd">
+              </path>
+            </svg>
             <span className="news-feed-index-list-item-title" data-testid="Messages">Messages</span>
           </a>
         </li>
@@ -96,9 +105,9 @@ export default function PersonalFeed() {
           </button>
         </div>
       </div>
-
+      {/* Index footer */}
       <div className="news-feed-index-footer-menue-container">
-        <footer className="news-feed-index-footer" tabindex="0" aria-label="Footer">
+        <footer className="news-feed-index-footer" tabIndex="0" aria-label="Footer">
           <ul className="news-feed-index-footer-ul">
             <li>
               <a className="news-feed-index-footer-li" href="/news_feed" target="_blank">Help&nbsp;&bull;&nbsp;</a>
@@ -140,23 +149,42 @@ export default function PersonalFeed() {
             <div className="news-feed-footer-copyright">© 2023 Neighborhood Node</div>
         </footer>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
 		</div>
+
     {/* <!-- Content for the news feed section goes here --> */}
 		<div className="news-feed-scroll">
-      news feed box
+      <div>
+        <div className="user-post-box-container">
+          <button aria-live="off" className="sub-user-post-box-container">
+            <span className="parent-news-feed-user-avatar">
+              <div className="news-feed-user-avatar">
+                <img className="news-feed-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize"/>
+              </div>
+            </span>
+            <div className="parent-user-post-modal-container">
+              <div className="child-user-post-modal-container">
+                <span className="grandchild-user-post-modal-container">What's on your mind, neighbor?</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
 		</div>
+
+
+
+
+
 			{/* <!-- Content for the user feed section goes here --> */}
 		<div className="news-feed-user-content">
       <div className="parent-news-feed-create-event-container">
