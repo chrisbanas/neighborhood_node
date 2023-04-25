@@ -26,7 +26,7 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..255 }, allow_nil: true
     validates :first_name, presence: true
-    validates :lastt_name, presence: true
+    validates :last_name, presence: true
 
     before_validation :ensure_session_token
 

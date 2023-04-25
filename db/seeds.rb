@@ -17,8 +17,22 @@ ApplicationRecord.transaction do
 
   puts "Resetting primary keys..."
   # After seeding, the first `User` has `id` of 1
-  ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('neighborhoods')
+  ApplicationRecord.connection.reset_pk_sequence!('users')
+
+  puts "Creating Neighborhoods..."
+
+    Neighborhood.create!(
+      name: "Mission District"
+    )
+
+    Neighborhood.create!(
+      name: "Marina District"
+    )
+
+    Neighborhood.create!(
+      name: "Pacific Heights"
+    )
 
   puts "Creating users..."
 
@@ -38,21 +52,6 @@ ApplicationRecord.transaction do
       bio: "I'm a demo user",
       neighborhood_id: 2,
       password: "123456"
-    )
-
-
-  puts "Creating Neighborhoods..."
-
-    Neighborhood.create(
-      name: "Mission District"
-    )
-
-    Neighborhood.create(
-      name: "Marina District"
-    )
-
-    Neighborhood.create(
-      name: "Pacific Heights"
     )
 
   puts "Done!"
