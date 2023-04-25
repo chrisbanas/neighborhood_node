@@ -46,7 +46,7 @@ ApplicationRecord.transaction do
     )
 
     User.create!(
-      email: "demouser@gmail.com.com",
+      email: "demouser@gmail.com",
       first_name: "Demo",
       last_name: "User",
       bio: "I'm a demo user",
