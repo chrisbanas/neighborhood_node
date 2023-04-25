@@ -13,7 +13,8 @@
     "url": "git+https://github.com/chrisbanas/neighborhood_node.git"
   },
   "engines": {
-    "node": "16.19"
+    "node": "16.19",
+    "npm": "9.x"
   },
   "keywords": [],
   "author": "",

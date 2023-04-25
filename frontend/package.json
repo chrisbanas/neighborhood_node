@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm install --prefix ./frontend && npm run build --prefix ./frontend",
+    "build": "BUILD_PATH='../public' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -39,9 +39,5 @@
   "devDependencies": {
     "redux-logger": "^3.0.6"
   },
-  "proxy": "http://localhost:5000",
-  "engines": {
-    "node": "16.x",
-    "npm": "9.x"
-  }
+  "proxy": "http://localhost:5000"
 }
