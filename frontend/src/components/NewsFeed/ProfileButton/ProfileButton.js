@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from '../../../store/session';
 import './ProfileButton.css';
 
 export default function ProfileButton({ user }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
@@ -27,7 +29,8 @@ export default function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    dispatch(sessionActions.logout())
+    .then(move => history.push("/login")); //this is how we switch to the other page
   };
 
   return (

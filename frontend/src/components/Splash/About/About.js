@@ -3,6 +3,11 @@ import './About.css';
 
 export default function About() {
 
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
     <>
       <div className="about-us-content-container">
@@ -49,7 +54,7 @@ export default function About() {
             </div>
             <div className="about-us-bottom-signup-button-container">
               <div className="sub-about-us-bottom-signup-button-container">
-                <button className="about-us-bottom-signup-button" type="button">Sign up</button>
+                <button className="about-us-bottom-signup-button" type="button" onClick={scrollToTop}>Sign up</button>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../../store/session";
 import './Hero.css';
 // import header from '../../../assets/header.jpg'
@@ -9,6 +9,7 @@ import './Hero.css';
 
 
 export default function Hero() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [firstName, setFirstName] = useState("");
@@ -24,7 +25,8 @@ export default function Hero() {
     e.preventDefault();
     if (password) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, password, firstName, lastName, neighborhoodId }))
+      dispatch(sessionActions.signup({ email, password, firstName, lastName, neighborhoodId }))
+      .then(move => history.push("/news_feed"))
         .catch(async (res) => {
           let data;
           try {
@@ -44,9 +46,10 @@ export default function Hero() {
   const handleDemo = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(
+    dispatch(
       sessionActions.login({ email: "demouser@gmail.com", password: "123456" })
-    );
+    )
+    .then(move => history.push("/news_feed"));
   };
 
   return (
@@ -90,6 +93,9 @@ export default function Hero() {
                   </div>
                   {/* ------------------------Where the signup credentials go--------------------- */}
                   <form className="email-password" onSubmit={handleSubmit}>
+                    <ul>
+                      {errors.map((error) => <li className="signup-errors"key={error}>{error}</li>)}
+                    </ul>
                     <div className="sub-email-password">
                       <div className="email-input">
                         <div className="sub-email-input">
@@ -126,9 +132,6 @@ export default function Hero() {
                           </div>
 
                           <div className="deep-sub-email-input">
-                            <ul>
-                              {errors.map((error) => <li key={error}>{error}</li>)}
-                            </ul>
                             <input className="actual-email-input" aria-disabled="false" aria-label="Email address" placeholder="Email Address" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
                               required />
                           </div>

@@ -11,7 +11,7 @@
   text-align: unset;
   background-color: rgba(0, 0, 0, 0.2);
   background-image: url(../../../assets/text_logo.png);
-  background-size: 350px 175px;
+  background-size: 350px 40px; /* size of the logo */
   background-repeat: no-repeat;
   background-position: center center;
   display: block;

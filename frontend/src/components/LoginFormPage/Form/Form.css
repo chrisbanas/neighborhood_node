@@ -1,3 +1,18 @@
+.login-form-logo-container{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 350px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.login-form-logo {
+  width: 350px;
+  height: 40px;
+
+}
+
 .login-info-box {
   max-width: 445px;
   text-align: left;
@@ -95,18 +110,18 @@
     max-width: 100%;
 }
 
-.thrid-party-options {
+.login-form-thrid-party-options {
   display: block;
   box-sizing: border-box;
 }
 
-.social-registration {
+.login-form-social-registration {
   margin-bottom: 12px;
   display: block;
   box-sizing: border-box;
 }
 
-.social-registration-company {
+.login-form-social-registration-company {
   display: block;
   box-sizing: border-box;
   margin-block: 0px;
@@ -139,7 +154,7 @@
   text-align: center;
 }
 
-.social-registration-company > img {
+.login-form-social-registration-company > img {
   vertical-align: middle;
   border: 0;
   height: 20px;
@@ -149,13 +164,13 @@
   overflow: clip;
 }
 
-.social-registration-label {
+.login-form-social-registration-label {
   flex-grow: 1;
   display: block;
   box-sizing: border-box;
 }
 
-.divider::before {
+.login-form-divider::before {
   border-top: 1px solid #949494;
   content: '';
   position: absolute;
@@ -169,7 +184,7 @@
   box-sizing: border-box;
 }
 
-.divider {
+.login-form-divider {
   position: relative;
   z-index: 1;
   margin-bottom: 24px;
@@ -177,7 +192,7 @@
   box-sizing: border-box;
 }
 
-.or {
+.login-form-or {
   padding-top: 24px;
   font-size: 14px;
   text-align: center;
@@ -185,7 +200,7 @@
   display: block;
 }
 
-.or > span {
+.login-form-or > span {
   color: #6f7681;
   text-align: center;
   padding-left: 5px;
@@ -197,7 +212,7 @@
   font-size: 14px;
 }
 
-.email-password {
+.login-form-email-password {
   box-sizing: border-box;
   margin-block: 0px;
   text-rendering: optimizelegibility;
@@ -210,7 +225,7 @@
   margin-top: 0em;
 }
 
-.sub-email-password {
+.login-form-sub-email-password {
   box-sizing: border-box;
   margin-block: 0px;
   text-rendering: optimizelegibility;
@@ -223,13 +238,13 @@
   margin-top: 0em;
 }
 
-.email-input {
+.login-form-email-input {
   padding-bottom: 16px;
   box-sizing: border-box;
   display: block;
 }
 
-.sub-email-input {
+.login-form-sub-email-input {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -243,7 +258,11 @@
   width: auto;
 }
 
-.deep-sub-email-input {
+.login-form-form-errors {
+  color: red;
+}
+
+.login-form-deep-sub-email-input {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -258,7 +277,7 @@
   display: block;
 }
 
-.actual-email-input {
+.login-form-actual-email-input {
   animation-name: onAutoFillCancel;
   animation-duration: 0.001s;
   position: absolute;
@@ -290,7 +309,7 @@
   cursor: text;
 }
 
-.email-input-label {
+.login-form-email-input-label {
   z-index: 1;
   position: absolute;
   top: -4px;
@@ -312,19 +331,19 @@
 }
 
 
-.password-input {
+.login-form-password-input {
   padding-bottom: 16px;
   box-sizing: border-box;
   display: block;
 }
 
-.sub-password-input {
+.login-form-sub-password-input {
   width: auto;
   box-sizing: border-box;
   display: block;
 }
 
-.deep-sub-password-input {
+.login-form-deep-sub-password-input {
   position: relative;
   width: 100%;
   height: 56px;
@@ -332,7 +351,7 @@
   display: block;
 }
 
-.actual-password-input {
+.login-form-actual-password-input {
   animation-name: onAutoFillCancel;
   animation-duration: 0.001s;
   position: absolute;
@@ -364,7 +383,7 @@
   cursor: text;
 }
 
-.password-input-label {
+.login-form-password-input-label {
   z-index: 1;
   position: absolute;
   top: -4px;
@@ -384,7 +403,7 @@
   cursor: default;
 }
 
-.signup-continue-button {
+.login-form-signup-continue-button {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -396,7 +415,7 @@
   display: block;
 }
 
-.signup-continue-button-2 {
+.login-form-signup-continue-button-2 {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -409,7 +428,7 @@
   padding-top: 16px;
 }
 
-.signup-continue-button-style {
+.login-form-signup-continue-button-style {
   box-sizing: border-box;
   margin-block: 0px;
   text-rendering: optimizelegibility;
@@ -442,32 +461,7 @@
   text-align: center;
 }
 
-.signup-disclamier {
-  box-sizing: border-box;
-  margin-block: 0px;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 16px;
-  margin-top: 24px;
-  margin: 0 0 10px;
-  display: block;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-top: 24px;
-}
-
-.signup-disclamier-content {
-
-  color: #007b99;
-  text-decoration: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.have-a-business-prompt {
+.new-to-neighborhood-node-prompt {
   font-size: 12px;
   color: #333333;
   text-align: center;
@@ -482,7 +476,7 @@
   display: block;
 }
 
-.have-a-business-prompt-label {
+.new-to-neighborhood-node-prompt-label {
   box-sizing: border-box;
   margin-block: 0px;
   text-rendering: optimizelegibility;
@@ -493,7 +487,7 @@
   line-height: 24px;
 }
 
-.have-a-business-prompt-label-link {
+.new-to-neighborhood-node-prompt-label-link {
   box-sizing: border-box;
   margin-block: 0px;
   text-rendering: optimizelegibility;

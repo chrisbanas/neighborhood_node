@@ -242,6 +242,10 @@
   margin-top: 0em;
 }
 
+.signup-errors {
+  color: red;
+}
+
 .sub-email-password {
   box-sizing: border-box;
   margin-block: 0px;

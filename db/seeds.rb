@@ -8,14 +8,53 @@
 
 # rails db:seed:replant - replants the database if you want to update it
 
-mission_district = Neighborhood.create(
-  name: "Mission District"
-)
 
-marina_district = Neighborhood.create(
-  name: "Marina District"
-)
+ApplicationRecord.transaction do
+  puts "Destroying tables..."
+  # Unnecessary if using `rails db:seed:replant`
+  User.destroy_all
+  Neighborhood.destroy_all
 
-pacific_heights = Neighborhood.create(
-  name: "Pacific Heights"
-)
+  puts "Resetting primary keys..."
+  # After seeding, the first `User` has `id` of 1
+  ApplicationRecord.connection.reset_pk_sequence!('users')
+  ApplicationRecord.connection.reset_pk_sequence!('neighborhoods')
+
+  puts "Creating users..."
+
+    User.create!(
+      email: "test@test.com",
+      first_name: "test",
+      last_name: "test",
+      bio: "I'm a test user",
+      neighborhood_id: 1,
+      password: "123456"
+    )
+
+    User.create!(
+      email: "demouser@gmail.com.com",
+      first_name: "Demo",
+      last_name: "User",
+      bio: "I'm a demo user",
+      neighborhood_id: 2,
+      password: "123456"
+    )
+
+
+  puts "Creating Neighborhoods..."
+
+    Neighborhood.create(
+      name: "Mission District"
+    )
+
+    Neighborhood.create(
+      name: "Marina District"
+    )
+
+    Neighborhood.create(
+      name: "Pacific Heights"
+    )
+
+  puts "Done!"
+
+end
