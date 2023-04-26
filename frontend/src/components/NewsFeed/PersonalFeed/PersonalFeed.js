@@ -248,7 +248,7 @@ export default function PersonalFeed(user) {
                   <div className="parent-news-feed-posts-stats-count-container">
                     <div className="child-news-feed-posts-stats-count-container">
                         <p className="news-feed-live-post-stats-count">
-                          100
+                          100 Likes
                         </p>
                     </div>
                   </div>

@@ -182,6 +182,12 @@
   height: 100vh;
   width: calc(55% - 20px);
   margin-bottom: 20px;
+  overflow: auto; /* makes it scrollable */
+  padding: 1%;
+}
+
+.news-feed-scroll::-webkit-scrollbar {
+  display: none; /* hides the scroll bar */
 }
 
 /* Control the size of the user content */
@@ -190,6 +196,7 @@
   height: 100vh;
   width: calc(26% - 20px);
   margin-bottom: 20px;
+
 }
 
 /* Left Box ********************************************************************************/
