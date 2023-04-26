@@ -59,19 +59,11 @@ export default function PersonalFeed(user) {
           </div>
         </form>
       </div>
-        <button onClick={logout} className="news-feed-profile-button">User
-          <i className="fa-solid fa-user-circle" />
-        </button>
-        {showMenu && (
-          <ul className="news-feed-profile-dropdown">
-            <li>{sessionUser.first_name}</li>
-            <li>{sessionUser.email}</li>
-            <li>
-              <button onClick={logout}>Log Out</button>
-            </li>
-          </ul>
-          )}
-
+      <span className="nav-parent-news-feed-user-avatar" onClick={logout}>
+        <div className="nav-news-feed-user-avatar">
+          <img className="nav-news-feed-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize"/>
+        </div>
+      </span>
     </div>
 
 {/* Main section */}
@@ -204,7 +196,75 @@ export default function PersonalFeed(user) {
           </button>
         </div>
       </div>
+    {/* <!-- postbox --> */}
+      <div className="parent-news-feed-post-container">
+        <div className="news-feed-post-container">
+          <div className="news-feed-post-media-container">
+            {/* <!-- postowner --> */}
+            <div className="parent-news-feed-post-user-info-container">
+              <div className="child-news-feed-post-user-info-container">
+                <div className="grandchild-news-feed-post-user-info-container">
+                  <div className="post-owner-avatar-container">
+                  <span className="post-news-feed-owner-avatar">
+                    <div className="post-news-feed-owner-avatar-image">
+                      <img className="news-feed-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize"/>
+                    </div>
+                  </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <!-- postbody --> */}
+            <div className="news-feed-post-body">
+              <p className="news-feed-post-content">
+                This is the post body
+              </p>
+            </div>
+            {/* <!-- poststats --> */}
+            <div className="parent-news-feed-posts-stats-container">
+              <div className="child-news-feed-posts-stats-container">
+                <div className="grandchild-news-feed-posts-stats-container">
+                {/* <!-- likes count--> */}
+                  <div className="parent-news-feed-posts-stats-count-container">
+                    <div className="child-news-feed-posts-stats-count-container">
+                        <p className="news-feed-live-post-stats-count">
+                          100
+                        </p>
+                    </div>
+                  </div>
+                  {/* <!-- comments - likes - share --> */}
+                  <div className="news-feed-post-comment-like-share-container">
+                    <div className="news-feed-post-like-container">
 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr className="post-stats-and-comments-seperator"></hr>
+            {/* <!-- comments --> */}
+
+
+                <button aria-live="off" className="sub-user-comment-box-container">
+                  <span className="parent-news-feed-comment-user-avatar">
+                    <div className="news-feed-comment-user-avatar">
+                      <img className="news-feed-comment-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize"/>
+                    </div>
+                  </span>
+                  <div className="parent-user-comment-modal-container">
+                    <div className="child-user-comment-modal-container">
+                      <span className="grandchild-user-comment-modal-container">Add a comment...
+                      </span>
+                    </div>
+                  </div>
+                </button>
+
+          </div>
+
+        </div>
+
+      </div>
 
 
 
