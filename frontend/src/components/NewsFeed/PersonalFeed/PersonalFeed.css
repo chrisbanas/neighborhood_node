@@ -28,7 +28,26 @@
   border: 0;
   box-sizing: border-box;
   overflow: clip;
+}
 
+.github-logo img {
+  display: block;
+  height: 25px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  margin-top: 70%;
+}
+
+.linkedin-logo img {
+  display: block;
+  height: 25px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  margin-top: 60%;
 }
 
 .news-feed-search-container {
@@ -611,6 +630,13 @@
 
 .news-feed-live-post-stats-count {
   margin-bottom: 25%;
+  margin-left: 2px;
+    text-align: right;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: #000000;
+    letter-spacing: -0.06px;
 }
 
 .news-feed-post-comment-like-share-container {

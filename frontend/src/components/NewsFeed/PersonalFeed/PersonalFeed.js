@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../../store/session';
-import textLogo from '../../../assets/text_logo.png'
-
 import './PersonalFeed.css';
+
+// image imports
+import textLogo from '../../../assets/text_logo.png'
+import github from '../../../assets/github.png'
+import linkedin from '../../../assets/linkedin.png'
+
+
 
 export default function PersonalFeed(user) {
   const history = useHistory();
@@ -59,11 +64,26 @@ export default function PersonalFeed(user) {
           </div>
         </form>
       </div>
+
+      <div className="linkedin-logo">
+        <a href="https://www.linkedin.com/in/christopher-banas/" className="news-feed-nav-bar-linkedin-logo">
+          <img src={linkedin} className="new-feed-neighborhood-node-likedin-logo" alt="LinkedIn logo"/>
+        </a>
+      </div>
+
+      <div className="github-logo">
+        <a href="https://github.com/chrisbanas/neighborhood_node" className="news-feed-nav-bar-github-logo">
+          <img src={github} className="new-feed-neighborhood-node-github-logo" alt="Github logo"/>
+        </a>
+      </div>
+
+
       <span className="nav-parent-news-feed-user-avatar" onClick={logout}>
         <div className="nav-news-feed-user-avatar">
           <img className="nav-news-feed-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize"/>
         </div>
       </span>
+
     </div>
 
 {/* Main section */}
@@ -248,6 +268,46 @@ export default function PersonalFeed(user) {
                     </button>
                     </div>
                   </div>
+
+                  <div className="news-feed-post-comment-like-share-container">
+                    <div className="news-feed-post-like-container">
+                    <button aria-live="off" aria-label="Like" data-testid="reaction-button" type="button" className="news-feed-post-like-button">
+                      <svg className="news-feed-post-like-icon" width="24" height="24"
+                        fill="none" viewBox="0 0 24 24" data-testid="reaction-icon" alt="Like" role="img">
+                        <path fill="currentColor" fill-rule="evenodd"
+                          d="M2 10.031C2 5.596 5.574 2 10 2h4c4.427 0 8 3.596 8 8.031 0 4.435-3.573 8.031-8 8.031h-1.52a17.033 17.033 0 0 1-1.377 1.467c-.991.938-2.456 2.079-4.086 2.437a1.403 1.403 0 0 1-1.458-.565 1.55 1.55 0 0 1-.195-1.394c.28-.823.395-1.734.434-2.464.014-.257.018-.485.018-.672A8.017 8.017 0 0 1 2 10.031Zm5.798 6.178a7.02 7.02 0 0 1 .016.418c.005.252.004.606-.019 1.023-.03.573-.103 1.285-.266 2.024.775-.377 1.54-.974 2.202-1.598a15.066 15.066 0 0 0 1.448-1.586l.017-.022.003-.004a1 1 0 0 1 .801-.402h2c3.314 0 6-2.692 6-6.03C20 6.691 17.314 4 14 4h-4c-3.314 0-6 2.692-6 6.031 0 2.336 1.32 4.36 3.258 5.359.308.159.515.474.54.82Z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <div className="news-feed-post-like-button-title-container">
+                        <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">Comment</div>
+                      </div>
+                    </button>
+                    </div>
+                  </div>
+
+                  <div className="news-feed-post-comment-like-share-container">
+                    <div className="news-feed-post-like-container">
+                    <button aria-live="off" aria-label="Like" data-testid="reaction-button" type="button" className="news-feed-post-like-button">
+                      <svg className="news-feed-post-like-icon" width="24" height="24"
+                        fill="none" viewBox="0 0 24 24" data-testid="reaction-icon" alt="Like" role="img">
+                        <path fill="currentColor" fill-rule="evenodd"
+                          d="M11.617 2.076a1 1 0 0 1 1.09.217l9 9a1 1 0 0 1 0 1.414l-9 9A1 1 0 0 1 11 21v-4.436c-2.849.366-5.261 2.271-6.384 4.837a1 1 0 0 1-1.856-.06C2.338 20.182 2 18.86 2 17.5a9.959 9.959 0 0 1 9-9.951V3a1 1 0 0 1 .617-.924ZM13 5.414V8.5a1 1 0 0 1-1 1c-4.448 0-8 3.552-8 8 0 .31.023.625.066.94C5.905 16.067 8.776 14.5 12 14.5a1 1 0 0 1 1 1v3.086L19.586 12 13 5.414Z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <div className="news-feed-post-like-button-title-container">
+                        <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">Share</div>
+                      </div>
+                    </button>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
                 </div>
               </div>
             </div>
