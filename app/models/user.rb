@@ -35,6 +35,11 @@ class User < ApplicationRecord
     foreign_key: :neighborhood_id,
     class_name: :Neighborhood
 
+    has_many :posts,
+    foreign_key: :author_id,
+    class_name: :Post,
+    dependent: :destroy
+
 
     def self.find_by_credentials(credential, password)
         field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :email # this had username
