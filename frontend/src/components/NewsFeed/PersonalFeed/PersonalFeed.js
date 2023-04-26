@@ -6,11 +6,11 @@ import textLogo from '../../../assets/text_logo.png'
 
 import './PersonalFeed.css';
 
-export default function PersonalFeed() {
+export default function PersonalFeed(user) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -19,7 +19,6 @@ export default function PersonalFeed() {
 
   useEffect(() => {
     if (!showMenu) return;
-
     const closeMenu = () => {
       setShowMenu(false);
     };
@@ -29,10 +28,11 @@ export default function PersonalFeed() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout())
-    .then(move => history.push("/login")); //this is how we switch to the other page
+    .then(() => history.push("/login")); //this is how we switch to the other page
   };
 
 

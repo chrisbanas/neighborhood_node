@@ -115,6 +115,11 @@
 
 .news-feed-profile-dropdown{
   position: absolute;
+  top: 40px; /* adjust the value as needed to position the menu below the button */
+  left: 0;
+  display: block;
+  width: 200px; /* set the width of the menu */
+  height: auto; /* set the height to auto to adjust to the content */
 }
 
 
@@ -137,8 +142,8 @@
 
 .news-feed-index {
   height: 100vh;
-  width: calc(19% - 20px);
-  margin-bottom: 5%;
+  width: calc(20% - 20px);
+  margin-bottom: 4%;
 }
 
 /* Control the size of the scroll */
@@ -226,7 +231,7 @@
   margin-block: 0px;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
-  max-width: 200px;
+  width: 200px;
   padding-top: 4px;
 }
 
@@ -460,6 +465,7 @@
   box-sizing: border-box;
   margin-block: 0px;
   text-rendering: optimizelegibility;
+  width: 280px;
   -webkit-font-smoothing: antialiased;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
@@ -567,6 +573,15 @@
   margin-top: 10px;
 }
 
+@media screen and (min-width: 480px){
+  .parent-news-feed-create-business-container {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: none;
+  }
+}
+
 .parent-news-feed-create-business-img-box {
   padding-top: 16px;
   border-top-left-radius: 8px;
@@ -671,6 +686,7 @@
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   margin-top: 20px;
+  width: 280px;
 }
 
 .child-news-feed-neighbors-reccomendations-container {
