@@ -1,31 +1,27 @@
-import React from "react";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useHistory } from "react-router-dom";
-// import * as sessionActions from '../../../store/session';
+import React, { useEffect }  from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getPosts, fetchPosts } from '../../../store/posts';
 import './PersonalFeed.css';
 
-
+// import { useHistory } from "react-router-dom";
+// import * as sessionActions from '../../../store/session';
 // post reducer
 // import { getPosts, fetchPosts } from '../store/posts';
 
+// const { postId } = useParams();
+// const post = useSelector(getPost(postId));
 
 
 export default function PersonalFeed(user) {
   // const history = useHistory();
-  // const dispatch = useDispatch();
-  // const [showMenu, setShowMenu] = useState(false);
-  // const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
 
 
-  // button for header
+  const posts = useSelector(getPosts);
 
-  // posts
-
-  // const posts = useSelector(getPosts);
-
-  // useEffect(() => {
-  //     dispatch(fetchPosts());
-  // }, [dispatch]);
+  useEffect(() => {
+      dispatch(fetchPosts());
+  }, [dispatch]);
 
 
 
@@ -33,7 +29,7 @@ export default function PersonalFeed(user) {
 
   return (
     <>
-    
+
       <div className="news-feed-scroll">
         <div>
           <div className="user-post-box-container">
@@ -51,7 +47,11 @@ export default function PersonalFeed(user) {
             </button>
           </div>
         </div>
-        {/* <!-- postbox --> */}
+
+
+        {/* <!-- postbox this is the full box with everything--> */}
+      {posts.map(post => (
+
         <div className="parent-news-feed-post-container">
           <div className="news-feed-post-container">
             <div className="news-feed-post-media-container">
@@ -59,6 +59,7 @@ export default function PersonalFeed(user) {
               <div className="parent-news-feed-post-user-info-container">
                 <div className="child-news-feed-post-user-info-container">
                   <div className="grandchild-news-feed-post-user-info-container">
+                  {/* <!-- user avatar --> */}
                     <div className="post-owner-avatar-container">
                       <span className="post-news-feed-owner-avatar">
                         <div className="post-news-feed-owner-avatar-image">
@@ -66,13 +67,28 @@ export default function PersonalFeed(user) {
                         </div>
                       </span>
                     </div>
+                  {/* <!-- user info --> */}
+                    <div className="news-feed-post-owner-name-and-neighborhood-container">
+                      <div className="news-feed-post-owner-name-container">
+                        <a className="news-feed-post-owner-name" href="/news_feed">
+                            {post.authorId}
+                        </a>
+                      </div>
+                      <div className="news-feed-post-neighborhood-name-container">
+                        <a className="news-feed-post-neighborhood-name" href="/news_feed">
+                        {post.neighborhoodId}
+                        </a>
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
               </div>
               {/* <!-- postbody --> */}
               <div className="news-feed-post-body">
                 <p className="news-feed-post-content">
-                  This is the post body
+                {post.body}
                 </p>
               </div>
               {/* <!-- poststats --> */}
@@ -157,6 +173,15 @@ export default function PersonalFeed(user) {
             </div>
           </div>
         </div>
+
+      ))}
+
+
+
+
+
+
+
       </div>
 
     </>
