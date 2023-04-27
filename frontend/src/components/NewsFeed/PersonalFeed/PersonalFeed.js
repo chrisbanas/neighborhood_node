@@ -1,6 +1,7 @@
 import React, { useEffect }  from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, fetchPosts } from '../../../store/posts';
+import PostMapWrapper from '../PostMap/PostMap'
 import './PersonalFeed.css';
 
 // import { useHistory } from "react-router-dom";
@@ -89,8 +90,9 @@ export default function PersonalFeed(user) {
               <div className="news-feed-post-body">
                 <p className="news-feed-post-content">
                 {post.body}
-                <img src={post.id === 1 ? post.photoUrls[0] : "null"} alt="post"></img>
                 </p>
+                <img className="news-feed-post-img" src={post.id === 1 ? post.photoUrls[0] : "null"} alt="post"></img>
+                {post.id === 1 ? <PostMapWrapper/> : ""}
               </div>
               {/* <!-- poststats --> */}
               <div className="parent-news-feed-posts-stats-container">
