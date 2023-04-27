@@ -61,16 +61,16 @@ ApplicationRecord.transaction do
 
 
   # More users for production seeding
-    # 100.times do
-    #   User.create!({
-    #     email: Faker::Internet.unique.email,
-    #     first_name: Faker::Name.unique.first_name,
-    #     last_name: Faker::Name.unique.last_name,
-    #     bio: Faker::Lorem.unique.sentence,
-    #     neighborhood_id: rand(1..3),
-    #     password: 'password'
-    #   })
-    # end
+    100.times do
+      User.create!({
+        email: Faker::Internet.unique.email,
+        first_name: Faker::Name.unique.first_name,
+        last_name: Faker::Name.unique.last_name,
+        bio: Faker::Lorem.unique.sentence,
+        neighborhood_id: rand(1..3),
+        password: 'password'
+      })
+    end
 
 
     puts "Creating posts..."
@@ -93,13 +93,13 @@ ApplicationRecord.transaction do
 
   # Faker::Lorem.paragraphs(number: rand(3..10)).join("\n") - this will make groups of paragraphs and join them together
 
-    # 100.times do
-    #   Post.create!({
-    #     neighborhood_id: rand(1..3),
-    #     author_id: rand(1..102)
-    #     body: Faker::Lorem.unique.paragraphs,
-    #   })
-    # end
+    100.times do
+      Post.create!({
+        neighborhood_id: rand(1..3),
+        author_id: rand(1..102),
+        body: Faker::Lorem.unique.paragraphs,
+      })
+    end
 
 
   puts "Done!"
