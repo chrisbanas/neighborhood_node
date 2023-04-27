@@ -1,0 +1,11 @@
+.news-feed-main-container {
+  max-width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding: 20 2%;
+}
