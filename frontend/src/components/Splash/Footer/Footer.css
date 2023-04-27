@@ -199,3 +199,20 @@
   display: flex;
   justify-content: space-between;
 }
+
+
+
+.splash-footer-logo-containers {
+  display: flex;
+}
+
+
+.splash-footer-portfolio-logo {
+  display: block;
+  height: 25px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  margin-top: 2%;
+}

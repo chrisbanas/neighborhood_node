@@ -2,9 +2,11 @@ import { combineReducers, applyMiddleware, compose } from 'redux';
 import { legacy_createStore as createStore} from 'redux' // Should update this to the new function
 import thunk from 'redux-thunk';
 import session from './session'
+import postsReducer from './posts';
 
 const rootReducer = combineReducers({
-    session
+    session,
+    posts: postsReducer
 });
 
 let enhancer;

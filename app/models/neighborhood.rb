@@ -15,4 +15,9 @@ class Neighborhood < ApplicationRecord
   foreign_key: :user_id,
   class_name: :User
 
+  has_many :posts,
+  foreign_key: :neighborhood_id,
+  class_name: :Post
+  # dependent: :destroy - do I need this?
+
 end
