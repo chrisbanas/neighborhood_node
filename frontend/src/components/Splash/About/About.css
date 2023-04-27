@@ -36,9 +36,9 @@
   color: #000000;
   padding-top: 28px;
   margin-bottom: 24px;
-  font-family: Lato;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-style: italic;
-  font-weight: 900;
+  font-weight: 700;
   box-sizing: border-box;
   display: block;
 }
@@ -96,9 +96,9 @@
 }
 
 .icon-title {
-  font-family: Lato;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-style: italic;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 22px;
   line-height: 28px;
   margin-top: 16px;
@@ -145,9 +145,9 @@
 .about-us-bottom-signup-content-header {
   padding-top: 1px;
   margin-bottom: 24px;
-  font-family: Lato;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-style: italic;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 28px;
   color: #000000;
   line-height: 32px;

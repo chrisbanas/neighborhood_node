@@ -1,0 +1,152 @@
+.news-feed-navbar-container {
+  max-width: 70%; /* Set the maximum width of the container */
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex; /* Use flexbox for positioning the child elements */
+  justify-content: space-between; /* Space out the child elements */
+  max-height: 53px;
+}
+
+.news-feed-nav-bar-logo {
+  margin-right: 9px;
+  width: 204px;
+  color: #777;
+  padding: 13px 12px 13px 6px;
+  height: auto;
+  font-size: 18px;
+  line-height: 20px;
+  float: left;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.logo img {
+  display: block;
+  height: 25px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+}
+
+.github-logo img {
+  display: block;
+  height: 25px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  margin-top: 70%;
+}
+
+.linkedin-logo img {
+  display: block;
+  height: 25px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  margin-top: 60%;
+}
+
+.news-feed-search-container {
+  width: 560px;
+  height: 36px;
+  margin-left: 2px;
+  margin-right: 16px;
+  flex-grow: 1;
+}
+
+.news-feed-search-bar-form {
+  box-sizing: border-box;
+  display: block;
+  margin-top: 0em;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.news-feed-search-input-field {
+  background: rgb(229, 229, 229);
+  border: 2px solid transparent;
+  border-radius: 18px;
+  box-sizing: border-box;
+  height: 100%;
+
+  margin: 0px;
+  padding: 6px 32px 6px 16px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  transform: scale(1);
+  transition: transform 5ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+}
+
+.news-feed-search-input-field-container {
+  border: none;
+  box-sizing: border-box;
+  height: 36px;
+
+  left: 34%; /* controls the location of the search box otherwise it snaps to the left*/
+  padding: 6px 32px 6px 6px;
+  pointer-events: none;
+  position: absolute;
+  text-align: start;
+  top: 10px;
+  min-width: 30%;
+  z-index: 1;
+}
+
+.news-feed-profile-dropdown{
+  position: absolute;
+  top: 40px; /* adjust the value as needed to position the menu below the button */
+  left: 0;
+  display: block;
+  width: 200px; /* set the width of the menu */
+  height: auto; /* set the height to auto to adjust to the content */
+}
+
+
+.nav-parent-news-feed-user-avatar:hover,
+.nav-parent-news-feed-user-avatar:focus {
+  cursor: pointer;
+}
+
+.nav-parent-news-feed-user-avatar {
+  margin-top: 1%;
+  margin-right: 1%;
+}
+
+.nav-news-feed-user-avatar {
+  border: none
+}
+
+.nav-news-feed-user-avatar-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: clip;
+}
