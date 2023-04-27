@@ -52,7 +52,7 @@ export default function PersonalFeed(user) {
         {/* <!-- postbox this is the full box with everything--> */}
       {posts.map(post => (
 
-        <div className="parent-news-feed-post-container">
+        <div className="parent-news-feed-post-container" key={post.id}>
           <div className="news-feed-post-container">
             <div className="news-feed-post-media-container">
               {/* <!-- postowner --> */}
