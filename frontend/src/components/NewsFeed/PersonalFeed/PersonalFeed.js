@@ -89,6 +89,7 @@ export default function PersonalFeed(user) {
               <div className="news-feed-post-body">
                 <p className="news-feed-post-content">
                 {post.body}
+                <img src={post.id === 1 ? post.photoUrls[0] : "null"} alt="post"></img>
                 </p>
               </div>
               {/* <!-- poststats --> */}

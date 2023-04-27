@@ -23,4 +23,6 @@ class Post < ApplicationRecord
   foreign_key: :neighborhood_id,
   class_name: :Neighborhood
 
+  has_many_attached :photo
+
 end
