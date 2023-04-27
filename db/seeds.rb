@@ -9,6 +9,7 @@
 # rails db:seed:replant - replants the database if you want to update it
 
 require 'faker'
+require "open-uri"
 
 ApplicationRecord.transaction do
   puts "Destroying tables..."

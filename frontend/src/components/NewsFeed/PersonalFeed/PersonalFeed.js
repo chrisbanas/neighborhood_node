@@ -51,6 +51,7 @@ export default function PersonalFeed(user) {
 
         {/* <!-- postbox this is the full box with everything--> */}
       {posts.map(post => (
+
         <div className="parent-news-feed-post-container">
           <div className="news-feed-post-container">
             <div className="news-feed-post-media-container">
@@ -68,12 +69,12 @@ export default function PersonalFeed(user) {
                     </div>
                   {/* <!-- user info --> */}
                     <div className="news-feed-post-owner-name-and-neighborhood-container">
-                      <div classname="news-feed-post-owner-name-container">
+                      <div className="news-feed-post-owner-name-container">
                         <a className="news-feed-post-owner-name" href="/news_feed">
                             {post.authorId}
                         </a>
                       </div>
-                      <div classname="news-feed-post-neighborhood-name-container">
+                      <div className="news-feed-post-neighborhood-name-container">
                         <a className="news-feed-post-neighborhood-name" href="/news_feed">
                         {post.neighborhoodId}
                         </a>
@@ -172,6 +173,7 @@ export default function PersonalFeed(user) {
             </div>
           </div>
         </div>
+
       ))}
 
 
