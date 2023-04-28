@@ -39,8 +39,12 @@ class Comment < ApplicationRecord
   through: :parent_comment,
   source: :commenter
 
+  # Polymorphic
   has_many :likes,
   as: :likeable,
   dependent: :destroy
+
+  # AWS S3
+  has_many_attached :photo
 
 end

@@ -25,14 +25,17 @@ class Post < ApplicationRecord
   class_name: :Neighborhood,
   inverse_of: :posts
 
-  has_many_attached :photo
+  has_many :comments,
+  inverse_of: :post,
+  dependent: :destroy
 
+  # Polymorphic
   has_many :likes,
   as: :likeable,
   dependent: :destroy
 
-  has_many :comments,
-  inverse_of: :post,
-  dependent: :destroy
+  # AWS S3
+  has_many_attached :photo
+
 
 end

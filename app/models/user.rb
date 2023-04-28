@@ -56,6 +56,7 @@ class User < ApplicationRecord
     dependent: :destroy,
     inverse_of: :liker
 
+    # Polymorphic
     has_many :liked_posts,
     through: :likes,
     source: :likeable,
@@ -66,6 +67,7 @@ class User < ApplicationRecord
     source: :likeable,
     source_type: :Comment
 
+    # AWS S3
     has_one_attached :photo
 
 
