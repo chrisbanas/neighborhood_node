@@ -25,4 +25,8 @@ class Post < ApplicationRecord
 
   has_many_attached :photo
 
+  has_many :likes, as: :likeable, dependent: :destroy
+
+  has_many :comments, dependent: :destroy
+
 end
