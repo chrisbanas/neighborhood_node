@@ -3,10 +3,14 @@ import { legacy_createStore as createStore} from 'redux' // Should update this t
 import thunk from 'redux-thunk';
 import session from './session'
 import postsReducer from './posts';
+import likesReducer from './likes';
+import commentsReducer from './comments';
 
 const rootReducer = combineReducers({
     session,
-    posts: postsReducer
+    posts: postsReducer,
+    likes: likesReducer,
+    comments: commentsReducer
 });
 
 let enhancer;

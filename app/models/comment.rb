@@ -15,7 +15,7 @@
 class Comment < ApplicationRecord
   # Remember: Rails automatically validates the presence of `belongs_to` associations, so you can omit presence validations for `author`
 
-  validates :body, presence: true
+  validates :body, :author_id, :post_id, presence: true
 
   belongs_to :author,
   class_name: :User,
