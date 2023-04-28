@@ -14,7 +14,6 @@ export function receivePost(post) {
     type: RECEIVE_POST,
     post
   }
-
 }
 
 export function removePost(postId) {
@@ -23,7 +22,6 @@ export function removePost(postId) {
     postId
   }
 }
-
 
 export function getPost(postId) {
   return function (state) {

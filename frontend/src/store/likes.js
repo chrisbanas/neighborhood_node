@@ -24,7 +24,6 @@ export function removeLike(likeId) {
   }
 }
 
-
 export function getLike(likeId) {
   return function (state) {
     return state.likes ? state.likes[likeId] : null

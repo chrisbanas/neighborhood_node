@@ -14,7 +14,6 @@ export function receiveComment(comment) {
     type: RECEIVE_COMMENT,
     comment
   }
-
 }
 
 export function removeComment(commentId) {

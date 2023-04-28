@@ -17,12 +17,16 @@ ApplicationRecord.transaction do
   User.destroy_all
   Neighborhood.destroy_all
   Post.destroy_all
+  Comment.destroy_all
+  Like.destroy_all
 
-  # After seeding, the first `User` has `id` of 1
+  # After seeding, the first `data point` has `id` of 1
   puts "Resetting primary keys..."
   ApplicationRecord.connection.reset_pk_sequence!('neighborhoods')
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('posts')
+  ApplicationRecord.connection.reset_pk_sequence!('comments')
+  ApplicationRecord.connection.reset_pk_sequence!('likes')
 
   puts "Creating Neighborhoods..."
 
@@ -42,7 +46,7 @@ ApplicationRecord.transaction do
 
   # Create two users for demos and testing
 
-    User.create!(
+    user1 = User.create!(
       email: "test@test.com",
       first_name: "test",
       last_name: "test",
@@ -51,7 +55,7 @@ ApplicationRecord.transaction do
       password: "123456"
     )
 
-    User.create!(
+    user2 = User.create!(
       email: "demouser@gmail.com",
       first_name: "Demo",
       last_name: "User",
@@ -60,6 +64,7 @@ ApplicationRecord.transaction do
       password: "123456"
     )
 
+  # More users for production seeding
 
     10.times do
       first_name = Faker::Name.first_name
@@ -80,27 +85,31 @@ ApplicationRecord.transaction do
     end
 
 
-    puts "Creating posts..."
+  puts "Creating posts..."
 
   # Create two posts for testing
 
-    # Post.create!(
-    #   body: "I am a test post",
-    #   author_id: 1,
-    #   neighborhood_id: 1,
-    # )
+    post1 = Post.create!(
+      body: "I am a test post",
+      author_id: 1,
+      neighborhood_id: 1,
+      latitude: 37.773972,    # San Francisco coordinates
+      longitude: -122.431297
+    )
 
-    # Post.create!(
-    #   body: "I am a demo post",
-    #   author_id: 2,
-    #   neighborhood_id: 2,
-    # )
+    post2 = Post.create!(
+      body: "I am a demo post",
+      author_id: 2,
+      neighborhood_id: 2,
+      latitude: 37.773972,    # San Francisco coordinates
+      longitude: -122.431297
+    )
 
-  # More users for production seeding
+  # More posts for production seeding
 
   # Faker::Lorem.paragraphs(number: rand(3..10)).join("\n") - this will make groups of paragraphs and join them together
 
-  12.times do
+  10.times do
     body = Faker::Books::Dune.quote
     author_id = Faker::Number.between(from: 1, to: 12)
     neighborhood_id = Faker::Number.between(from: 1, to: 3)
@@ -115,6 +124,89 @@ ApplicationRecord.transaction do
       longitude: longitude
     )
   end
+
+  puts "Creating comments..."
+
+    comment1 = Comment.create!(
+      body: "I am a test post",
+      author_id: 1,
+      post_id: 1,
+      latitude: 37.773972,    # San Francisco coordinates
+      longitude: -122.431297
+    )
+
+    comment2 = Comment.create!(
+      body: "I am a demo post",
+      author_id: 2,
+      post_id: 2,
+      latitude: 37.773972,    # San Francisco coordinates
+      longitude: -122.431297
+    )
+
+  # nested comments
+
+    comment3 = Comment.create!(
+      body: "I am a demo post",
+      author_id: 2,
+      post_id: 2,
+      parent_comment_id: 1,
+      latitude: 37.773972,    # San Francisco coordinates
+      longitude: -122.431297
+    )
+
+  # More comments for production seeding
+
+    12.times do
+      body = Faker::Books::Dune.quote
+      author_id = Faker::Number.between(from: 1, to: 12)
+      post_id = Faker::Number.between(from: 1, to: 12)
+      latitude = Faker::Address.latitude.to_f.round(6)
+      longitude = Faker::Address.longitude.to_f.round(6)
+
+      Comment.create!(
+        body: body,
+        author_id: author_id,
+        neighborhood_id: post_id,
+        latitude: latitude,
+        longitude: longitude
+      )
+    end
+
+
+  puts "Creating likes..."
+
+  # posts likes
+    Like.create!(
+      liker: user1,
+      likeable_id: post1.id,
+      likeable_type: :Post
+    )
+
+    Like.create!(
+      liker: user2,
+      likeable_id: post2.id,
+      likeable_type: :Post
+    )
+
+  # comments likes
+    Like.create!(
+      liker: user1,
+      likeable_id: comment1.id,
+      likeable_type: :Comment
+    )
+
+    Like.create!(
+      liker: user2,
+      likeable_id: comment2.id,
+      likeable_type: :Comment
+    )
+
+  # nested comments likes
+    Like.create!(
+      liker: user2,
+      likeable_id: comment3.id,
+      likeable_type: :Comment
+    )
 
 end
 
