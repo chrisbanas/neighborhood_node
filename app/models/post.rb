@@ -17,12 +17,25 @@ class Post < ApplicationRecord
 
   belongs_to :author,
   foreign_key: :author_id,
-  class_name: :User
+  class_name: :User,
+  inverse_of: :posts
 
   belongs_to :neighborhood,
   foreign_key: :neighborhood_id,
-  class_name: :Neighborhood
+  class_name: :Neighborhood,
+  inverse_of: :posts
 
+  has_many :comments,
+  inverse_of: :post,
+  dependent: :destroy
+
+  # Polymorphic
+  has_many :likes,
+  as: :likeable,
+  dependent: :destroy
+
+  # AWS S3
   has_many_attached :photo
+
 
 end
