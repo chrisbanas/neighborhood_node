@@ -13,7 +13,7 @@ import './PersonalFeed.css';
 // const post = useSelector(getPost(postId));
 
 
-export default function PersonalFeed(user) {
+export default function PersonalFeed() {
   // const history = useHistory();
 
   //fetches the post data for filling
@@ -26,6 +26,7 @@ export default function PersonalFeed(user) {
 
 
   // used to set the like button to red
+
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = () => {
@@ -131,7 +132,7 @@ export default function PersonalFeed(user) {
                                 clipRule="evenodd"></path>
                             </svg>
                             <div className="news-feed-post-like-button-title-container">
-                              <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">Like</div>
+                              <div onClick={handleLikeClick} className="news-feed-post-like-button-title" data-testid="reaction-button-text">Like</div>
                             </div>
                           </button>
                         </div>
@@ -162,15 +163,20 @@ export default function PersonalFeed(user) {
                                 d="M11.617 2.076a1 1 0 0 1 1.09.217l9 9a1 1 0 0 1 0 1.414l-9 9A1 1 0 0 1 11 21v-4.436c-2.849.366-5.261 2.271-6.384 4.837a1 1 0 0 1-1.856-.06C2.338 20.182 2 18.86 2 17.5a9.959 9.959 0 0 1 9-9.951V3a1 1 0 0 1 .617-.924ZM13 5.414V8.5a1 1 0 0 1-1 1c-4.448 0-8 3.552-8 8 0 .31.023.625.066.94C5.905 16.067 8.776 14.5 12 14.5a1 1 0 0 1 1 1v3.086L19.586 12 13 5.414Z"
                                 clipRule="evenodd"></path>
                             </svg>
-                            {isMenuOpen && (
-                              <div className="news-feed-post-share-menu">
-                                <button>Share on Facebook</button>
-                                <button>Share on Twitter</button>
-                                <button>Copy link</button>
-                              </div>
-                            )}
                             <div className="news-feed-post-like-button-title-container">
-                              <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">Share</div>
+                              <div onClick={handleShareClick} className="news-feed-post-like-button-title" data-testid="reaction-button-text">Share</div>
+                              {isMenuOpen && (
+                                <div className="news-feed-post-share-menu">
+                                  <button>
+                                    <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
+                                  </button>
+                                  <button>
+                                    <a className="news-feed-social-share-company-logo" href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #share
+                                    </a>
+                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                  </button>
+                                </div>
+                              )}
                             </div>
                           </button>
                         </div>
