@@ -447,7 +447,7 @@
   line-height: 20px;
   display: inline;
   color: rgb(0, 0, 0);
-  fill: none;
+  fill: red;
 }
 
 
@@ -476,11 +476,28 @@
   color: rgb(0, 0, 0);
 }
 
+/* .news-feed-post-share-menu {
+  position: absolute;
+  top: 24px;
+  right: -16px;
+  z-index: 1;
+  display: none;
+  width: 160px;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+} */
 
-
-
-
-
+.news-feed-social-share-company-logo {
+  vertical-align: middle;
+  border: 0;
+  height: 20px;
+  width: 20px;
+  overflow: clip;
+  border-color: transparent;
+  background-color: transparent;
+}
 
 
 
