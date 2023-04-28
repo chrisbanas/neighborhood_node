@@ -2,6 +2,7 @@ import React from "react";
 import './FeedIndex.css';
 
 
+
 export default function FeedIndex() {
 
 
@@ -72,7 +73,8 @@ export default function FeedIndex() {
           </div>
         </div>
 
-        
+
+
         {/* Index footer */}
         <div className="news-feed-index-footer-menue-container">
           <footer className="news-feed-index-footer" tabIndex="0" aria-label="Footer">

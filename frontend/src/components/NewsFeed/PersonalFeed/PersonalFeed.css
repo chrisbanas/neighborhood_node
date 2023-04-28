@@ -285,6 +285,11 @@
   margin-inline-end: 0px;
 }
 
+.news-feed-post-img {
+  height: auto;
+  width: 100%;
+}
+
 .parent-news-feed-posts-stats-container {
   padding-left: 16px;
 }
