@@ -64,7 +64,7 @@ ApplicationRecord.transaction do
     10.times do
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
-      email = Faker::Internet.safe_email("#{first_name}.#{last_name}")
+      email = Faker::Internet.email
       bio = Faker::Quote.famous_last_words
       neighborhood_id = Faker::Number.between(from: 1, to: 3)
       password = Faker::Internet.password(min_length: 6, max_length: 20)

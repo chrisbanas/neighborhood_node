@@ -8,12 +8,12 @@ function PostMap({
   highlightedPost,
   mapOptions = {},
   mapEventHandlers = {}
-  // markerEventHandlers = {}
+
 }) {
   const [map, setMap] = useState(null);
   const mapRef = useRef(null);
   const markers = useRef({});
-  // const history = useHistory();
+
 
   // Create the map
   useEffect(() => {
