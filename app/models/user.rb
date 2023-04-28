@@ -37,11 +37,13 @@ class User < ApplicationRecord
 
     belongs_to :neighborhood,
     foreign_key: :neighborhood_id,
-    class_name: :Neighborhood
+    class_name: :Neighborhood,
+    inverse_of: :users
 
     has_many :posts,
     foreign_key: :author_id,
     class_name: :Post,
+    inverse_of: :author,
     dependent: :destroy
 
     has_many :comments,

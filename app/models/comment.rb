@@ -17,8 +17,13 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true
 
-  belongs_to :author, class_name: :User
-  belongs_to :post, class_name: :Post
+  belongs_to :author,
+  class_name: :User,
+  inverse_of: :comments
+
+  belongs_to :post,
+  class_name: :Post,
+  inverse_of: :comments
 
   belongs_to :parent_comment,
   foreign_key: :parent_comment_id,
@@ -34,6 +39,8 @@ class Comment < ApplicationRecord
   through: :parent_comment,
   source: :commenter
 
-  has_many :likes, as: :likeable, dependent: :destroy
+  has_many :likes,
+  as: :likeable,
+  dependent: :destroy
 
 end

@@ -13,11 +13,13 @@ class Neighborhood < ApplicationRecord
 
   has_many :users,
   foreign_key: :user_id,
-  class_name: :User
+  class_name: :User,
+  inverse_of: :neighborhood
 
   has_many :posts,
   foreign_key: :neighborhood_id,
-  class_name: :Post
+  class_name: :Post,
+  inverse_of: :neighborhood
   # dependent: :destroy - do I need this?
 
 end
