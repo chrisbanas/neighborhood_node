@@ -166,7 +166,7 @@ ApplicationRecord.transaction do
       Comment.create!(
         body: body,
         author_id: author_id,
-        neighborhood_id: post_id,
+        post_id: post_id,
         latitude: latitude,
         longitude: longitude
       )
