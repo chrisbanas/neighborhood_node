@@ -1,3 +1,5 @@
+import csrfFetch from "./csrf.js";
+
 export const RECEIVE_LIKES = 'likes/RECEIVE_LIKES'
 export const RECEIVE_LIKE = 'likes/RECEIVE_LIKE'
 export const REMOVE_LIKE = 'likes/REMOVE_LIKE'
@@ -34,22 +36,22 @@ export function getLikes(state) {
   return state.likes ? Object.values(state.likes) : []
 }
 
-export const fetchLikes = () => (dispatch) => (
-  fetch(`/api/likes`)
-    .then(response => response.json())
-    .then(data => dispatch(receiveLikes(data)))
-    .catch(error => console.error('something went wrong'))
-)
+// export const fetchLikes = () => (dispatch) => (
+//   fetch(`/api/likes`)
+//     .then(response => response.json())
+//     .then(data => dispatch(receiveLikes(data)))
+//     .catch(error => console.error('something went wrong'))
+// )
 
-export const fetchLike = likeId => (dispatch) => (
-  fetch(`/api/likes/${likeId}`)
-    .then(response => response.json())
-    .then(data => dispatch(receiveLike(data)))
-    .catch(error => console.error('something went wrong'))
-)
+// export const fetchLike = likeId => (dispatch) => (
+//   fetch(`/api/likes/${likeId}`)
+//     .then(response => response.json())
+//     .then(data => dispatch(receiveLike(data)))
+//     .catch(error => console.error('something went wrong'))
+// )
 
 export const createLike = like => (dispatch) => (
-  fetch(`/api/likes`, {
+  csrfFetch(`/api/likes`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -61,21 +63,21 @@ export const createLike = like => (dispatch) => (
     .catch(error => console.error('something went wrong'))
 )
 
-export const updateLike = like => (dispatch) => (
-  fetch(`/api/likes/${like.id}`, {
-    method: `PATCH`,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(like)
-  })
-    .then(res => res.json())
-    .then(data => dispatch(receiveLike(data)))
-    .catch(error => console.error('something went wrong'))
-);
+// export const updateLike = like => (dispatch) => (
+//   fetch(`/api/likes/${like.id}`, {
+//     method: `PATCH`,
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(like)
+//   })
+//     .then(res => res.json())
+//     .then(data => dispatch(receiveLike(data)))
+//     .catch(error => console.error('something went wrong'))
+// );
 
 export const deleteLike = likeId => (dispatch) => (
-  fetch(`/api/likes/${likeId}`, {
+  csrfFetch(`/api/likes/${likeId}`, {
     method: 'DELETE'
   })
     .then(response => {
@@ -91,7 +93,7 @@ export default function likesReducer(state = {}, action) {
   const newState = { ...state };
   switch (action.type) {
     case RECEIVE_LIKES:
-      return action.likes
+      return action.likes //action.payload.likes
     case RECEIVE_LIKE:
       newState[action.like.id] = action.like
       return newState
