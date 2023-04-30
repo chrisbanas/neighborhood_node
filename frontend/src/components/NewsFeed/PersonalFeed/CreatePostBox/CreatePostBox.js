@@ -1,4 +1,5 @@
 import React from "react";
+import LoginFormModal from "./CreatePostModal";
 import './CreatePostBox.css';
 
 export default function CreatePostBox() {
@@ -15,7 +16,7 @@ export default function CreatePostBox() {
             </span>
             <div className="parent-user-post-modal-container">
               <div className="child-user-post-modal-container">
-                <span className="grandchild-user-post-modal-container">What's on your mind, neighbor?</span>
+                <span className="grandchild-user-post-modal-container">What's on your mind, neighbor? </span>
               </div>
             </div>
           </button>
