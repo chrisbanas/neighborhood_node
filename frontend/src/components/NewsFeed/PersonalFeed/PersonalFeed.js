@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, fetchPosts } from '../../../store/posts';
-import PostMapWrapper from '../PostMap/PostMap'
+import PostMapWrapper from './PostMap/PostMap'
+import CreatePostBox from './CreatePostBox/CreatePostBox'
+import PostComments from './PostComments/PostComments'
 import './PersonalFeed.css';
 
 // import { useHistory } from "react-router-dom";
@@ -45,22 +47,9 @@ export default function PersonalFeed() {
     <>
 
       <div className="news-feed-scroll">
-        <div>
-          <div className="user-post-box-container">
-            <button aria-live="off" className="sub-user-post-box-container">
-              <span className="parent-news-feed-user-avatar">
-                <div className="news-feed-user-avatar">
-                  <img className="news-feed-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize" />
-                </div>
-              </span>
-              <div className="parent-user-post-modal-container">
-                <div className="child-user-post-modal-container">
-                  <span className="grandchild-user-post-modal-container">What's on your mind, neighbor?</span>
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
+
+        <CreatePostBox/>
+
 
 
         {/* <!-- postbox this is the full box with everything--> */}
@@ -85,12 +74,12 @@ export default function PersonalFeed() {
                       <div className="news-feed-post-owner-name-and-neighborhood-container">
                         <div className="news-feed-post-owner-name-container">
                           <a className="news-feed-post-owner-name" href="/news_feed">
-                            {post.authorId}
+                            {post.authorFirstName}&nbsp;{post.authorLastName}
                           </a>
                         </div>
                         <div className="news-feed-post-neighborhood-name-container">
                           <a className="news-feed-post-neighborhood-name" href="/news_feed">
-                            {post.neighborhoodId}
+                            {post.neighborhoodName}
                           </a>
                         </div>
                       </div>
@@ -116,7 +105,7 @@ export default function PersonalFeed() {
                       <div className="parent-news-feed-posts-stats-count-container">
                         <div className="child-news-feed-posts-stats-count-container">
                           <p className="news-feed-live-post-stats-count">
-                            100 Likes
+                          {post.numLike} Likes
                           </p>
                         </div>
                       </div>
@@ -187,19 +176,9 @@ export default function PersonalFeed() {
 
                 <hr className="post-stats-and-comments-seperator"></hr>
                 {/* <!-- comments --> */}
-                <button aria-live="off" className="sub-user-comment-box-container">
-                  <span className="parent-news-feed-comment-user-avatar">
-                    <div className="news-feed-comment-user-avatar">
-                      <img className="news-feed-comment-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize" />
-                    </div>
-                  </span>
-                  <div className="parent-user-comment-modal-container">
-                    <div className="child-user-comment-modal-container">
-                      <span className="grandchild-user-comment-modal-container">Add a comment...
-                      </span>
-                    </div>
-                  </div>
-                </button>
+
+                <PostComments/>
+
               </div>
             </div>
           </div>
