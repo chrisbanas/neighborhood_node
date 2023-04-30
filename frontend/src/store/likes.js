@@ -52,13 +52,23 @@ export function getLikes(state) {
 
 // thunk action
 
-export const createLike = like => (dispatch) => (
-  csrfFetch(`/api/likes`, {
+// Like.create!( liker: user2, likeable_id: post2.id, likeable_type: :Post )
+
+ // sessionUser, post.id, "Post"
+
+// like_api_post - /api/posts/:id/like
+
+
+// like_api_comment POST   /api/comments/:id/like
+// unlike_api_comment POST   /api/comments/:id/unlike
+
+export const createLike = ({liker, likeableId, likeableType }) => (dispatch) => (
+  csrfFetch(`/api/${likeableType.toLowerCase()}s/${likeableId}/like`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(like)
+    body: JSON.stringify({liker})
   })
     .then(response => response.json())
     .then(data => dispatch(receiveLike(data)))
@@ -78,13 +88,16 @@ export const createLike = like => (dispatch) => (
 //     .catch(error => console.error('something went wrong'))
 // );
 
-export const deleteLike = likeId => (dispatch) => (
-  csrfFetch(`/api/likes/${likeId}`, {
+
+// unlike_api_post POST   /api/posts/:id/unlike
+
+export const deleteLike = ({liker, likeableId, likeableType }) => (dispatch) => (
+  csrfFetch(`/api/${likeableType.toLowerCase()}s/${likeableId}/unlike`, {
     method: 'DELETE'
   })
     .then(response => {
       if (response.ok) {
-        dispatch(removeLike(likeId))
+        dispatch(removeLike())
       }
     })
     .catch(error => console.error('something went wrong'))
