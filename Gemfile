@@ -45,7 +45,7 @@ gem "pry-rails"
 
 # required for image storage and analysis
 gem "aws-sdk-s3"
-gem 'ruby-vips'
+# gem 'ruby-vips'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

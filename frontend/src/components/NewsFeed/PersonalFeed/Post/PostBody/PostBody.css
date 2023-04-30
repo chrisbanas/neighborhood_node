@@ -1,0 +1,28 @@
+.news-feed-post-body {
+  padding-left: 16px;
+}
+
+.news-feed-post-content {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  margin: 0 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  -webkit-font-smoothing: antialiased;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.news-feed-post-img {
+  height: auto;
+  width: 100%;
+}
