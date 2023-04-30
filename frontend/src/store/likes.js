@@ -50,6 +50,8 @@ export function getLikes(state) {
 //     .catch(error => console.error('something went wrong'))
 // )
 
+// thunk action
+
 export const createLike = like => (dispatch) => (
   csrfFetch(`/api/likes`, {
     method: 'POST',

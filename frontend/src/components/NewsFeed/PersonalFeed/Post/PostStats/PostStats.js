@@ -1,22 +1,34 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createLike, deleteLike } from "../../../../../store/likes";
 import './PostStats.css';
 
-export default function PostStats({post}) {
+export default function PostStats({ post }) {
 
-    // used to set the like button to red
+  const dispatch = useDispatch();
 
-    const [isLiked, setIsLiked] = useState(false);
 
-    const handleLikeClick = () => {
-      setIsLiked(!isLiked);
-    };
 
-    // share menu
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // used to set the like button to red
 
-    const handleShareClick = () => {
-      setIsMenuOpen(!isMenuOpen);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikeClick = (e) => {
+    e.preventDefault();
+    if (isLiked) {
+      dispatch(deleteLike());
+    } else {
+      dispatch(createLike());
     }
+    setIsLiked(!isLiked);
+  };
+
+  // share menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleShareClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
 
   return (
 
@@ -62,7 +74,7 @@ export default function PostStats({post}) {
                       clipRule="evenodd"></path>
                   </svg>
                   <div className="news-feed-post-like-button-title-container">
-                    <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">Comment</div>
+                    <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">Comments</div>
                   </div>
                 </button>
               </div>

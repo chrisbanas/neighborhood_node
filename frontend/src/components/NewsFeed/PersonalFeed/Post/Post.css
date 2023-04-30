@@ -1,0 +1,19 @@
+.post-stats-and-comments-seperator {
+  box-sizing: border-box;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  border-width: 1px 0px 0px;
+  border-right-style: initial;
+  border-bottom-style: initial;
+  border-left-style: initial;
+  border-color: initial;
+  border-image: initial;
+  border-top-style: solid;
+  margin: 0px 12px;
+  margin-block: 0px;
+  color: rgb(229, 229, 229);
+}

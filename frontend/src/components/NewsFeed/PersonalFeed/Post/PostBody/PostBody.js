@@ -1,5 +1,5 @@
 import React from "react";
-import PostMapWrapper from "../../PostMap/PostMap";
+import PostMapWrapper from "./PostMap/PostMap";
 import './PostBody.css';
 
 export default function PostBody({post}) {

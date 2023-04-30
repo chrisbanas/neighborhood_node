@@ -3,13 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPosts, fetchPosts } from '../../../store/posts';
 
 import CreatePostBox from './CreatePostBox/CreatePostBox'
-import PostComments from './PostComments/PostComments'
+import Post from "./Post/Post";
 import './PersonalFeed.css';
-
-
-import PostOwnerInfo from './Post/PostOwnerInfo/PostOwnerInfo'
-import PostBody from "./Post/PostBody/PostBody";
-import PostStats from "./Post/PostStats/PostStats";
 
 
 // import { useHistory } from "react-router-dom";
@@ -38,9 +33,7 @@ export default function PersonalFeed(props) {
 
       <div className="news-feed-scroll">
 
-        <CreatePostBox/>
-
-
+        <CreatePostBox />
 
         {/* <!-- postbox this is the full box with everything--> */}
         {posts.map(post => (
@@ -49,35 +42,13 @@ export default function PersonalFeed(props) {
             <div className="news-feed-post-container">
               <div className="news-feed-post-media-container">
 
-                {/* <!-- postowner --> */}
-                <PostOwnerInfo post={post}/>
-
-
-
-                {/* <!-- postbody --> */}
-                <PostBody post={post}/>
-
-
-
-                {/* <!-- poststats --> */}
-                <PostStats post={post}/>
-
-
-                <hr className="post-stats-and-comments-seperator"></hr>
-                {/* <!-- comments --> */}
-
-                <PostComments/>
+                <Post post={post} />
 
               </div>
             </div>
           </div>
 
         ))}
-
-
-
-
-
 
 
       </div>

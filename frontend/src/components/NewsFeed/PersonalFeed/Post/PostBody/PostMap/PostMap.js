@@ -4,7 +4,7 @@ import { Wrapper } from "@googlemaps/react-wrapper";
 import './PostMap.css';
 
 function PostMap({
-  // posts,
+  posts,
   highlightedPost,
   mapOptions = {},
   mapEventHandlers = {}

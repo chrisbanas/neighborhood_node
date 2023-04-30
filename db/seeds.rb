@@ -20,6 +20,9 @@ ApplicationRecord.transaction do
   Comment.destroy_all
   Like.destroy_all
 
+  # puts 'Destroying all ActiveStorage attachments'
+  # ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+
   # After seeding, the first `data point` has `id` of 1
   puts "Resetting primary keys..."
   ApplicationRecord.connection.reset_pk_sequence!('neighborhoods')
