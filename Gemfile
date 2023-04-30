@@ -47,6 +47,8 @@ gem "pry-rails"
 gem "aws-sdk-s3"
 # gem 'ruby-vips'
 
+# gem 'autoprefixer-rails', '~> 10.4.13.0', group: :assets
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "byebug", platforms: %i[ mri mingw x64_mingw ]
