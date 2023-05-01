@@ -83,8 +83,8 @@ export default function PostOwnerInfo({ post }) {
 
           {/* <!-- Edit / delete dropdown --> */}
           <div className="news-feed-post-delete-edit-dropdown-container">
-            <div class="sub-news-feed-post-delete-edit-dropdown-container" onClick={handleDropdownClick}>
-              <svg class="news-feed-post-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
+            <div className="sub-news-feed-post-delete-edit-dropdown-container" onClick={handleDropdownClick}>
+              <svg className="news-feed-post-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
                 <path fill="currentColor" d="M5.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM20.5 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"></path>
               </svg>
               {dropdownVisible && (
