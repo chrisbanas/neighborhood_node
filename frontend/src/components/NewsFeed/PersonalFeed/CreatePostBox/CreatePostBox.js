@@ -13,6 +13,7 @@ export default function CreatePostBox() {
   const [body, setBody] = useState("");
   const [authorId, setAuthorId] = useState(sessionUser.id);
   const [neighborhoodId, setNeighborhoodId] = useState(sessionUser.neighborhoodId);
+  const posts = useSelector(state => state.posts);
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
@@ -20,16 +21,26 @@ export default function CreatePostBox() {
       body: body,
       authorId: authorId,
       neighborhoodId: neighborhoodId
-  };
-      dispatch(createPost(post))
+    };
+    dispatch(createPost(post))
+    setBody(""); // clear the textarea after submitting the form
   };
 
   const handleCreatePost = (e) => {
     e.preventDefault();
+    if (!body) {
+      return; // if body is empty, do not submit the form
+    }
     toggleModal(); // call toggleModal first
     handlePostSubmit(e); // then call handlePostSubmit
   }
 
+  // Listen for changes to the posts state in Redux and update the component's state
+  useEffect(() => {
+    if (posts.length > 0) {
+      setBody("");
+    }
+  }, [posts]);
 
   // Modal
 
@@ -87,7 +98,7 @@ export default function CreatePostBox() {
                       </svg>
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
-                      <button className="news-feed-post-modal-next-button" onClick={handleCreatePost}>
+                      <button className="news-feed-post-modal-next-button" onClick={handleCreatePost} disabled={!body}>
                         <span className="news-feed-post-modal-next-button-text">Next</span>
                       </button>
                     </div>
@@ -97,7 +108,7 @@ export default function CreatePostBox() {
                   <form className="news-feed-post-modal-body-form" noValidate="">
                     <div className="news-feed-post-modal-body-form-container">
                       <div className="news-feed-post-modal-body-form-text-area-container">
-                        <textarea className="news-feed-post-modal-body-form-text-area" placeholder="What's on your mind, neighbor?" spellCheck="false" value={body} onChange={e => setBody(e.target.value)}>
+                        <textarea className="news-feed-post-modal-body-form-text-area" placeholder="What's on your mind, neighbor?" spellCheck="false" value={body} onChange={e => setBody(e.target.value)} required>
                         </textarea>
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">

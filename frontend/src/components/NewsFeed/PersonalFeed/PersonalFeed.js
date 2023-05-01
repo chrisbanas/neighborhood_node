@@ -34,8 +34,7 @@ export default function PersonalFeed(props) {
       <div className="news-feed-scroll">
 
         <CreatePostBox />
-
-        {/* <!-- postbox this is the full box with everything--> */}
+        
         {posts.map(post => (
 
           <div className="parent-news-feed-post-container" key={post.id}>
