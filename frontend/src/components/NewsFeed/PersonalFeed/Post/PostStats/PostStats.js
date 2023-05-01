@@ -103,9 +103,9 @@ export default function PostStats({ post }) {
                           <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
                         </button>
                         <button>
-                          <a className="news-feed-social-share-company-logo" href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #share
+                          <a className="news-feed-social-share-company-logo" href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw"  data-show-count="false">Tweet #share
                           </a>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                          <script async src="https://platform.twitter.com/widgets.js" ></script>
                         </button>
                       </div>
                     )}

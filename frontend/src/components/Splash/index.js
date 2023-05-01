@@ -1,21 +1,11 @@
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import ProfileButton from '../NewsFeed/ProfileButton';
-// import LoginFormModal from '../LoginFormModal';
-import './Splash.css';
 import SignupBar from './SignupBar/SignupBar'
 import Hero from './Hero/Hero'
 import About from './About/About'
 import Footer from './Footer/Footer'
-
-
-
-
-
+import './Splash.css';
 
 export default function Splash() {
-
 
     return (
         <>

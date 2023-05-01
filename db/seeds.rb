@@ -20,8 +20,8 @@ ApplicationRecord.transaction do
   Comment.destroy_all
   Like.destroy_all
 
-  # puts 'Destroying all ActiveStorage attachments'
-  # ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+  puts 'Destroying all ActiveStorage attachments'
+  ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 
   # After seeding, the first `data point` has `id` of 1
   puts "Resetting primary keys..."
@@ -51,8 +51,8 @@ ApplicationRecord.transaction do
 
     user1 = User.create!(
       email: "test@test.com",
-      first_name: "test",
-      last_name: "test",
+      first_name: "Test",
+      last_name: "Test",
       bio: "I'm a test user",
       neighborhood_id: 1,
       password: "123456"
@@ -67,9 +67,9 @@ ApplicationRecord.transaction do
       password: "123456"
     )
 
-  # More users for production seeding
+  # More users for production seeding - currently have 101 profile images
 
-    10.times do
+    99.times do
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
       email = Faker::Internet.email
@@ -112,7 +112,7 @@ ApplicationRecord.transaction do
 
   # Faker::Lorem.paragraphs(number: rand(3..10)).join("\n") - this will make groups of paragraphs and join them together
 
-  10.times do
+  200.times do
     body = Faker::Books::Dune.quote
     author_id = Faker::Number.between(from: 1, to: 12)
     neighborhood_id = Faker::Number.between(from: 1, to: 3)
@@ -161,8 +161,8 @@ ApplicationRecord.transaction do
 
     12.times do
       body = Faker::Books::Dune.quote
-      author_id = Faker::Number.between(from: 1, to: 12)
-      post_id = Faker::Number.between(from: 1, to: 12)
+      author_id = Faker::Number.between(from: 3, to: 101)
+      post_id = Faker::Number.between(from: 3, to: 202)
       latitude = Faker::Address.latitude.to_f.round(6)
       longitude = Faker::Address.longitude.to_f.round(6)
 
@@ -179,17 +179,13 @@ ApplicationRecord.transaction do
   puts "Creating likes..."
 
   # posts likes
+  1000.times do
     Like.create!(
-      liker: user1,
-      likeable_id: post1.id,
+      liker: Faker::Number.between(from: 3, to: 101),
+      likeable_id: Faker::Number.between(from: 3, to: 202),
       likeable_type: :Post
     )
-
-    Like.create!(
-      liker: user2,
-      likeable_id: post2.id,
-      likeable_type: :Post
-    )
+  end
 
   # comments likes
     Like.create!(
@@ -213,7 +209,18 @@ ApplicationRecord.transaction do
 
 end
 
-puts "Attaching seed photos"
+puts "Attaching seed profile photos"
+
+User.first(101).each_with_index do |user, index|
+  user.photo.attach(
+    # The string passed to URI.open should be the URL of the image in its bucket.
+    io: URI.open("https://neighborhoodnode-seed.s3.us-west-1.amazonaws.com/seed_profile_images/profile#{index + 1}.png"),
+    filename: "img#{index + 1}.jpg"
+  )
+end
+
+
+puts "Attaching seed post photos"
 
 Post.first(10).each_with_index do |post, index|
   post.photo.attach(
