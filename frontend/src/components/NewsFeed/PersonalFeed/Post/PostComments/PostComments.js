@@ -19,9 +19,7 @@ export default function PostComments() {
           </span>
           <div className="parent-user-comment-modal-container">
             <div className="child-user-comment-modal-container">
-              <span className="grandchild-user-comment-modal-container">
-                Add a comment...
-              </span>
+              <input type="text" className="grandchild-user-comment-modal-container" placeholder="Add a comment..." />
             </div>
           </div>
         </button>
@@ -75,7 +73,7 @@ export default function PostComments() {
 
                 </div>
 
-              {/* Comment submit */}
+                {/* Comment submit */}
                 <div className="news-feed-post-comment-submit-button-container">
                   <button className="news-feed-post-comment-submit-button">
                     <span className="news-feed-post-comment-submit-button-text-container">
