@@ -6,8 +6,6 @@ import './NavBar.css';
 
 // image imports
 import textLogo from '../../../assets/text_logo.png'
-import github from '../../../assets/github.png'
-import linkedin from '../../../assets/linkedin.png'
 
 
 export default function NavBar(user) {
@@ -56,20 +54,6 @@ export default function NavBar(user) {
             </div>
           </form>
         </div>
-
-        <div className="linkedin-logo">
-          <a href="https://www.linkedin.com/in/christopher-banas/" className="news-feed-nav-bar-linkedin-logo">
-            <img src={linkedin} className="new-feed-neighborhood-node-likedin-logo" alt="LinkedIn logo" />
-          </a>
-        </div>
-
-        <div className="github-logo">
-          <a href="https://github.com/chrisbanas/neighborhood_node" className="news-feed-nav-bar-github-logo">
-            <img src={github} className="new-feed-neighborhood-node-github-logo" alt="Github logo" />
-          </a>
-        </div>
-
-
         <span className="nav-parent-news-feed-user-avatar" onClick={logout}>
           <div className="nav-news-feed-user-avatar">
             <img className="nav-news-feed-user-avatar-image" alt="user avatar" data-pin-nopin="true" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize" />

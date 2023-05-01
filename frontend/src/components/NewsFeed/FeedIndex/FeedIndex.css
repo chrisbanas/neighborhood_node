@@ -176,3 +176,35 @@
   box-sizing: border-box;
   display: block;
 }
+
+.news-feed-index-copyright-container {
+  display: flex; /* Set the container to use flexbox */
+  align-items: center; /* Align the child elements vertically */
+}
+
+.news-feed-footer-copyright,
+.linkedin-logo,
+.github-logo {
+  display: inline-block; /* Set the child elements to display inline-block */
+  margin-right: 10px; /* Add some space between the child elements */
+}
+
+.github-logo img {
+  display: block;
+  height: 20px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  margin-top: 70%;
+}
+
+.linkedin-logo img {
+  display: block;
+  height: 20px;
+  max-width: unset;
+  border: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  margin-top: 60%;
+}

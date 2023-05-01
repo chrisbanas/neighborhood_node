@@ -71,6 +71,7 @@ function PostMap({
 export default function PostMapWrapper(props) {
   return (
     <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
+      Location
       <PostMap {...props} />
     </Wrapper>
   );
