@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createLike, deleteLike } from "../../../../../store/likes";
+import PostComments from "./PostComments/PostComments";
 import './PostStats.css';
 
 export default function PostStats({ post }) {
@@ -41,6 +42,14 @@ export default function PostStats({ post }) {
     setIsMenuOpen(!isMenuOpen);
   }
 
+  // display comments
+
+  const [showComments, setShowComments] = useState(false);
+
+  const handleCommentsClick = () => {
+    setShowComments((prevShowComments) => !prevShowComments);
+  };
+
   return (
 
     <>
@@ -75,7 +84,7 @@ export default function PostStats({ post }) {
               </div>
             </div>
             {/* comment */}
-            <div className="news-feed-post-comment-like-share-container">
+            <div className="news-feed-post-comment-like-share-container" onClick={handleCommentsClick}>
               <div className="news-feed-post-like-container">
                 <button aria-live="off" aria-label="Like" data-testid="reaction-button" type="button" className="news-feed-post-like-button">
                   <svg className="news-feed-post-like-icon" width="24" height="24"
@@ -121,6 +130,15 @@ export default function PostStats({ post }) {
           </div>
         </div>
       </div>
+
+      <hr className="post-stats-and-comments-seperator"></hr>
+
+      {/* Conditionally render post comments */}
+      {showComments && (
+        <div className="parent-news-feed-comment-user-info-container">
+          <PostComments post={post} />
+        </div>
+      )}
 
     </>
 

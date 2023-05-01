@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deletePost } from "../../../../../store/posts";
+import { deletePost } from "../../../../../../store/posts";
 import "./PostComments.css";
 
 export default function PostComments({ post }) {
