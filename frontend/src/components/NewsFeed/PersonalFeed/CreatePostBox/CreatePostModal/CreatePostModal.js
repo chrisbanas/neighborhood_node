@@ -1,61 +1,53 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../../../../store/session";
 import { useDispatch } from "react-redux";
 import "./CreatePostModal.css";
 
-function LoginForm() {
-    const dispatch = useDispatch();
-    const [credential, setCredential] = useState("");
-    const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
+export default function CreatePostModal({ onClose }) {
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setErrors([]);
-        return dispatch(sessionActions.login({ credential, password }))
-            .catch(async (res) => {
-                let data;
-                try {
-                    // .clone() essentially allows you to read the response body twice
-                    data = await res.clone().json();
-                } catch {
-                    data = await res.text(); // Will hit this case if, e.g., server is down
-                }
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
-            });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    // dispatch action to create post here
+    onClose(); // close modal after submitting form
+  };
 
-    return (
-        <>
-            <h1>Log In</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
-                <label>
-                    Username or Email
-                    <input
-                        type="text"
-                        value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Password
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Log In</button>
-            </form>
-        </>
-    );
+  return (
+    <div className="modal-container">
+      <div className="modal-content">
+        <h1>Create a Post</h1>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+          <label>
+            Title
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            Body
+            <textarea
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              required
+            />
+          </label>
+          <button type="submit">Post</button>
+          <button type="button" onClick={onClose}>
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }
-
-export default LoginForm;
