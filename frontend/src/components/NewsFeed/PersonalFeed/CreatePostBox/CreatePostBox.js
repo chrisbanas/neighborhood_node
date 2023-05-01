@@ -99,7 +99,7 @@ export default function CreatePostBox() {
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
                       <button className="news-feed-post-modal-next-button" onClick={handleCreatePost} disabled={!body}>
-                        <span className="news-feed-post-modal-next-button-text">Next</span>
+                        <span className="news-feed-post-modal-next-button-text">Post</span>
                       </button>
                     </div>
                   </div>

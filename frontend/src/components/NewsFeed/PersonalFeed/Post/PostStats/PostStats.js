@@ -85,7 +85,7 @@ export default function PostStats({ post }) {
                       clipRule="evenodd"></path>
                   </svg>
                   <div className="news-feed-post-like-button-title-container">
-                    <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">Comments</div>
+                    <div className="news-feed-post-like-button-title" data-testid="reaction-button-text">{post.numComments} Comments</div>
                   </div>
                 </button>
               </div>

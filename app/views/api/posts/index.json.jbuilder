@@ -7,6 +7,7 @@
     json.author_last_name post.author.last_name
     json.neighborhood_name post.neighborhood.name
     json.num_like post.likes.length
+    json.num_comments post.comments.length
     json.comments do
       post.comments.each do |comment|
         json.set! comment.id do
