@@ -179,11 +179,19 @@ ApplicationRecord.transaction do
   puts "Creating likes..."
 
   # posts likes
-  1000.times do
+  500.times do
+    user = User.offset(rand(User.count)).limit(1).first # Returns a random user object
+    post_id = Faker::Number.between(from: 3, to: 202)
+
+    # Check if the user has already liked the post
+    while Like.exists?(liker: user, likeable_id: post_id, likeable_type: 'Post')
+      post_id = Faker::Number.between(from: 3, to: 202)
+    end
+
     Like.create!(
-      liker: Faker::Number.between(from: 3, to: 101),
-      likeable_id: Faker::Number.between(from: 3, to: 202),
-      likeable_type: :Post
+      liker: user,
+      likeable_id: post_id,
+      likeable_type: 'Post'
     )
   end
 
@@ -209,18 +217,18 @@ ApplicationRecord.transaction do
 
 end
 
-puts "Attaching seed profile photos"
+puts "Attaching seed profile photos..."
 
-User.first(101).each_with_index do |user, index|
+User.first(100).each_with_index do |user, index|
   user.photo.attach(
     # The string passed to URI.open should be the URL of the image in its bucket.
     io: URI.open("https://neighborhoodnode-seed.s3.us-west-1.amazonaws.com/seed_profile_images/profile#{index + 1}.png"),
-    filename: "img#{index + 1}.jpg"
+    filename: "profile#{index + 1}.png"
   )
 end
 
 
-puts "Attaching seed post photos"
+puts "Attaching seed post photos..."
 
 Post.first(10).each_with_index do |post, index|
   post.photo.attach(
