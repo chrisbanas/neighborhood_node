@@ -131,7 +131,7 @@ ApplicationRecord.transaction do
   puts "Creating comments..."
 
     comment1 = Comment.create!(
-      body: "I am a test post",
+      body: "I am a test comment",
       author_id: 1,
       post_id: 1,
       latitude: 37.773972,    # San Francisco coordinates
@@ -139,7 +139,7 @@ ApplicationRecord.transaction do
     )
 
     comment2 = Comment.create!(
-      body: "I am a demo post",
+      body: "I am a demo comment",
       author_id: 2,
       post_id: 2,
       latitude: 37.773972,    # San Francisco coordinates
@@ -149,10 +149,10 @@ ApplicationRecord.transaction do
   # nested comments
 
     comment3 = Comment.create!(
-      body: "I am a demo post",
+      body: "NESTED - I am a demo comment",
       author_id: 2,
       post_id: 2,
-      parent_comment_id: 1,
+      parent_comment_id: 2,
       latitude: 37.773972,    # San Francisco coordinates
       longitude: -122.431297
     )
