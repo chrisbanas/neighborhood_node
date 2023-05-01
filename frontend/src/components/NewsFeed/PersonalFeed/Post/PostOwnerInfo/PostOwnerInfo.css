@@ -116,3 +116,49 @@
   box-sizing: border-box;
   cursor: pointer;
 }
+
+/* Popup container */
+.news-feed-post-user-profile-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 16px;
+  width: 50%;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8%;
+}
+
+.sub-news-feed-post-user-profile-popup {
+  display: flex;
+}
+
+.popup-news-feed-user-avatar-image {
+  height: 120px;
+  aspect-ratio: auto 120 / 120;
+  width: 120px;
+  border: 0;
+  vertical-align: middle;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup-news-feed-post-neighborhood-name {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: 100%;
+  max-width: 100%;
+  line-height: 0;
+  margin-bottom: 4px;
+  display: block;
+}
