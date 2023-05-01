@@ -62,3 +62,75 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+/* ****************************** dropdown CSS ******************************************/
+
+.news-feed-post-comment-composer-action-bar-container {
+  border-radius: 0 0 3px 3px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.news-feed-post-comment-composer-action-bar-container-contents {
+  animation: fadein 400ms;
+  min-height: 32px;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.news-feed-post-comment-add-photo-and-location-buttons-container {
+  margin-bottom: 8px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: block;
+}
+
+.news-feed-post-comment-add-photo-button-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 8px;
+  margin-right: 8px;
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+}
+
+.child-news-feed-post-comment-add-photo-button-container {
+  float: unset;
+  line-height: 36px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: block;
+}
+
+.grandchild-news-feed-post-comment-add-photo-button-container {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: block;
+}
