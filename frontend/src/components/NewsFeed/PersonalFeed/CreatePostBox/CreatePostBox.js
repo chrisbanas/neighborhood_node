@@ -88,6 +88,7 @@ export default function CreatePostBox() {
                   {/* Additional buttons */}
                   <div className="news-feed-post-modal-body-form-additional-buttons-container">
                     <div className="sub-news-feed-post-modal-body-form-additional-buttons-container">
+
                       {/* Classifieds */}
                       <div className="news-feed-post-modal-body-form-classifieds-container">
                         <div className="news-feed-post-modal-body-form-classifieds-icon-container">
@@ -103,8 +104,7 @@ export default function CreatePostBox() {
                         </span>
                       </div>
 
-
-                    {/* Add Photos */}
+                      {/* Add Photos */}
                       <div className="news-feed-post-modal-body-form-add-photo-container">
                         <div className="sub-news-feed-post-modal-body-form-add-photo-container">
                           <div className="news-feed-post-modal-body-form-add-photo-icon-container">
@@ -129,70 +129,60 @@ export default function CreatePostBox() {
                         </label>
                       </div>
 
-
-
-                      <div className="css-18qzcjy" tabindex="-1" aria-describedby="id-113">
-                        <div className="css-qisic1" tabindex="-1">
-                          <div className="css-o9kub3" tabindex="0" data-testid="events" role="button">
-                            <div className="css-u5hout" tabindex="-1"><svg className="css-1o9yul5" width="24" height="24" fill="none"
-                              viewBox="0 0 24 24" role="img">
+                      {/* Event */}
+                      <div className="news-feed-post-modal-body-form-event-container">
+                        <div className="sub-news-feed-post-modal-body-form-event-container">
+                          <div className="sub-news-feed-post-modal-body-form-event-icon-container">
+                            <svg className="sub-news-feed-post-modal-body-form-event-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" role="img">
                               <path fill="currentColor"
                                 d="M15.707 13.207a1 1 0 0 0-1.414-1.414L11 15.086l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4Z">
                               </path>
                               <path fill="currentColor" fill-rule="evenodd"
                                 d="M9 3a1 1 0 0 0-2 0v1H6a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3h-1V3a1 1 0 1 0-2 0v1H9V3ZM5 18v-8h14v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1ZM5 8h14V7a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1v1Z"
-                                clip-rule="evenodd"></path>
-                            </svg></div><span className="css-1509y63">Create an event</span>
+                                clip-rule="evenodd">
+                              </path>
+                            </svg>
                           </div>
+                          <span className="sub-news-feed-post-modal-body-form-event-text">Create an event
+                          </span>
                         </div>
-                        <div className="css-4hjxx">
-                          <div className="css-1xkl894" role="dialog" id="id-114" tabindex="-1" data-dialog="true">
-                            <div className="css-qisic1"><button className="css-1c9l9xh" type="button"
-                              data-testid="composer-onboarding-cta"></button></div>
+                      </div>
+
+                      {/* Poll */}
+                      <div className="news-feed-post-modal-body-form-poll-container">
+                        <div className="sub-news-feed-post-modal-body-form-poll-container">
+                          <div className="sub-news-feed-post-modal-body-form-poll-icon-container">
+                            <svg className="sub-news-feed-post-modal-body-form-poll-icon" width="24" height="24" fill="none"
+                              viewBox="0 0 24 24" role="img">
+                              <path fill="currentColor" fill-rule="evenodd"
+                                d="M3 4.5A2.5 2.5 0 0 1 5.5 2h5A2.5 2.5 0 0 1 13 4.5v1A2.5 2.5 0 0 1 10.5 8h-5A2.5 2.5 0 0 1 3 5.5v-1ZM5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-5ZM3 11.5A2.5 2.5 0 0 1 5.5 9h13a2.5 2.5 0 0 1 2.5 2.5v1a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 12.5v-1Zm2.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-13ZM5.5 16A2.5 2.5 0 0 0 3 18.5v1A2.5 2.5 0 0 0 5.5 22h9a2.5 2.5 0 0 0 2.5-2.5v-1a2.5 2.5 0 0 0-2.5-2.5h-9ZM5 18.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1Z"
+                                clip-rule="evenodd">
+                              </path>
+                            </svg>
                           </div>
+                          <span className="sub-news-feed-post-modal-body-form-poll-text">Poll your neighbors</span>
                         </div>
                       </div>
 
-
-
-
-                      <div className="css-18qzcjy" tabindex="-1" aria-describedby="id-115">
-                        <div className="css-ophx8q" tabindex="0" data-testid="poll" role="button">
-                          <div className="css-v7pfli" tabindex="-1"><svg className="css-1ujaanu" width="24" height="24" fill="none"
-                            viewBox="0 0 24 24" role="img">
-                            <path fill="currentColor" fill-rule="evenodd"
-                              d="M3 4.5A2.5 2.5 0 0 1 5.5 2h5A2.5 2.5 0 0 1 13 4.5v1A2.5 2.5 0 0 1 10.5 8h-5A2.5 2.5 0 0 1 3 5.5v-1ZM5.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-5ZM3 11.5A2.5 2.5 0 0 1 5.5 9h13a2.5 2.5 0 0 1 2.5 2.5v1a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 12.5v-1Zm2.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-13ZM5.5 16A2.5 2.5 0 0 0 3 18.5v1A2.5 2.5 0 0 0 5.5 22h9a2.5 2.5 0 0 0 2.5-2.5v-1a2.5 2.5 0 0 0-2.5-2.5h-9ZM5 18.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1Z"
-                              clip-rule="evenodd"></path>
-                          </svg></div><span className="css-1509y63">Poll your neighbors</span>
+                      {/* Safety */}
+                      <div className="news-feed-post-modal-body-form-safety-container">
+                        <div className="sub-news-feed-post-modal-body-form-safety-container">
+                          <div className="news-feed-post-modal-body-form-safety-icon-container">
+                            <svg className="news-feed-post-modal-body-form-safety-icon" width="24" height="24" fill="none"
+                              viewBox="0 0 24 24" role="img">
+                              <path fill="currentColor" fill-rule="evenodd"
+                                d="M12 2C6.541 2 2 6.168 2 11.438V12a1 1 0 0 0 1.566.825c.63-.433 1.571-.95 2.578-.95.905 0 1.73.37 2.379.723a1 1 0 0 0 .935.01c.682-.352 1.587-.733 2.542-.733.955 0 1.86.38 2.542.733a1 1 0 0 0 .935-.01c.649-.353 1.474-.723 2.379-.723 1.009 0 1.963.52 2.571.945A1 1 0 0 0 22 12v-.563C22 6.168 17.459 2 12 2ZM9.263 4.445c-2.712.918-4.712 3.16-5.166 5.835a5.66 5.66 0 0 1 2.047-.405c.686 0 1.318.133 1.869.315.067-2.025.394-3.302.917-4.87.102-.307.213-.6.333-.875Zm.75 5.76c.063-1.763.345-2.844.814-4.253.261-.782.546-1.319.804-1.64a1.2 1.2 0 0 1 .295-.28.282.282 0 0 1 .072-.032h.004a.282.282 0 0 1 .072.032 1.2 1.2 0 0 1 .295.28c.258.321.543.858.804 1.64.47 1.409.75 2.49.814 4.254A6.495 6.495 0 0 0 12 9.875c-.723 0-1.398.141-1.987.33Zm5.974-.015c-.067-2.025-.394-3.302-.917-4.87a10.41 10.41 0 0 0-.334-.875c2.712.918 4.712 3.158 5.166 5.833a5.687 5.687 0 0 0-2.046-.403c-.686 0-1.318.133-1.869.315Z"
+                                clip-rule="evenodd">
+                              </path>
+                              <path fill="currentColor"
+                                d="M12 13a1 1 0 0 1 1 1v4.5a3.5 3.5 0 1 1-7 0V18a1 1 0 1 1 2 0v.5a1.5 1.5 0 0 0 3 0V14a1 1 0 0 1 1-1Z">
+                              </path>
+                            </svg>
+                          </div>
+                          <span className="news-feed-post-modal-body-form-safety-text">Post about safety</span>
                         </div>
                       </div>
 
-
-
-                      <div className="css-18qzcjy" tabindex="-1" aria-describedby="id-116">
-                        <div className="css-1pzkmec" tabindex="0" data-testid="safety" role="button">
-                          <div className="css-3016vs" tabindex="-1"><svg className="css-1c6ven1" width="24" height="24" fill="none"
-                            viewBox="0 0 24 24" role="img">
-                            <path fill="currentColor" fill-rule="evenodd"
-                              d="M12 2C6.541 2 2 6.168 2 11.438V12a1 1 0 0 0 1.566.825c.63-.433 1.571-.95 2.578-.95.905 0 1.73.37 2.379.723a1 1 0 0 0 .935.01c.682-.352 1.587-.733 2.542-.733.955 0 1.86.38 2.542.733a1 1 0 0 0 .935-.01c.649-.353 1.474-.723 2.379-.723 1.009 0 1.963.52 2.571.945A1 1 0 0 0 22 12v-.563C22 6.168 17.459 2 12 2ZM9.263 4.445c-2.712.918-4.712 3.16-5.166 5.835a5.66 5.66 0 0 1 2.047-.405c.686 0 1.318.133 1.869.315.067-2.025.394-3.302.917-4.87.102-.307.213-.6.333-.875Zm.75 5.76c.063-1.763.345-2.844.814-4.253.261-.782.546-1.319.804-1.64a1.2 1.2 0 0 1 .295-.28.282.282 0 0 1 .072-.032h.004a.282.282 0 0 1 .072.032 1.2 1.2 0 0 1 .295.28c.258.321.543.858.804 1.64.47 1.409.75 2.49.814 4.254A6.495 6.495 0 0 0 12 9.875c-.723 0-1.398.141-1.987.33Zm5.974-.015c-.067-2.025-.394-3.302-.917-4.87a10.41 10.41 0 0 0-.334-.875c2.712.918 4.712 3.158 5.166 5.833a5.687 5.687 0 0 0-2.046-.403c-.686 0-1.318.133-1.869.315Z"
-                              clip-rule="evenodd"></path>
-                            <path fill="currentColor"
-                              d="M12 13a1 1 0 0 1 1 1v4.5a3.5 3.5 0 1 1-7 0V18a1 1 0 1 1 2 0v.5a1.5 1.5 0 0 0 3 0V14a1 1 0 0 1 1-1Z">
-                            </path>
-                          </svg></div><span className="css-1509y63">Post about safety</span>
-                        </div>
-                      </div>
-
-                      
-                    </div>
-                  </div>
-
-
-
-                  <div className="css-9zeepj">
-                    <div className="css-1xkl894" role="dialog" id="id-110" tabindex="-1" data-dialog="true">
-                      <div className="css-qisic1"><button className="css-1c9l9xh" type="button"
-                        data-testid="composer-onboarding-cta"></button></div>
                     </div>
                   </div>
                 </div>
