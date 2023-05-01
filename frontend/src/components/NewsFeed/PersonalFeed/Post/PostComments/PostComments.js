@@ -38,8 +38,8 @@ export default function PostComments({ post }) {
   return (
 
     <>
-      {/* <!-- commentowner --> */}
-      <div className="parent-news-feed-comment-user-info-container">
+
+
         <div className="child-news-feed-comment-user-info-container">
           <div className="grandchild-news-feed-comment-user-info-container">
             {/* <!-- user avatar --> */}
@@ -80,7 +80,6 @@ export default function PostComments({ post }) {
               </div>
             )}
           </div>
-
           {/* <!-- Edit / delete dropdown --> */}
           <div className="news-feed-comment-delete-edit-dropdown-container">
             <div className="sub-news-feed-comment-delete-edit-dropdown-container" onClick={handleDropdownClick}>
@@ -91,19 +90,20 @@ export default function PostComments({ post }) {
                 <div className="news-feed-comment-delete-edit-dropdown-menu-container">
                   <div className="news-feed-comment-delete-edit-dropdown-menu">
                     <div className="news-feed-comment-delete-edit-dropdown-item" onClick={handleEditClick}>
-                      Edit
+                      Edit Comment
                     </div>
                     <div className="news-feed-comment-delete-edit-dropdown-item" onClick={handleDeleteClick}>
-                      Delete
+                      Delete Comment
                     </div>
                   </div>
                 </div>
               )}
             </div>
           </div>
-
         </div>
-      </div>
+
+
+
     </>
 
   )

@@ -15,7 +15,12 @@ export default function Post({post}) {
       <PostBody post={post} />
       <PostStats post={post} />
       <hr className="post-stats-and-comments-seperator"></hr>
-      <PostComments post={post}/>
+      {Object.entries(post).map(([key, value], index) => (
+      <div className="parent-news-feed-comment-user-info-container">
+        <PostComments key={index}/>
+      </div>
+      ))}
+
       <PostCommentsBox post={post}/>
     </>
 

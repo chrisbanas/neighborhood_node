@@ -17,3 +17,8 @@
   margin-block: 0px;
   color: rgb(229, 229, 229);
 }
+
+.parent-news-feed-comment-user-info-container {
+  padding-left: 16px;
+  padding-top: 3%;
+}
