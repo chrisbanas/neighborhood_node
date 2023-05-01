@@ -24,7 +24,11 @@ export default function CreatePostBox() {
       dispatch(createPost(post))
   };
 
-
+  const handleCreatePost = (e) => {
+    e.preventDefault();
+    toggleModal(); // call toggleModal first
+    handlePostSubmit(e); // then call handlePostSubmit
+  }
 
 
   // Modal
@@ -83,7 +87,7 @@ export default function CreatePostBox() {
                       </svg>
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
-                      <button className="news-feed-post-modal-next-button" onClick={handlePostSubmit}>
+                      <button className="news-feed-post-modal-next-button" onClick={handleCreatePost}>
                         <span className="news-feed-post-modal-next-button-text">Next</span>
                       </button>
                     </div>

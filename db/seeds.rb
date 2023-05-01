@@ -69,7 +69,7 @@ ApplicationRecord.transaction do
 
   # More users for production seeding - currently have 101 profile images
 
-    99.times do
+    10.times do
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
       email = Faker::Internet.email
@@ -112,7 +112,7 @@ ApplicationRecord.transaction do
 
   # Faker::Lorem.paragraphs(number: rand(3..10)).join("\n") - this will make groups of paragraphs and join them together
 
-  200.times do
+  20.times do
     body = Faker::Books::Dune.quote
     author_id = Faker::Number.between(from: 1, to: 12)
     neighborhood_id = Faker::Number.between(from: 1, to: 3)
@@ -161,8 +161,8 @@ ApplicationRecord.transaction do
 
     12.times do
       body = Faker::Books::Dune.quote
-      author_id = Faker::Number.between(from: 3, to: 101)
-      post_id = Faker::Number.between(from: 3, to: 202)
+      author_id = Faker::Number.between(from: 3, to: 12)
+      post_id = Faker::Number.between(from: 3, to: 22)
       latitude = Faker::Address.latitude.to_f.round(6)
       longitude = Faker::Address.longitude.to_f.round(6)
 
@@ -179,13 +179,13 @@ ApplicationRecord.transaction do
   puts "Creating likes..."
 
   # posts likes
-  500.times do
+  100.times do
     user = User.offset(rand(User.count)).limit(1).first # Returns a random user object
-    post_id = Faker::Number.between(from: 3, to: 202)
+    post_id = Faker::Number.between(from: 3, to: 22)
 
     # Check if the user has already liked the post
     while Like.exists?(liker: user, likeable_id: post_id, likeable_type: 'Post')
-      post_id = Faker::Number.between(from: 3, to: 202)
+      post_id = Faker::Number.between(from: 3, to: 22)
     end
 
     Like.create!(
@@ -219,7 +219,7 @@ end
 
 puts "Attaching seed profile photos..."
 
-User.first(100).each_with_index do |user, index|
+User.first(12).each_with_index do |user, index|
   user.photo.attach(
     # The string passed to URI.open should be the URL of the image in its bucket.
     io: URI.open("https://neighborhoodnode-seed.s3.us-west-1.amazonaws.com/seed_profile_images/profile#{index + 1}.png"),

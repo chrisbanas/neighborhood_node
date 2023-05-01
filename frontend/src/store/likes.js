@@ -62,13 +62,13 @@ export function getLikes(state) {
 // like_api_comment POST   /api/comments/:id/like
 // unlike_api_comment POST   /api/comments/:id/unlike
 
-export const createLike = ({liker, likeableId, likeableType }) => (dispatch) => (
-  csrfFetch(`/api/${likeableType.toLowerCase()}s/${likeableId}/like`, {
+export const createLike = like => (dispatch) => (
+  csrfFetch(`/api/${like.likeableType.toLowerCase()}s/${like.likeableId}/like`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({liker})
+    body: JSON.stringify({like})
   })
     .then(response => response.json())
     .then(data => dispatch(receiveLike(data)))

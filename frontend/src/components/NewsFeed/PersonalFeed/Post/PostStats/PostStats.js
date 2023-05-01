@@ -21,10 +21,15 @@ export default function PostStats({ post }) {
 
   const handleLikeClick = (e) => {
     e.preventDefault();
+    const like = {
+      liker: sessionUser,
+      likeableId: likeableId,
+      likeableType: likeableType
+  };
     // if (isLiked) {
-    //   dispatch(deleteLike({sessionUser, likeableId, likeableType}));
+    //   dispatch(deleteLike(like));
     // } else {
-    //   dispatch(createLike({sessionUser, likeableId, likeableType}));
+    //   dispatch(createLike(like));
     // }
     setIsLiked(!isLiked);
   };
