@@ -16,12 +16,12 @@ export default function CreatePostBox() {
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
-    const newPost = {
+    const post = {
       body: body,
-      authorID: authorId,
+      authorId: authorId,
       neighborhoodId: neighborhoodId
   };
-      dispatch(createPost(newPost))
+      dispatch(createPost(post))
   };
 
 
@@ -83,7 +83,7 @@ export default function CreatePostBox() {
                       </svg>
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
-                      <button className="news-feed-post-modal-next-button" value={'Create Post'}>
+                      <button className="news-feed-post-modal-next-button" onClick={handlePostSubmit}>
                         <span className="news-feed-post-modal-next-button-text">Next</span>
                       </button>
                     </div>

@@ -7,7 +7,7 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+    p @post
     if @post&.save
       render :show
     else

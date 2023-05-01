@@ -55,7 +55,7 @@ export const createPost = post => (dispatch) => (
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(post)
+    body: JSON.stringify({post})
   })
     .then(response => response.json())
     .then(data => dispatch(receivePost(data)))
