@@ -11,8 +11,8 @@ export default function CreatePostBox() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [body, setBody] = useState("");
-  const [authorId, setAuthorId] = useState(sessionUser.id);
-  const [neighborhoodId, setNeighborhoodId] = useState(sessionUser.neighborhoodId);
+  const [authorId] = useState(sessionUser ? sessionUser.id : null);
+  const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
   const posts = useSelector(state => state.posts);
 
   const handlePostSubmit = (e) => {
