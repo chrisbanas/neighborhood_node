@@ -5,65 +5,40 @@ import './PostMap.css';
 
 function PostMap({
   post,
-  highlightedPost,
   mapOptions = {},
-  mapEventHandlers = {}
 }) {
   const [map, setMap] = useState(null);
   const mapRef = useRef(null);
-  const markers = useRef({});
+  const markerRef = useRef(null);
 
-  // Create the map
+  // Create the map and marker
   useEffect(() => {
     if (!map) {
-      setMap(new window.google.maps.Map(mapRef.current, {
+      const newMap = new window.google.maps.Map(mapRef.current, {
         center: {
           lat: post.latitude,
-          lng: post.longitude
+          lng: post.longitude,
         },
         zoom: 13,
         clickableIcons: false,
         ...mapOptions,
-      }));
+      });
+
+      const newMarker = new window.google.maps.Marker({
+        position: { lat: post.latitude, lng: post.longitude },
+        map: newMap,
+      });
+
+      // Store the map and marker references
+      setMap(newMap);
+      markerRef.current = newMarker;
+    } else {
+      // Update the marker position
+      markerRef.current.setPosition({ lat: post.latitude, lng: post.longitude });
     }
   }, [mapRef, map, mapOptions, post.latitude, post.longitude]);
 
-  // Add event handlers to map
-  useEffect(() => {
-    if (map) {
-      const listeners = Object.entries(mapEventHandlers).map(([event, handler]) =>
-        window.google.maps.event.addListener(
-          map,
-          event,
-          (...args) => handler(...args, map)
-        )
-      );
-
-      return () => listeners.forEach(window.google.maps.event.removeListener);
-    }
-  }, [map, mapEventHandlers]);
-
-  // Change the style for post marker on hover
-  useEffect(() => {
-    Object.entries(markers.current).forEach(([postId, marker]) => {
-      const label = marker.getLabel();
-      const icon = marker.getIcon();
-
-      if (parseInt(postId) === highlightedPost) {
-        marker.setLabel({ ...label, color: 'white' });
-        marker.setIcon({ ...icon, fillColor: 'black' });
-      } else {
-        marker.setLabel({ ...label, color: 'black' });
-        marker.setIcon({ ...icon, fillColor: 'white' });
-      }
-    });
-  }, [markers, highlightedPost]);
-
-  return (
-    <div ref={mapRef} className="map">
-      Map
-    </div>
-  );
+  return <div ref={mapRef} className="map">Map</div>;
 }
 
 export default function PostMapWrapper(props) {
