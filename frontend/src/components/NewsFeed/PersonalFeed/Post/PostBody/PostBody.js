@@ -20,7 +20,7 @@ export default function PostBody({ post }) {
         {post.photoUrls && post.photoUrls[0] &&
           <img className="news-feed-post-img" src={post.photoUrls[0]} alt="post" onClick={toggleModal} />}
         <br></br>
-        {post.id === 1 ? <PostMapWrapper post={post}/> : ""}
+        {post.latitude && post.longitude && <PostMapWrapper post={post} />}
       </div>
 
       {showModal && (

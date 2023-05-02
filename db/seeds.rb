@@ -20,7 +20,7 @@ ApplicationRecord.transaction do
   Comment.destroy_all
   Like.destroy_all
 
-  puts 'Destroying all ActiveStorage attachments'
+  puts 'Destroying all ActiveStorage attachments...'
   ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 
   # After seeding, the first `data point` has `id` of 1
@@ -203,7 +203,7 @@ ApplicationRecord.transaction do
   puts "Creating likes..."
 
   # posts likes
-  100.times do
+  25.times do
     user = User.offset(rand(User.count)).limit(1).first # Returns a random user object
     post_id = Faker::Number.between(from: 3, to: 12)
 
