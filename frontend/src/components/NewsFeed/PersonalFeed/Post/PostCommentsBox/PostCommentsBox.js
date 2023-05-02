@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./PostCommentsBox.css";
 
 export default function PostCommentsBox() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
 
   const handleButtonClick = () => {
     setIsExpanded(!isExpanded);
@@ -14,7 +16,9 @@ export default function PostCommentsBox() {
         <button className="sub-user-comment-box-container" onClick={handleButtonClick}>
           <span className="parent-news-feed-comment-user-avatar">
             <div className="news-feed-comment-user-avatar">
-              <img className="news-feed-comment-user-avatar-image" alt="user avatar" src="https://us1-photo.nextdoor.com/user_photos/33/7d/337d37645b9f50c6c07e2b6f6fa73fe8.jpg?request_version=v2&output_type=jpg&sizing=linear&x_size=1&resize_type=resize" />
+            {sessionUser && (
+              <img className="news-feed-comment-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto} />
+              )}
             </div>
           </span>
           <div className="parent-user-comment-modal-container">

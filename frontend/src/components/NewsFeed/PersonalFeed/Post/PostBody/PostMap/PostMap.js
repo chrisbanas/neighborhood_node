@@ -4,7 +4,7 @@ import { Wrapper } from "@googlemaps/react-wrapper";
 import './PostMap.css';
 
 function PostMap({
-  posts,
+  post,
   highlightedPost,
   mapOptions = {},
   mapEventHandlers = {}
@@ -18,15 +18,15 @@ function PostMap({
     if (!map) {
       setMap(new window.google.maps.Map(mapRef.current, {
         center: {
-          lat: 37.773972,
-          lng: -122.431297
+          lat: post.latitude,
+          lng: post.longitude
         },
         zoom: 13,
         clickableIcons: false,
         ...mapOptions,
       }));
     }
-  }, [mapRef, map, mapOptions]);
+  }, [mapRef, map, mapOptions, post.latitude, post.longitude]);
 
   // Add event handlers to map
   useEffect(() => {
@@ -42,24 +42,6 @@ function PostMap({
       return () => listeners.forEach(window.google.maps.event.removeListener);
     }
   }, [map, mapEventHandlers]);
-
-  // Add markers to the map
-  useEffect(() => {
-    if (map && posts) {
-      posts.forEach((post) => {
-        if (!markers.current[post.id]) {
-          const marker = new window.google.maps.Marker({
-            position: { lat: post.latitude, lng: post.longitude },
-            map,
-            title: post.title,
-            label: post.id.toString(),
-          });
-
-          markers.current[post.id] = marker;
-        }
-      });
-    }
-  }, [map, posts]);
 
   // Change the style for post marker on hover
   useEffect(() => {
