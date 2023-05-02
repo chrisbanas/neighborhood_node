@@ -8,12 +8,10 @@ function PostMap({
   highlightedPost,
   mapOptions = {},
   mapEventHandlers = {}
-
 }) {
   const [map, setMap] = useState(null);
   const mapRef = useRef(null);
   const markers = useRef({});
-
 
   // Create the map
   useEffect(() => {
@@ -22,7 +20,7 @@ function PostMap({
         center: {
           lat: 37.773972,
           lng: -122.431297
-        }, // San Francisco coordinates
+        },
         zoom: 13,
         clickableIcons: false,
         ...mapOptions,
@@ -44,6 +42,24 @@ function PostMap({
       return () => listeners.forEach(window.google.maps.event.removeListener);
     }
   }, [map, mapEventHandlers]);
+
+  // Add markers to the map
+  useEffect(() => {
+    if (map && posts) {
+      posts.forEach((post) => {
+        if (!markers.current[post.id]) {
+          const marker = new window.google.maps.Marker({
+            position: { lat: post.latitude, lng: post.longitude },
+            map,
+            title: post.title,
+            label: post.id.toString(),
+          });
+
+          markers.current[post.id] = marker;
+        }
+      });
+    }
+  }, [map, posts]);
 
   // Change the style for post marker on hover
   useEffect(() => {

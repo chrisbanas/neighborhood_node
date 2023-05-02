@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../../../../../store/posts";
 import './PostOwnerInfo.css';
 
 export default function PostOwnerInfo({ post }) {
 
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
 
   // For the user info popup
   const [showPopup, setShowPopup] = useState(false);
