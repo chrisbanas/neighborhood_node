@@ -10,6 +10,7 @@ export default function PostStats({ post }) {
   const sessionUser = useSelector(state => state.session.user);
 
 
+  const { comments } = post;
 
   // used to set the like button to red
 
@@ -134,10 +135,12 @@ export default function PostStats({ post }) {
       <hr className="post-stats-and-comments-seperator"></hr>
 
       {/* Conditionally render post comments */}
-      {showComments && (
+      {showComments && post.comments && Object.keys(post.comments).length > 0 && (
+        Object.values(comments).map(comment => (
         <div className="parent-news-feed-comment-user-info-container">
-          <PostComments post={post} />
+          <PostComments comment={comment} />
         </div>
+        ))
       )}
 
     </>

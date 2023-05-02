@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./PostCommentsStats.css";
 
-export default function PostCommentsStats({ post }) {
+export default function PostCommentsStats({ comment }) {
 
 
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ export default function PostCommentsStats({ post }) {
             <div className="parent-news-feed-comments-stats-count-container">
               <div className="child-news-feed-comments-stats-count-container">
                 <p className="news-feed-live-comments-stats-count">
-                  {post.numLike} Likes
+                  {comment.numLike} Likes
                 </p>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function PostCommentsStats({ post }) {
                       clipRule="evenodd"></path>
                   </svg>
                   <div className="news-feed-comments-like-button-title-container">
-                    <div className="news-feed-comments-like-button-title">{post.numComments} Replies</div>
+                    <div className="news-feed-comments-like-button-title">{comment.numComments} Replies</div>
                   </div>
                 </button>
               </div>

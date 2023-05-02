@@ -4,7 +4,7 @@ import { deletePost } from "../../../../../../store/posts";
 import PostCommentsStats from "./PostCommentsStats/PostCommentsStats";
 import "./PostComments.css";
 
-export default function PostComments({ post }) {
+export default function PostComments({ comment }) {
 
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ export default function PostComments({ post }) {
 
   const handleDeleteClick = (e) => {
     e.preventDefault();
-    dispatch(deletePost(post.id))
+    dispatch(deletePost(comment.id))
   };
 
 
@@ -49,32 +49,32 @@ export default function PostComments({ post }) {
             <span className="comment-news-feed-owner-avatar" >
               <div className="comment-news-feed-owner-avatar-image">
                 <img
-                  className="news-feed-user-avatar-image" alt="user avatar" src={post.userPhoto} />
+                  className="news-feed-user-avatar-image" alt="user avatar" src={comment.userPhoto} />
               </div>
             </span>
           </div>
           {/* <!-- user info --> */}
           <div className="news-feed-comment-owner-name-container">
             <a className="news-feed-comment-owner-name" href="/news_feed">
-              {post.authorFirstName}&nbsp;{post.authorLastName}
+              {comment.authorFirstName}&nbsp;{comment.authorLastName}
             </a>
           </div>
           <div className="news-feed-comment-neighborhood-name-container">
             <a className="news-feed-comment-neighborhood-name" href="/news_feed">
-              {post.neighborhoodName}
+              {comment.neighborhoodName}
             </a>
           </div>
           {/* <!-- popup --> */}
           {showPopup && (
             <div className="news-feed-comment-user-profile-popup">
               <div className="sub-news-feed-comment-user-profile-popup">
-                <img className="popup-news-feed-user-avatar-image" alt="user avatar" src={post.userPhoto} />
+                <img className="popup-news-feed-user-avatar-image" alt="user avatar" src={comment.userPhoto} />
                 <div>
                   <div className="popup-news-feed-comment-neighborhood-name">
-                    {post.authorFirstName}&nbsp;{post.authorLastName}
+                    {comment.authorFirstName}&nbsp;{comment.authorLastName}
                   </div>
                   <div>
-                    {post.neighborhoodName}
+                    {comment.neighborhoodName}
                   </div>
                 </div>
               </div>
@@ -103,7 +103,7 @@ export default function PostComments({ post }) {
         </div>
       </div>
 
-      <PostCommentsStats post={post}/>
+      <PostCommentsStats comment={comment}/>
 
     </>
 
