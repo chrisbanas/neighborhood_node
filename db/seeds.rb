@@ -87,12 +87,13 @@ ApplicationRecord.transaction do
       )
     end
 
+# ----------------------------------------------------------------------------------
 
   puts "Creating posts..."
 
   # Create two posts for testing
 
-    post1 = Post.create!(
+    Post.create!(
       body: "I am a test post",
       author_id: 1,
       neighborhood_id: 1,
@@ -100,24 +101,46 @@ ApplicationRecord.transaction do
       longitude: -122.431297
     )
 
-    post2 = Post.create!(
+    Post.create!(
       body: "I am a demo post",
       author_id: 2,
       neighborhood_id: 2,
-      latitude: 37.773972,    # San Francisco coordinates
-      longitude: -122.431297
     )
 
   # More posts for production seeding
 
   # Faker::Lorem.paragraphs(number: rand(3..10)).join("\n") - this will make groups of paragraphs and join them together
 
-  20.times do
+
+
+  # Posts without Geo Tag
+
+  5.times do
     body = Faker::Books::Dune.quote
     author_id = Faker::Number.between(from: 1, to: 12)
     neighborhood_id = Faker::Number.between(from: 1, to: 3)
-    latitude = Faker::Address.latitude.to_f.round(6)
-    longitude = Faker::Address.longitude.to_f.round(6)
+
+    Post.create!(
+      body: body,
+      author_id: author_id,
+      neighborhood_id: neighborhood_id,
+    )
+  end
+
+
+  # Posts with Geo Tag
+
+  min_lat = 37.7
+  max_lat = 37.85
+  min_lng = -122.55
+  max_lng = -122.35
+
+  5.times do
+    body = Faker::Books::Dune.quote
+    author_id = Faker::Number.between(from: 1, to: 12)
+    neighborhood_id = Faker::Number.between(from: 1, to: 3)
+    latitude = rand(min_lat..max_lat).round(6)
+    longitude = rand(min_lng..max_lng).round(6)
 
     Post.create!(
       body: body,
@@ -127,6 +150,8 @@ ApplicationRecord.transaction do
       longitude: longitude
     )
   end
+
+# ----------------------------------------------------------------------------------
 
   puts "Creating comments..."
 
@@ -142,8 +167,6 @@ ApplicationRecord.transaction do
       body: "I am a demo comment",
       author_id: 2,
       post_id: 2,
-      latitude: 37.773972,    # San Francisco coordinates
-      longitude: -122.431297
     )
 
   # nested comments
@@ -153,8 +176,8 @@ ApplicationRecord.transaction do
       author_id: 2,
       post_id: 2,
       parent_comment_id: 2,
-      latitude: 37.773972,    # San Francisco coordinates
-      longitude: -122.431297
+      latitude: 38.773972,
+      longitude: -124.431297
     )
 
   # More comments for production seeding
@@ -162,9 +185,9 @@ ApplicationRecord.transaction do
     12.times do
       body = Faker::Books::Dune.quote
       author_id = Faker::Number.between(from: 3, to: 12)
-      post_id = Faker::Number.between(from: 3, to: 22)
-      latitude = Faker::Address.latitude.to_f.round(6)
-      longitude = Faker::Address.longitude.to_f.round(6)
+      post_id = Faker::Number.between(from: 3, to: 12)
+      latitude = rand(min_lat..max_lat).round(6)
+      longitude = rand(min_lng..max_lng).round(6)
 
       Comment.create!(
         body: body,
@@ -175,17 +198,18 @@ ApplicationRecord.transaction do
       )
     end
 
+# ----------------------------------------------------------------------------------
 
   puts "Creating likes..."
 
   # posts likes
   100.times do
     user = User.offset(rand(User.count)).limit(1).first # Returns a random user object
-    post_id = Faker::Number.between(from: 3, to: 22)
+    post_id = Faker::Number.between(from: 3, to: 12)
 
     # Check if the user has already liked the post
     while Like.exists?(liker: user, likeable_id: post_id, likeable_type: 'Post')
-      post_id = Faker::Number.between(from: 3, to: 22)
+      post_id = Faker::Number.between(from: 3, to: 12)
     end
 
     Like.create!(
@@ -216,6 +240,8 @@ ApplicationRecord.transaction do
     )
 
 end
+
+# ----------------------------------------------------------------------------------
 
 puts "Attaching seed profile photos..."
 

@@ -20,7 +20,7 @@ function PostMap({
           lng: post.longitude,
         },
         zoom: 13,
-        clickableIcons: false,
+        clickableIcons: true,
         ...mapOptions,
       });
 

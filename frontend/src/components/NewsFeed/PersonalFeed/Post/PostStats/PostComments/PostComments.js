@@ -7,6 +7,7 @@ import "./PostComments.css";
 export default function PostComments({ comment }) {
 
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
 
   // For the user info popup
   const [showPopup, setShowPopup] = useState(false);
@@ -82,6 +83,7 @@ export default function PostComments({ comment }) {
           )}
         </div>
         {/* <!-- Edit / delete dropdown --> */}
+        {sessionUser && sessionUser.id === comment.authorId && (
         <div className="news-feed-comment-delete-edit-dropdown-container">
           <div className="sub-news-feed-comment-delete-edit-dropdown-container" onClick={handleDropdownClick}>
             <svg className="news-feed-comment-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
@@ -101,6 +103,7 @@ export default function PostComments({ comment }) {
             )}
           </div>
         </div>
+      )}
       </div>
       <p>{comment.body}</p>
 

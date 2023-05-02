@@ -93,10 +93,10 @@ export default function PostOwnerInfo({ post }) {
                 <div className="news-feed-post-delete-edit-dropdown-menu-container">
                   <div className="news-feed-post-delete-edit-dropdown-menu">
                     <div className="news-feed-post-delete-edit-dropdown-item" onClick={handleEditClick}>
-                      Edit
+                      Edit Post
                     </div>
                     <div className="news-feed-post-delete-edit-dropdown-item" onClick={handleDeleteClick}>
-                      Delete
+                      Delete Post
                     </div>
                   </div>
                 </div>
