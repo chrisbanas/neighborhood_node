@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../../../../../store/posts";
 import './PostOwnerInfo.css';
+import profile from '../../../../../assets/profile.png'
 
 export default function PostOwnerInfo({ post }) {
 
@@ -47,7 +48,7 @@ export default function PostOwnerInfo({ post }) {
               <span className="post-news-feed-owner-avatar" >
                 <div className="post-news-feed-owner-avatar-image">
                   <img
-                    className="news-feed-user-avatar-image" alt="user avatar" src={post.userPhoto} />
+                    className="news-feed-user-avatar-image" alt="user avatar" src={post.userPhoto ? post.userPhoto : profile} />
                 </div>
               </span>
             </div>

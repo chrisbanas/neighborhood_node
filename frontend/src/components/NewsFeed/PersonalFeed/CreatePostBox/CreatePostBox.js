@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../../../../store/posts";
 import "./CreatePostBox.css";
+import profile from '../../../../assets/profile.png'
 
 export default function CreatePostBox() {
 
@@ -62,7 +63,7 @@ export default function CreatePostBox() {
           <span className="parent-news-feed-user-avatar">
             <div className="news-feed-user-avatar">
             {sessionUser && (
-              <img className="news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto}/>
+              <img className="news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto ? sessionUser.userPhoto : profile}/>
               )}
             </div>
           </span>

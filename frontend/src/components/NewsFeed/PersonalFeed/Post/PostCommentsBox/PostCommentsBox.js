@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./PostCommentsBox.css";
+import profile from '../../../../../assets/profile.png'
 
 export default function PostCommentsBox() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -17,7 +18,7 @@ export default function PostCommentsBox() {
           <span className="parent-news-feed-comment-user-avatar">
             <div className="news-feed-comment-user-avatar">
             {sessionUser && (
-              <img className="news-feed-comment-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto} />
+              <img className="news-feed-comment-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto ? sessionUser.userPhoto : profile} />
               )}
             </div>
           </span>

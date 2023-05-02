@@ -6,6 +6,7 @@ import './NavBar.css';
 
 // image imports
 import textLogo from '../../../assets/text_logo.png'
+import profile from '../../../assets/profile.png'
 
 
 export default function NavBar(user) {
@@ -56,8 +57,10 @@ export default function NavBar(user) {
         </div>
         <span className="nav-parent-news-feed-user-avatar" onClick={logout}>
           <div className="nav-news-feed-user-avatar">
-            {sessionUser && (
-              <img className="nav-news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto}/>
+            {sessionUser && sessionUser.userPhoto ? (
+              <img className="nav-news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto} />
+            ) : (
+              <img className="nav-news-feed-user-avatar-image" alt="user avatar" src={profile} />
             )}
           </div>
         </span>
