@@ -15,6 +15,7 @@
           json.author_first_name comment.author.first_name
           json.author_last_name comment.author.last_name
           json.neighborhood_id comment.author.neighborhood_id
+          json.neighborhood_name comment.author.neighborhood.name
           json.num_like comment.likes.length
           json.photo_urls comment.photo.map {|photo| url_for(photo)}
           json.user_photo url_for(comment.author.photo)

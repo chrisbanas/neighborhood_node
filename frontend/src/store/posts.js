@@ -58,7 +58,10 @@ export const createPost = post => (dispatch) => (
     body: JSON.stringify({post})
   })
     .then(response => response.json())
-    .then(data => dispatch(receivePost(data)))
+    .then(data => {
+      dispatch(receivePost(data));
+      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts
+    })
     .catch(error => console.error('something went wrong'))
 )
 
@@ -71,7 +74,10 @@ export const updatePost = post => (dispatch) => (
     body: JSON.stringify(post)
   })
     .then(res => res.json())
-    .then(data => dispatch(receivePost(data)))
+    .then(data => {
+      dispatch(receivePost(data));
+      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts
+    })
     .catch(error => console.error('something went wrong'))
 );
 
