@@ -1,0 +1,235 @@
+.parent-news-feed-post-user-info-container {
+  padding-left: 16px
+}
+
+.child-news-feed-post-user-info-container {
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.grandchild-news-feed-post-user-info-container {
+  display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 490px;
+  flex: 1;
+}
+
+.post-owner-avatar-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  position: static;
+}
+
+.post-news-feed-owner-avatar {
+  border: none
+}
+
+.post-news-feed-owner-avatar-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: clip;
+}
+
+.news-feed-post-owner-name-and-neighborhood-container {
+  overflow-x: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  padding-left: 12px;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.news-feed-post-owner-name-container {
+  display: flex;
+  align-items: center;
+  max-width: 440px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.news-feed-post-owner-name {
+  color: #000000;
+  margin-left: 0;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.32px;
+  background-color: transparent;
+  text-decoration: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.news-feed-post-neighborhood-name-container {
+  color: #666666;
+  letter-spacing: -0.32px;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 19px;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+}
+
+.news-feed-post-neighborhood-name {
+  font-size: 14px;
+  color: #6f7681;
+  text-decoration: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* Popup container */
+.news-feed-post-user-profile-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 16px;
+  width: 50%;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8%;
+}
+
+.sub-news-feed-post-user-profile-popup {
+  display: flex;
+}
+
+.popup-news-feed-user-avatar-image {
+  height: 120px;
+  aspect-ratio: auto 120 / 120;
+  width: 120px;
+  border: 0;
+  vertical-align: middle;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup-news-feed-post-neighborhood-name {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: 100%;
+  max-width: 100%;
+  line-height: 0;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.news-feed-post-delete-edit-dropdown-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  margin-right: 0px;
+}
+
+.sub-news-feed-post-delete-edit-dropdown-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  color: rgb(0, 0, 0);
+}
+
+.news-feed-post-delete-edit-dropdown-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  color: rgb(0, 0, 0);
+  width: 24;
+  height: 24;
+  fill: none;
+}
+
+.news-feed-post-delete-edit-dropdown-menu-container {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+}
+
+.news-feed-post-delete-edit-dropdown-menu {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-top: 4px;
+  min-width: 100px;
+}
+
+.news-feed-post-delete-edit-dropdown-item {
+  color: #333;
+  cursor: pointer;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.news-feed-post-delete-edit-dropdown-item:hover {
+  background-color: #f5f5f5;
+}

@@ -1,7 +1,8 @@
 import React from "react";
 import './FeedIndex.css';
 
-
+import github from '../../../assets/github.png'
+import linkedin from '../../../assets/linkedin.png'
 
 export default function FeedIndex() {
 
@@ -116,7 +117,19 @@ export default function FeedIndex() {
                 </a>
               </li>
             </ul>
-            <div className="news-feed-footer-copyright">© 2023 Neighborhood Node</div>
+            <div className="news-feed-index-copyright-container">
+              <div className="news-feed-footer-copyright">© 2023 Neighborhood Node</div>
+              <div className="linkedin-logo">
+                <a href="https://www.linkedin.com/in/christopher-banas/" className="news-feed-nav-bar-linkedin-logo">
+                  <img src={linkedin} className="new-feed-neighborhood-node-likedin-logo" alt="LinkedIn logo" />
+                </a>
+              </div>
+              <div className="github-logo">
+                <a href="https://github.com/chrisbanas/neighborhood_node" className="news-feed-nav-bar-github-logo">
+                  <img src={github} className="new-feed-neighborhood-node-github-logo" alt="Github logo" />
+                </a>
+              </div>
+            </div>
           </footer>
         </div>
       </div>

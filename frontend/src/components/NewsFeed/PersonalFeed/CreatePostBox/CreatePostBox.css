@@ -1,0 +1,930 @@
+.user-post-box-container {
+  min-width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: none;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.sub-user-post-box-container {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: transparent;
+  border: none;
+  margin: 0;
+  text-align: left;
+  text-transform: none;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+}
+
+.news-feed-user-avatar {
+  border: none
+}
+
+.news-feed-user-avatar-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: clip;
+}
+
+.parent-user-post-modal-container {
+  padding-right: 0;
+  padding-left: 12px;
+  display: inline-block;
+  width: 100%;
+}
+
+.child-user-post-modal-container {
+  color: #000000;
+  padding: 10px 12px 10px 20px;
+  background-color: #f2f2f2;
+  border-radius: 50px;
+  min-height: 20px;
+  font-size: 15px;
+  line-height: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: text;
+  width: calc(100% - 6%);
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.grandchild-user-post-modal-container {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+
+/* ****************************** modal begins ****************************************** */
+
+
+
+.news-feed-parent-modal-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  position: fixed;
+  inset: 0px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  animation-duration: 100ms;
+  animation-timing-function: ease-out;
+  z-index: 1050;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 250ms ease-in-out 0s;
+}
+
+@media screen and (min-width: 480px) {
+  .news-feed-child-modal-container {
+    margin: 80px 0px;
+  }
+}
+
+.news-feed-child-modal-container {
+  width: 600px;
+  min-height: 540px;
+  height: auto;
+  border-radius: 16px;
+  position: relative;
+  margin-top: 80px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  inset: 5% 0 0 0; /* this is what moves the modal down from the top*/
+  opacity: 1;
+  max-height: 100%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+  padding: 0px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: height 200ms ease-in-out 0s, opacity 200ms ease-in-out 0s;
+  overflow: hidden auto;
+}
+
+.news-feed-grandchild-modal-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  display: block;
+}
+
+.news-feed-great-grandchild-modal-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.news-feed-very-great-grandchild-modal-container {
+  opacity: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.2s ease 0s;
+}
+
+.news-feed-modal-close-submit-buttons-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  padding-top: 24px;
+  width: 100%;
+}
+
+.news-feed-post-modal-close-button {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  appearance: none;
+  border: 0.5px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  border-radius: 100vh;
+  padding: 8px;
+  display: inline-flex;
+  z-index: 1080;
+  overflow: visible;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+  align-items: flex-start;
+}
+
+.news-feed-post-modal-close-button-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.news-feed-post-modal-next-button-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.news-feed-post-modal-next-button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: 6px 16px;
+  border-width: 0px;
+  border-radius: 32px;
+  display: flex;
+  line-height: 24px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  vertical-align: baseline;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(184, 236, 81);
+  border-color: rgb(184, 236, 81);
+  color: rgb(0, 97, 66);
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: none;
+  overflow: visible;
+  margin: 0;
+}
+
+.news-feed-post-modal-next-button-text {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.news-feed-post-modal-body-form {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-left: -24px;
+  margin-right: -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 8px;
+  z-index: 1040;
+  margin-top: 0em;
+}
+
+.news-feed-post-modal-body-form-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  display: block;
+}
+
+.news-feed-post-modal-body-form-text-area-container {
+  position: relative;
+  display: block;
+}
+
+.news-feed-post-modal-body-form-text-area {
+  height: 52px;
+  resize: none;
+  width: 100%;
+  padding: 16px 8px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+  background: none;
+  outline: none;
+  border: 0;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-rendering: auto;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  cursor: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  column-count: initial;
+}
+
+.news-feed-post-modal-body-form-location-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: block;
+}
+
+.news-feed-post-modal-body-form-location-add-geo-tag-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  margin-left: 8px;
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+  display: block;
+  cursor: pointer;
+}
+
+.sub-news-feed-post-modal-body-form-location-add-geo-tag-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  display: flex;
+}
+
+.news-feed-post-modal-body-form-add-geo-tag-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  width: 20;
+  height: 20;
+  color: rgb(0, 122, 133);
+}
+
+.news-feed-post-modal-body-form-add-geo-tag-text {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgb(0, 122, 133);
+}
+
+.news-feed-post-modal-body-form-additional-buttons-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  z-index: 1;
+  position: relative;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .sub-news-feed-post-modal-body-form-additional-buttons-container {
+    padding-bottom: 0px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .sub-news-feed-post-modal-body-form-additional-buttons-container {
+    padding-bottom: 0px;
+  }
+}
+
+.sub-news-feed-post-modal-body-form-additional-buttons-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-feed-post-modal-body-form-classifieds-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  /* cursor: pointer; */
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 100vh;
+  padding-right: 24px;
+  transition: background-color 200ms ease-in-out 0s;
+}
+
+.news-feed-post-modal-body-form-classifieds-icon-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgb(255, 249, 240);
+  border: none;
+  border-radius: 100vh;
+}
+
+.news-feed-post-modal-body-form-classifieds-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  color: rgb(194, 74, 0);
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.news-feed-post-modal-body-form-classifieds-text {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+.news-feed-post-modal-body-form-add-photo-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline-flex;
+  margin-right: 12px;
+  transition: opacity 200ms ease-in-out 0s;
+  opacity: 1;
+}
+
+.sub-news-feed-post-modal-body-form-add-photo-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 100vh;
+  padding-right: 24px;
+  transition: background-color 200ms ease-in-out 0s;
+}
+
+.news-feed-post-modal-body-form-add-photo-icon-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgb(249, 255, 240);
+  border: none;
+  border-radius: 100vh;
+}
+
+.news-feed-post-modal-body-form-add-photo-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  color: rgb(21, 138, 0);
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.news-feed-post-modal-body-form-add-photo-text {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+/* This is specifically for the upload photo function */
+.uploader-fileinput-label {
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 100px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  padding: 0;
+}
+
+.news-feed-post-modal-body-form-event-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline-flex;
+  margin-right: 12px;
+  transition: opacity 200ms ease-in-out 0s;
+  opacity: 1;
+}
+
+.sub-news-feed-post-modal-body-form-event-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 100vh;
+  padding-right: 24px;
+  transition: background-color 200ms ease-in-out 0s;
+}
+
+.sub-news-feed-post-modal-body-form-event-icon-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgb(245, 251, 255);
+  border: none;
+  border-radius: 100vh;
+}
+
+.sub-news-feed-post-modal-body-form-event-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  color: rgb(0, 118, 182);
+  width: 24px;
+  height: 24px;
+}
+
+.sub-news-feed-post-modal-body-form-event-text {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+.news-feed-post-modal-body-form-poll-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline-flex;
+  margin-right: 12px;
+  transition: opacity 200ms ease-in-out 0s;
+  opacity: 1;
+}
+
+.sub-news-feed-post-modal-body-form-poll-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 100vh;
+  padding-right: 24px;
+  transition: background-color 200ms ease-in-out 0s;
+}
+
+.sub-news-feed-post-modal-body-form-poll-icon-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgb(252, 247, 255);
+  border: none;
+  border-radius: 100vh;
+}
+
+.sub-news-feed-post-modal-body-form-poll-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  color: rgb(155, 0, 203);
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.sub-news-feed-post-modal-body-form-poll-text {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+.news-feed-post-modal-body-form-safety-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline-flex;
+  margin-right: 12px;
+  transition: opacity 200ms ease-in-out 0s;
+  opacity: 1;
+}
+
+.sub-news-feed-post-modal-body-form-safety-container {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 100vh;
+  padding-right: 24px;
+  transition: background-color 200ms ease-in-out 0s;
+}
+
+.news-feed-post-modal-body-form-safety-icon-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background-color: rgb(255, 245, 245);
+  border: none;
+  border-radius: 100vh;
+}
+
+.news-feed-post-modal-body-form-safety-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  color: rgb(201, 11, 17);
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.news-feed-post-modal-body-form-safety-text {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  margin-left: 12px;
+}

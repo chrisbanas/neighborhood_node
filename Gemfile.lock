@@ -69,6 +69,8 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    autoprefixer-rails (10.4.13.0)
+      execjs (~> 2)
     aws-eventstream (1.2.0)
     aws-partitions (1.755.0)
     aws-sdk-core (3.171.0)
@@ -103,6 +105,7 @@ GEM
     debug_inspector (1.1.0)
     diff-lcs (1.5.0)
     erubi (1.12.0)
+    execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -215,6 +218,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  autoprefixer-rails (~> 10.4.13.0)
   aws-sdk-s3
   bcrypt (~> 3.1.7)
   better_errors

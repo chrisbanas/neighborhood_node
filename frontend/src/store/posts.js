@@ -1,3 +1,5 @@
+import csrfFetch from "./csrf.js";
+
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS'
 export const RECEIVE_POST = 'posts/RECEIVE_POST'
 export const REMOVE_POST = 'posts/REMOVE_POST'
@@ -14,7 +16,6 @@ export function receivePost(post) {
     type: RECEIVE_POST,
     post
   }
-
 }
 
 export function removePost(postId) {
@@ -23,7 +24,6 @@ export function removePost(postId) {
     postId
   }
 }
-
 
 export function getPost(postId) {
   return function (state) {
@@ -36,34 +36,37 @@ export function getPosts(state) {
 }
 
 export const fetchPosts = () => (dispatch) => (
-  fetch(`/api/posts`)
+  csrfFetch(`/api/posts`)
     .then(response => response.json())
     .then(data => dispatch(receivePosts(data)))
     .catch(error => console.error('something went wrong'))
 )
 
 export const fetchPost = postId => (dispatch) => (
-  fetch(`/api/posts/${postId}`)
+  csrfFetch(`/api/posts/${postId}`)
     .then(response => response.json())
     .then(data => dispatch(receivePost(data)))
     .catch(error => console.error('something went wrong'))
 )
 
 export const createPost = post => (dispatch) => (
-  fetch(`/api/posts`, {
+  csrfFetch(`/api/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(post)
+    body: JSON.stringify({post})
   })
     .then(response => response.json())
-    .then(data => dispatch(receivePost(data)))
+    .then(data => {
+      dispatch(receivePost(data));
+      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts
+    })
     .catch(error => console.error('something went wrong'))
 )
 
 export const updatePost = post => (dispatch) => (
-  fetch(`/api/posts/${post.id}`, {
+  csrfFetch(`/api/posts/${post.id}`, {
     method: `PATCH`,
     headers: {
       'Content-Type': 'application/json'
@@ -71,12 +74,15 @@ export const updatePost = post => (dispatch) => (
     body: JSON.stringify(post)
   })
     .then(res => res.json())
-    .then(data => dispatch(receivePost(data)))
+    .then(data => {
+      dispatch(receivePost(data));
+      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts
+    })
     .catch(error => console.error('something went wrong'))
 );
 
 export const deletePost = postId => (dispatch) => (
-  fetch(`/api/posts/${postId}`, {
+  csrfFetch(`/api/posts/${postId}`, {
     method: 'DELETE'
   })
     .then(response => {

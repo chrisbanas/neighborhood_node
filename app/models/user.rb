@@ -27,11 +27,13 @@ class User < ApplicationRecord
         format: { with: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..255 }, allow_nil: true
-    validates :first_name, presence: true
-    validates :last_name, presence: true
 
     before_validation :ensure_session_token
 
+    # Other validations
+
+    validates :first_name, presence: true
+    validates :last_name, presence: true
 
     # Active Record Associations
 
@@ -48,13 +50,13 @@ class User < ApplicationRecord
 
     has_many :comments,
     foreign_key: :author_id,
-    dependent: :destroy,
-    inverse_of: :author
+    inverse_of: :author,
+    dependent: :destroy
 
     has_many :likes,
     foreign_key: :liker_id,
-    dependent: :destroy,
-    inverse_of: :liker
+    inverse_of: :liker,
+    dependent: :destroy
 
     # Polymorphic
     has_many :liked_posts,

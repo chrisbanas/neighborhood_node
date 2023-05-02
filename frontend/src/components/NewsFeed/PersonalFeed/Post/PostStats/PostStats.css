@@ -1,0 +1,233 @@
+.parent-news-feed-posts-stats-container {
+  padding-left: 16px;
+}
+
+.child-news-feed-posts-stats-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #666666;
+  position: relative;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .child-news-feed-posts-stats-container {
+      padding-bottom: 2px;
+  }
+}
+
+.grandchild-news-feed-posts-stats-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .parent-news-feed-posts-stats-count-container {
+      margin-top: 0px;
+      margin-bottom: 0px;
+  }
+}
+
+.parent-news-feed-posts-stats-count-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.child-news-feed-posts-stats-count-container {
+  float: right;
+  display: flex;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.news-feed-live-post-stats-count {
+  margin-bottom: 25%;
+  margin-left: 2px;
+    text-align: right;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: #000000;
+    letter-spacing: -0.06px;
+}
+
+.news-feed-post-comment-like-share-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+}
+
+.news-feed-post-like-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  margin-right: 0px
+}
+
+.news-feed-post-like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  line-height: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  backface-visibility: hidden;
+  border: none;
+  transition: all 100ms;
+  user-select: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--fg-secondary);
+  background-color: transparent;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  margin: 0;
+  text-rendering: auto;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .news-feed-post-like-icon {
+      width: 20px;
+      height: 20px;
+  }
+}
+
+.news-feed-post-like-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  color: rgb(0, 0, 0);
+  fill: red;
+}
+
+
+.news-feed-post-like-button-title-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  margin-left: 4px;
+}
+
+.news-feed-post-like-button-title {
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  line-height: 20px;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  color: rgb(0, 0, 0);
+}
+
+/* .news-feed-post-share-menu {
+  position: absolute;
+  top: 24px;
+  right: -16px;
+  z-index: 1;
+  display: none;
+  width: 160px;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+} */
+
+.news-feed-social-share-company-logo {
+  vertical-align: middle;
+  border: 0;
+  height: 20px;
+  width: 20px;
+  overflow: clip;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.post-stats-and-comments-seperator {
+  box-sizing: border-box;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  border-width: 1px 0px 0px;
+  border-right-style: initial;
+  border-bottom-style: initial;
+  border-left-style: initial;
+  border-color: initial;
+  border-image: initial;
+  border-top-style: solid;
+  margin: 0px 12px;
+  margin-block: 0px;
+  color: rgb(229, 229, 229);
+}
+
+.parent-news-feed-comment-user-info-container {
+  padding-left: 16px;
+  padding-top: 3%;
+}

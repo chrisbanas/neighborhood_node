@@ -7,7 +7,6 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
     if @post&.save
       render :show
     else
@@ -43,8 +42,8 @@ class Api::PostsController < ApplicationController
   end
 
   def like
-    like = Like.new(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
-    if like.save
+    @like = Like.new(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
+    if @like.save
       render json: like
     else
       render json: like.errors.full_messages, status: :unprocessable_entity
@@ -52,8 +51,8 @@ class Api::PostsController < ApplicationController
   end
 
   def unlike
-    like = Like.find_by(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
-    if like.destroy
+    @like = Like.find_by(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
+    if @like.destroy
       render json: like
     else
       render json: like.errors.full_messages, status: :unprocessable_entity

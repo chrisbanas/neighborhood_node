@@ -20,6 +20,5 @@ class Neighborhood < ApplicationRecord
   foreign_key: :neighborhood_id,
   class_name: :Post,
   inverse_of: :neighborhood
-  # dependent: :destroy - do I need this?
 
 end

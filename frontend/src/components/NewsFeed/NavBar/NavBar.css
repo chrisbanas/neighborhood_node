@@ -30,26 +30,6 @@
   overflow: clip;
 }
 
-.github-logo img {
-  display: block;
-  height: 25px;
-  max-width: unset;
-  border: 0;
-  box-sizing: border-box;
-  overflow: clip;
-  margin-top: 70%;
-}
-
-.linkedin-logo img {
-  display: block;
-  height: 25px;
-  max-width: unset;
-  border: 0;
-  box-sizing: border-box;
-  overflow: clip;
-  margin-top: 60%;
-}
-
 .news-feed-search-container {
   width: 560px;
   height: 36px;

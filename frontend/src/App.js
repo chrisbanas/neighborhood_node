@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import Splash from "./components/Splash";
 import NewsFeed from "./components/NewsFeed";
+import Profile from "./components/Profile";
 
 
 export default function App() {
@@ -11,6 +12,10 @@ export default function App() {
     <>
 
         <Switch>
+
+        <Route path={"/profile"}>
+            <Profile />
+          </Route>
 
         <Route path={"/news_feed"}>
             <NewsFeed />
