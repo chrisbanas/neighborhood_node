@@ -15,8 +15,8 @@ export default function PostStats({ post }) {
   // used to set the like button to red
 
   const [isLiked, setIsLiked] = useState(false);
-  const [likeableId, setlikeableId] = useState(post.id);
-  const [likeableType, setlikeableType] = useState("Post");
+  // const [likeableId, setlikeableId] = useState(post.id);
+  // const [likeableType, setlikeableType] = useState("Post");
 
   // Like.create!( liker: user2, likeable_id: post2.id, likeable_type: :Post )
   // sessionUser, post.id, "Post"
@@ -25,11 +25,11 @@ export default function PostStats({ post }) {
     e.preventDefault();
     const like = {
       liker: sessionUser,
-      likeableId: likeableId,
-      likeableType: likeableType
+      likeableId: post.id,
+      likeableType: "Post"
   };
     // if (isLiked) {
-    //   dispatch(deleteLike(like));
+    //   dispatch(deleteLike(like.id));
     // } else {
     //   dispatch(createLike(like));
     // }

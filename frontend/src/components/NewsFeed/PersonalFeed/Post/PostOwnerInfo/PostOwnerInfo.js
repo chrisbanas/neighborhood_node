@@ -69,7 +69,7 @@ export default function PostOwnerInfo({ post }) {
             {showPopup && (
               <div className="news-feed-post-user-profile-popup">
                 <div className="sub-news-feed-post-user-profile-popup">
-                  <img className="popup-news-feed-user-avatar-image" alt="user avatar" src={post.userPhoto} />
+                  <img className="popup-news-feed-user-avatar-image" alt="user avatar" src={post.userPhoto ? post.userPhoto : profile} />
                   <div>
                     <div className="popup-news-feed-post-neighborhood-name">
                       {post.authorFirstName}&nbsp;{post.authorLastName}

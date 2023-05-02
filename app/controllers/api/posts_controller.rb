@@ -42,7 +42,7 @@ class Api::PostsController < ApplicationController
   end
 
   def like
-    @like = Like.new(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
+    @like = Like.new(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Post)
     if @like.save
       render json: like
     else
@@ -51,7 +51,7 @@ class Api::PostsController < ApplicationController
   end
 
   def unlike
-    @like = Like.find_by(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
+    @like = Like.find_by(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Post)
     if @like.destroy
       render json: like
     else
