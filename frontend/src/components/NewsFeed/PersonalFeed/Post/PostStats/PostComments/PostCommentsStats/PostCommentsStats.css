@@ -1,8 +1,8 @@
-.parent-news-feed-posts-stats-container {
+.parent-news-feed-comments-stats-container {
   padding-left: 16px;
 }
 
-.child-news-feed-posts-stats-container {
+.child-news-feed-comments-stats-container {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -16,12 +16,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .child-news-feed-posts-stats-container {
+  .child-news-feed-comments-stats-container {
       padding-bottom: 2px;
   }
 }
 
-.grandchild-news-feed-posts-stats-container {
+.grandchild-news-feed-comments-stats-container {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -34,13 +34,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .parent-news-feed-posts-stats-count-container {
+  .parent-news-feed-comments-stats-count-container {
       margin-top: 0px;
       margin-bottom: 0px;
   }
 }
 
-.parent-news-feed-posts-stats-count-container {
+.parent-news-feed-comments-stats-count-container {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -57,7 +57,7 @@
   align-items: center;
 }
 
-.child-news-feed-posts-stats-count-container {
+.child-news-feed-comments-stats-count-container {
   float: right;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.news-feed-live-post-stats-count {
+.news-feed-live-comments-stats-count {
   margin-bottom: 25%;
   margin-left: 2px;
     text-align: right;
@@ -82,7 +82,7 @@
     letter-spacing: -0.06px;
 }
 
-.news-feed-post-comment-like-share-container {
+.news-feed-comments-comment-like-share-container {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -94,7 +94,7 @@
   display: flex;
 }
 
-.news-feed-post-like-container {
+.news-feed-comments-like-container {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -107,7 +107,7 @@
   margin-right: 0px
 }
 
-.news-feed-post-like-button {
+.news-feed-comments-like-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,13 +137,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .news-feed-post-like-icon {
+  .news-feed-comments-like-icon {
       width: 20px;
       height: 20px;
   }
 }
 
-.news-feed-post-like-icon {
+.news-feed-comments-like-icon {
   overflow: hidden;
   box-sizing: border-box;
   margin-block: 0px;
@@ -159,7 +159,7 @@
 }
 
 
-.news-feed-post-like-button-title-container {
+.news-feed-comments-like-button-title-container {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -171,7 +171,7 @@
   margin-left: 4px;
 }
 
-.news-feed-post-like-button-title {
+.news-feed-comments-like-button-title {
   vertical-align: middle;
   font-weight: 600;
   font-size: 13px;
@@ -184,7 +184,7 @@
   color: rgb(0, 0, 0);
 }
 
-/* .news-feed-post-share-menu {
+/* .news-feed-comments-share-menu {
   position: absolute;
   top: 24px;
   right: -16px;
@@ -197,7 +197,7 @@
   box-shadow: 0 2px 4px rgba(0,0,0,.1);
 } */
 
-.news-feed-social-share-company-logo {
+.news-feed-comments-social-share-company-logo {
   vertical-align: middle;
   border: 0;
   height: 20px;
@@ -205,29 +205,4 @@
   overflow: clip;
   border-color: transparent;
   background-color: transparent;
-}
-
-.post-stats-and-comments-seperator {
-  box-sizing: border-box;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 20px;
-  border-width: 1px 0px 0px;
-  border-right-style: initial;
-  border-bottom-style: initial;
-  border-left-style: initial;
-  border-color: initial;
-  border-image: initial;
-  border-top-style: solid;
-  margin: 0px 12px;
-  margin-block: 0px;
-  color: rgb(229, 229, 229);
-}
-
-.parent-news-feed-comment-user-info-container {
-  padding-left: 16px;
-  padding-top: 3%;
 }
