@@ -102,6 +102,8 @@ export default function PostComments({ comment }) {
           </div>
         </div>
       </div>
+      <p>{comment.body}</p>
+
 
       <PostCommentsStats comment={comment}/>
 
