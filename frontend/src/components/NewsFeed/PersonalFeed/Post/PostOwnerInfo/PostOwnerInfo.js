@@ -83,6 +83,7 @@ export default function PostOwnerInfo({ post }) {
           </div>
 
           {/* <!-- Edit / delete dropdown --> */}
+          {sessionUser && sessionUser.id === post.authorId && (
           <div className="news-feed-post-delete-edit-dropdown-container">
             <div className="sub-news-feed-post-delete-edit-dropdown-container" onClick={handleDropdownClick}>
               <svg className="news-feed-post-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
@@ -102,7 +103,7 @@ export default function PostOwnerInfo({ post }) {
               )}
             </div>
           </div>
-
+        )}
         </div>
       </div>
     </>
