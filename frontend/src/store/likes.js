@@ -1,5 +1,7 @@
 import csrfFetch from "./csrf.js";
 
+import { RECEIVE_POSTS } from "./posts.js";
+
 export const RECEIVE_LIKES = 'likes/RECEIVE_LIKES'
 export const RECEIVE_LIKE = 'likes/RECEIVE_LIKE'
 export const REMOVE_LIKE = 'likes/REMOVE_LIKE'
@@ -32,8 +34,10 @@ export function getLike(likeId) {
   }
 }
 
-export function getLikes(state) {
-  return state.likes ? Object.values(state.likes) : []
+export function getPostLikes(post) {
+  return function (state) {
+    return state.likes ? Object.values(state.likes).filter(like => post.id === like.likeableId && like.likeableType === "Post") : []
+  }
 }
 
 // export const fetchLikes = () => (dispatch) => (
@@ -91,13 +95,13 @@ export const createLike = like => (dispatch) => (
 
 // unlike_api_post POST   /api/posts/:id/unlike
 
-export const deleteLike = ({liker, likeableId, likeableType }) => (dispatch) => (
+export const deleteLike = ({id, liker, likeableId, likeableType }) => (dispatch) => (
   csrfFetch(`/api/${likeableType.toLowerCase()}s/${likeableId}/unlike`, {
     method: 'DELETE'
   })
     .then(response => {
       if (response.ok) {
-        dispatch(removeLike())
+        dispatch(removeLike(id))
       }
     })
     .catch(error => console.error('something went wrong'))
@@ -108,13 +112,15 @@ export default function likesReducer(state = {}, action) {
   const newState = { ...state };
   switch (action.type) {
     case RECEIVE_LIKES:
-      return action.likes //action.payload.likes
+      return action.likes
     case RECEIVE_LIKE:
       newState[action.like.id] = action.like
       return newState
     case REMOVE_LIKE:
       delete newState[action.likeId]
       return newState
+    case RECEIVE_POSTS:
+      return action.payload.likes
     default:
       return state
   }

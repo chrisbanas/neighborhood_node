@@ -1,7 +1,9 @@
 class Api::PostsController < ApplicationController
 
+# i can filer the posts here by neighborhood
+
   def index
-    @posts = Post.all
+    @posts = Post.all.includes(:likes)
     render :index
   end
 
@@ -44,7 +46,7 @@ class Api::PostsController < ApplicationController
   def like
     @like = Like.new(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Post)
     if @like.save
-      render json: like
+      render :like
     else
       render json: like.errors.full_messages, status: :unprocessable_entity
     end
@@ -53,7 +55,7 @@ class Api::PostsController < ApplicationController
   def unlike
     @like = Like.find_by(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Post)
     if @like.destroy
-      render json: like
+      render :like
     else
       render json: like.errors.full_messages, status: :unprocessable_entity
     end

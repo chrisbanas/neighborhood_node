@@ -36,11 +36,7 @@ export default function CreatePostBox() {
   }
 
   // Listen for changes to the posts state in Redux and update the component's state
-  useEffect(() => {
-    if (posts.length > 0) {
-      setBody("");
-    }
-  }, [posts]);
+
 
 
   // Modal for Post
