@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost } from "../../../../../../store/posts";
+import { deleteComment } from "../../../../../../store/comments";
 import PostCommentsStats from "./PostCommentsStats/PostCommentsStats";
 import "./PostComments.css";
+import profile from '../../../../../../assets/profile.png'
 
 export default function PostComments({ comment }) {
 
@@ -33,7 +34,7 @@ export default function PostComments({ comment }) {
 
   const handleDeleteClick = (e) => {
     e.preventDefault();
-    dispatch(deletePost(comment.id))
+    dispatch(deleteComment(comment.id))
   };
 
 
@@ -49,7 +50,7 @@ export default function PostComments({ comment }) {
             <span className="comment-news-feed-owner-avatar" >
               <div className="comment-news-feed-owner-avatar-image">
                 <img
-                  className="news-feed-user-avatar-image" alt="user avatar" src={comment.userPhoto} />
+                  className="news-feed-user-avatar-image" alt="user avatar" src={comment.userPhoto ? comment.userPhoto : profile} />
               </div>
             </span>
           </div>
@@ -68,7 +69,7 @@ export default function PostComments({ comment }) {
           {showPopup && (
             <div className="news-feed-comment-user-profile-popup">
               <div className="sub-news-feed-comment-user-profile-popup">
-                <img className="popup-news-feed-comment-user-avatar-image" alt="user avatar" src={comment.userPhoto} />
+                <img className="popup-news-feed-comment-user-avatar-image" alt="user avatar" src={comment.userPhoto ? comment.userPhoto : profile} />
                 <div className="popup-news-feed-comment-user-info-container">
                   <div className="popup-news-feed-comment-user-name">
                     {comment.authorFirstName}&nbsp;{comment.authorLastName}

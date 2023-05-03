@@ -19,7 +19,7 @@ json.set! @post.id do
         json.neighborhood_name comment.author.neighborhood.name
         json.num_like comment.likes.length
         json.photo_urls comment.photo.map {|photo| url_for(photo)}
-        json.user_photo url_for(comment.author.photo)
+        json.user_photo url_for(comment.author.photo) if comment.author.photo.present?
       end
     end
   end

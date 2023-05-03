@@ -4,10 +4,10 @@ export const RECEIVE_COMMENTS = 'comments/RECEIVE_COMMENTS'
 export const RECEIVE_COMMENT = 'comments/RECEIVE_COMMENT'
 export const REMOVE_COMMENT = 'comments/REMOVE_COMMENT'
 
-export function receiveComments(comments) {
+export function receiveComments(payload) {
   return {
     type: RECEIVE_COMMENTS,
-    comments // maybe call this payload because it contains more than just comments.
+    payload 
   }
 }
 
@@ -58,7 +58,10 @@ export const createComment = comment => (dispatch) => (
     body: JSON.stringify({comment})
   })
     .then(response => response.json())
-    .then(data => dispatch(receiveComment(data)))
+    .then(data => {
+      dispatch(receiveComment(data));
+      dispatch(fetchComments())
+    })
     .catch(error => console.error('something went wrong'))
 )
 
@@ -92,7 +95,7 @@ export default function commentsReducer(state = {}, action) {
   const newState = { ...state };
   switch (action.type) {
     case RECEIVE_COMMENTS:
-      return action.comments //action.payload.comments
+      return action.payload.comments
     case RECEIVE_COMMENT:
       newState[action.comment.id] = action.comment
       return newState

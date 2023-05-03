@@ -142,7 +142,7 @@ export default function PostStats({ post }) {
       {/* Conditionally render post comments */}
       {showComments && post.comments && Object.keys(post.comments).length > 0 && (
         Object.values(comments).map(comment => (
-        <div className="parent-news-feed-comment-user-info-container">
+        <div className="parent-news-feed-comment-user-info-container" key={comment.id}>
           <PostComments comment={comment} />
         </div>
         ))

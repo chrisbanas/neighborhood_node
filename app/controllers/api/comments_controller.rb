@@ -1,23 +1,16 @@
 class Api::CommentsController < ApplicationController
 
   def index
-    case
-    when params[:author_id]
-      @comments = Comment.where(author_id: params[:author_id])
-    when params[:post_id]
-      @comments = Comment.where(post_id: params[:post_id])
-    else
-      @comments = Comment.all
-    end
-    render json: comments
+    @comments = Comment.all #.includes(:likes) # this optimizes for the n2 query in the views file
+    render :index
   end
 
   def create
     @comment = Comment.new(comment_params)
-    if @comment.save
-      render json: comment, status: :created
+    if @comment&.save
+      render json: @comment
     else
-      render json: comment.errors.full_messages, status: :unprocessable_entity
+      render json: {errors: @comment.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -32,8 +25,9 @@ class Api::CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    render json: comment
+    if @comment&.destroy
+      head :no_content
+    end
   end
 
   def like

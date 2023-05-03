@@ -13,6 +13,7 @@ export default function CreatePostBox() {
   const [body, setBody] = useState("");
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
+  
   const posts = useSelector(state => state.posts);
 
   const handlePostSubmit = (e) => {
