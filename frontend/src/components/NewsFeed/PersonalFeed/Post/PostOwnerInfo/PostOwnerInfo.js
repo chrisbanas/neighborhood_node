@@ -79,6 +79,9 @@ export default function PostOwnerInfo({ post }) {
                     </div>
                   </div>
                 </div>
+                <div>
+                  {post.authorBio}
+                </div>
               </div>
             )}
           </div>

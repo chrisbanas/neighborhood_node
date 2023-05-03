@@ -6,6 +6,7 @@ json.posts do
       json.user_photo url_for(post.author.photo) if post.author.photo.present?
       json.author_first_name post.author.first_name
       json.author_last_name post.author.last_name
+      json.author_bio post.author.bio
       json.neighborhood_name post.neighborhood.name
       json.num_like post.likes.length
       json.num_comments post.comments.length
