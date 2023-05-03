@@ -89,6 +89,7 @@ export const deleteComment = commentId => (dispatch) => (
     .then(response => {
       if (response.ok) {
         dispatch(removeComment(commentId))
+        dispatch(fetchPosts())
       }
     })
     .catch(error => console.error('something went wrong'))

@@ -62,7 +62,7 @@ export const createPost = post => (dispatch) => (
     .then(response => response.json())
     .then(data => {
       dispatch(receivePost(data));
-      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts
+      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts need this or it won't auto update
     })
     .catch(error => console.error('something went wrong'))
 )
