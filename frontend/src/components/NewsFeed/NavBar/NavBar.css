@@ -130,3 +130,121 @@
   vertical-align: middle;
   overflow: clip;
 }
+
+.nav-news-feed-user-popout-avatar-image {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  width: 80px;
+  object-fit: cover;
+  height: 80px;
+  display: inline-block;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.nav-parent-news-feed-user-avatar-container {
+  position: relative;
+}
+
+.nav-parent-news-feed-user-popout-container {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.nav-news-feed-user-popout-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.nav-news-feed-user-popout-name {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue-Medium, "Helvetica Neue Medium", Helvetica-Bold, Roboto-Medium, "Segoe UI Semibold", Arial-Bold, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.nav-news-feed-user-popout-signout-button {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  appearance: none;
+  border: 0.5px solid rgb(229, 229, 229);
+  cursor: pointer;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(229, 229, 229);
+  color: rgb(0, 0, 0);
+  border-radius: 100vh;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  overflow: visible;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: center;
+}
+
+.nav-news-feed-user-popout-signout-button-icon {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  vertical-align: text-bottom;
+  width: 24;
+  height: 24;
+  fill: none;
+}
+
+.nav-news-feed-user-popout-close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0;
+}

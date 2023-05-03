@@ -40,32 +40,6 @@ export function getPostLikes(post) {
   }
 }
 
-// export const fetchLikes = () => (dispatch) => (
-//   fetch(`/api/likes`)
-//     .then(response => response.json())
-//     .then(data => dispatch(receiveLikes(data)))
-//     .catch(error => console.error('something went wrong'))
-// )
-
-// export const fetchLike = likeId => (dispatch) => (
-//   fetch(`/api/likes/${likeId}`)
-//     .then(response => response.json())
-//     .then(data => dispatch(receiveLike(data)))
-//     .catch(error => console.error('something went wrong'))
-// )
-
-// thunk action
-
-// Like.create!( liker: user2, likeable_id: post2.id, likeable_type: :Post )
-
- // sessionUser, post.id, "Post"
-
-// like_api_post - /api/posts/:id/like
-
-
-// like_api_comment POST   /api/comments/:id/like
-// unlike_api_comment POST   /api/comments/:id/unlike
-
 export const createLike = like => (dispatch) => (
   csrfFetch(`/api/${like.likeableType.toLowerCase()}s/${like.likeableId}/like`, {
     method: 'POST',
@@ -79,22 +53,6 @@ export const createLike = like => (dispatch) => (
     .catch(error => console.error('something went wrong'))
 )
 
-// export const updateLike = like => (dispatch) => (
-//   fetch(`/api/likes/${like.id}`, {
-//     method: `PATCH`,
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(like)
-//   })
-//     .then(res => res.json())
-//     .then(data => dispatch(receiveLike(data)))
-//     .catch(error => console.error('something went wrong'))
-// );
-
-
-// unlike_api_post POST   /api/posts/:id/unlike
-
 export const deleteLike = ({id, liker, likeableId, likeableType }) => (dispatch) => (
   csrfFetch(`/api/${likeableType.toLowerCase()}s/${likeableId}/unlike`, {
     method: 'DELETE'
@@ -106,7 +64,6 @@ export const deleteLike = ({id, liker, likeableId, likeableType }) => (dispatch)
     })
     .catch(error => console.error('something went wrong'))
 )
-
 
 export default function likesReducer(state = {}, action) {
   const newState = { ...state };

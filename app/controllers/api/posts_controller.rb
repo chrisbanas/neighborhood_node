@@ -3,7 +3,7 @@ class Api::PostsController < ApplicationController
 # i can filer the posts here by neighborhood
 
   def index
-    @posts = Post.all.includes(:likes)
+    @posts = Post.all.includes(:likes) # this optimizes for the n2 query in the views file
     render :index
   end
 
