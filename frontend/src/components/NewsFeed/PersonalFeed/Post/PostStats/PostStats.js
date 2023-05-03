@@ -119,11 +119,14 @@ export default function PostStats({ post }) {
                     {isMenuOpen && (
                       <div className="news-feed-post-share-menu">
                         <button>
-                          <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
+                          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.neighborhoodnode.com/">
+                            <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
+                          </a>
+                          <script async src="https://platform.twitter.com/widgets.js" ></script>
                         </button>
                         <button>
                           <a href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw">
-                            <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="twitter" />
+                            <img className="news-feed-social-share-company-logo" src="https://www.vhv.rs/dpng/d/146-1461722_twitter-circle-twitter-logo-png-transparent-png.png" alt="twitter" />
                           </a>
                           <script async src="https://platform.twitter.com/widgets.js" ></script>
                         </button>

@@ -187,8 +187,8 @@ export default function PostComments({ comment }) {
                   <form className="news-feed-post-modal-body-form" noValidate="">
                     <div className="news-feed-post-modal-body-form-container">
                       <div className="news-feed-post-modal-body-form-text-area-container">
-                        <textarea className="news-feed-post-modal-body-form-text-area" placeholder={comment.body} defaultValue={comment.body} spellCheck="false" value={body} onChange={e => setBody(e.target.value)} required>
-                        </textarea>
+                        <textarea className="news-feed-post-modal-body-form-text-area" placeholder={comment.body} spellCheck="false" value={body} onChange={e => setBody(e.target.value)} required>
+                        {comment.body}</textarea>
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">

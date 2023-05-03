@@ -265,6 +265,3 @@ Post.first(10).each_with_index do |post, index|
 end
 
 puts "Done!"
-
-
-Like.create!(liker: user, likeable_id: post2.id, likeable_type: :Post)

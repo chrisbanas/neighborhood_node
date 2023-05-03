@@ -49,7 +49,7 @@ class Api::PostsController < ApplicationController
     if @like.save
       render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -58,7 +58,7 @@ class Api::PostsController < ApplicationController
     if @like.destroy
       render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 

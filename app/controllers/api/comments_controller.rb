@@ -1,7 +1,11 @@
 class Api::CommentsController < ApplicationController
 
+  # my index is filtering to show only comments for the neighborhood of the current user
+
   def index
-    @comments = Comment.all #.includes(:likes) # this optimizes for the n2 query in the views file
+    @comments = Comment.joins(author: :neighborhood)
+      .where(neighborhoods: { id: current_user.neighborhood_id })
+      .includes(:likes)
     render :index
   end
 
@@ -46,7 +50,7 @@ class Api::CommentsController < ApplicationController
     if @like.save
       render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -55,7 +59,7 @@ class Api::CommentsController < ApplicationController
     if @like.destroy
       render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 
