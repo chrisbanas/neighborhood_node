@@ -41,6 +41,12 @@ export function getPostLikes(post) {
   }
 }
 
+export function getCommentLikes(comment) {
+  return function (state) {
+    return state.likes ? Object.values(state.likes).filter(like => comment.id === like.likeableId && like.likeableType === "Comment") : []
+  }
+}
+
 export const createLike = like => (dispatch) => (
   csrfFetch(`/api/${like.likeableType.toLowerCase()}s/${like.likeableId}/like`, {
     method: 'POST',

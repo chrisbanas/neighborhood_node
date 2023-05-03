@@ -23,6 +23,17 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment = Comment.find_by(id: params[:id])
+    if @comment&.update(comment_params)
+      render :show
+    elsif !@comment
+      render json: ['Comment not found.'], status: 400
+    else
+      render json: {errors: @comment.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     if @comment&.destroy
@@ -31,7 +42,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def like
-    @like = Like.new(author_id: current_user.id, likeable_id: params[:id], likeable_type: :Comment)
+    @like = Like.new(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Comment)
     if @like.save
       render :like
     else
@@ -40,7 +51,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def unlike
-    @like = Like.find_by(author_id: current_user.id, likeable_id: params[:id], likeable_type: :Comment)
+    @like = Like.find_by(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Comment)
     if @like.destroy
       render :like
     else

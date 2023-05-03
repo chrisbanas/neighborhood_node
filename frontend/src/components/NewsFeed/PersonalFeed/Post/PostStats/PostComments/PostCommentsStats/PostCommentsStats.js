@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getCommentLikes } from "../../../../../../../store/likes";
+import { createLike, deleteLike } from "../../../../../../../store/likes";
 import "./PostCommentsStats.css";
 
 export default function PostCommentsStats({ comment }) {
@@ -7,28 +9,26 @@ export default function PostCommentsStats({ comment }) {
 
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const commentLikes = useSelector(getCommentLikes(comment))
+  const sessionUserLike = commentLikes.find(like => sessionUser?.id === like.likerId) ? commentLikes.find(like => sessionUser?.id === like.likerId) : false
 
   // used to set the like button to red
+  const [isLiked, setIsLiked] = useState(sessionUserLike ? true : false);
 
-  const [isLiked, setIsLiked] = useState(false);
-  // const [likeableId, setlikeableId] = useState(post.id);
-  // const [likeableType, setlikeableType] = useState("Post");
 
-  // Like.create!( liker: user2, likeable_id: post2.id, likeable_type: :Post )
-  // sessionUser, post.id, "Post"
-
+  // handles the like thunk action
   const handleLikeClick = (e) => {
     e.preventDefault();
-    // const like = {
-    //   liker: sessionUser,
-    //   likeableId: likeableId,
-    //   likeableType: likeableType
-    // };
-    // if (isLiked) {
-    //   dispatch(deleteLike(like));
-    // } else {
-    //   dispatch(createLike(like));
-    // }
+    const like = {
+      liker: sessionUser,
+      likeableId: comment.id,
+      likeableType: "Comment"
+  };
+    if (isLiked) {
+      dispatch(deleteLike({id: sessionUserLike.id, liker: sessionUser, likeableId: comment.id, likeableType: "Comment" }));
+    } else {
+      dispatch(createLike(like));
+    }
     setIsLiked(!isLiked);
   };
 
@@ -51,7 +51,7 @@ export default function PostCommentsStats({ comment }) {
             <div className="parent-news-feed-comments-stats-count-container">
               <div className="child-news-feed-comments-stats-count-container">
                 <p className="news-feed-live-comments-stats-count">
-                  {comment.numLike} Likes
+                  {commentLikes.length} Likes
                 </p>
               </div>
             </div>
