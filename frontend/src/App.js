@@ -12,6 +12,7 @@ export default function App() {
 
   const sessionUser = useSelector(state => state.session.user);
 
+  // Forces users to the login page if they are not siged in
   const PrivateRoute = ({ component: Component, ...rest }) => {
     const isAuthenticated = Boolean(sessionUser);
     return (
@@ -21,6 +22,7 @@ export default function App() {
     );
   };
 
+  // Prevents users from seeing the NewsFeed or Splash page when logged in
   const AuthRoute = ({ component: Component, ...rest }) => {
     const sessionUser = useSelector(state => state.session.user);
     const isAuthenticated = Boolean(sessionUser);

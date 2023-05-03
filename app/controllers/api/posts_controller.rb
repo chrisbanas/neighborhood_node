@@ -1,9 +1,10 @@
 class Api::PostsController < ApplicationController
 
-# i can filer the posts here by neighborhood
 
+  # my index is filtering to show only posts for the neighborhood of the current user and then ordering them to show the newest first
   def index
-    @posts = Post.all.includes(:likes) # this optimizes for the n2 query in the views file
+    neighborhood_id = current_user.neighborhood_id
+    @posts = Post.where(neighborhood_id: neighborhood_id).includes(:likes).order(updated_at: :desc)
     render :index
   end
 
