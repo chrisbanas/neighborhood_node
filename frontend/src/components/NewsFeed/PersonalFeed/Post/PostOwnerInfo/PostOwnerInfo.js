@@ -73,7 +73,7 @@ export default function PostOwnerInfo({ post }) {
 
 
 
-  // Modal for Post
+  // Modal for Edit Post
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -182,7 +182,7 @@ export default function PostOwnerInfo({ post }) {
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
                       <button className="news-feed-post-modal-next-button" onClick={handleEditPost} disabled={!body}>
-                        <span className="news-feed-post-modal-next-button-text">Post</span>
+                        <span className="news-feed-post-modal-next-button-text">Edit</span>
                       </button>
                     </div>
                   </div>
