@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf.js";
+import { fetchPost } from "./posts.js";
 
 import { RECEIVE_POSTS } from "./posts.js";
 
@@ -49,9 +50,14 @@ export const createLike = like => (dispatch) => (
     body: JSON.stringify({like})
   })
     .then(response => response.json())
-    .then(data => dispatch(receiveLike(data)))
+    .then(data => {
+      dispatch(receiveLike(data));
+      dispatch(fetchPost(like.likeableId)); // refetch the post that was just updated
+    })
     .catch(error => console.error('something went wrong'))
 )
+
+
 
 export const deleteLike = ({id, liker, likeableId, likeableType }) => (dispatch) => (
   csrfFetch(`/api/${likeableType.toLowerCase()}s/${likeableId}/unlike`, {

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostLikes } from "../../../../../store/likes";
+import { fetchPost } from "../../../../../store/posts";
 import { createLike, deleteLike } from "../../../../../store/likes";
 import PostComments from "./PostComments/PostComments";
 import './PostStats.css';
@@ -39,6 +40,7 @@ export default function PostStats({ post }) {
     setIsLiked(!isLiked);
   };
 
+
   // share menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -66,7 +68,7 @@ export default function PostStats({ post }) {
             <div className="parent-news-feed-posts-stats-count-container">
               <div className="child-news-feed-posts-stats-count-container">
                 <p className="news-feed-live-post-stats-count">
-                  {post.numLike} Likes
+                  {postLikes.length} Likes
                 </p>
               </div>
             </div>
