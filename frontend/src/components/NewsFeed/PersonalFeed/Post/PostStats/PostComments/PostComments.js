@@ -79,8 +79,8 @@ export default function PostComments({ comment }) {
                   </div>
                 </div>
               </div>
-              <div>
-                {comment.authorBio}
+              <div className="popup-news-feed-comment-user-bio-container">
+                <p className="popup-news-feed-comment-user-bio">{comment.authorBio}</p>
               </div>
             </div>
           )}

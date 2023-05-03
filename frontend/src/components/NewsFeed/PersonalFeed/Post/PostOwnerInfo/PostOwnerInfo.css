@@ -124,7 +124,7 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   padding: 16px;
-  width: 70%;
+  width: calc(300px + #{$popup-news-feed-post-user-name}); /* this seems to help */
   z-index: 1;
   top: 50%;
   transform: translateY(-50%);
@@ -151,6 +151,7 @@
   flex-direction: column;
   padding-left: 10px;
   padding-top: 8%;
+  margin-right: 20px;
 }
 
 .popup-news-feed-post-user-name {
@@ -160,7 +161,7 @@
   -webkit-font-smoothing: antialiased;
   font-family: Lato, "Lucida Grande", Tahoma, sans-serif;
   font-size: 34px;
-  font-weight: 900;
+  font-weight: 700;
   font-style: italic;
   white-space: nowrap;
   overflow: hidden;
@@ -181,6 +182,40 @@
   line-height: 20px;
   color: rgb(102, 102, 102);
 }
+
+.popup-news-feed-post-user-bio-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  min-height: 0px;
+  min-width: 0px;
+  max-height: 100%;
+  max-width: 100%;
+  line-height: 0;
+  margin-bottom: 16px;
+  display: block;
+  margin-top: 5%;
+  margin-left: 2%;
+}
+
+.popup-news-feed-post-user-bio {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgb(102, 102, 102);
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
 
 .news-feed-post-delete-edit-dropdown-container {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;

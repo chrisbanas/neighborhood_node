@@ -79,8 +79,8 @@ export default function PostOwnerInfo({ post }) {
                     </div>
                   </div>
                 </div>
-                <div>
-                  {post.authorBio}
+                <div className="popup-news-feed-post-user-bio-container">
+                  <p className="popup-news-feed-post-user-bio">{post.authorBio}</p>
                 </div>
               </div>
             )}
