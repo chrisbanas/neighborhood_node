@@ -93,8 +93,14 @@ export default function NavBar(user) {
                 </path>
               </svg>
             </button>
-            <button className="nav-news-feed-user-popout-close-button" onClick={handlePopoutClose}>
-              X
+            <button class="nav-news-feed-user-popout-close-button" onClick={handlePopoutClose}>
+              <svg class="nav-news-feed-user-popout-close-button-icon" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                role="img">
+                <path fill="currentColor" fillRule="evenodd"
+                  d="M17.707 6.293a1 1 0 0 1 0 1.414L13.414 12l4.293 4.293a1 1 0 0 1-1.414 1.414L12 13.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L10.586 12 6.293 7.707a1 1 0 0 1 1.414-1.414L12 10.586l4.293-4.293a1 1 0 0 1 1.414 0Z"
+                  clipRule="evenodd">
+                </path>
+              </svg>
             </button>
           </div>
         </div>

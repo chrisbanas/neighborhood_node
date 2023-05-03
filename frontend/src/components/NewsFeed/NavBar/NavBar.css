@@ -248,3 +248,19 @@
   font-size: 20px;
   padding: 0;
 }
+
+.nav-news-feed-user-popout-close-button-icon {
+  box-sizing: border-box;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: inline;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  fill: none;
+}

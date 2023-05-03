@@ -55,7 +55,7 @@ export const createComment = comment => (dispatch) => (
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(comment)
+    body: JSON.stringify({comment})
   })
     .then(response => response.json())
     .then(data => dispatch(receiveComment(data)))
