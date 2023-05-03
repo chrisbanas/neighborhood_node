@@ -68,46 +68,49 @@ export default function PostComments({ comment }) {
           {showPopup && (
             <div className="news-feed-comment-user-profile-popup">
               <div className="sub-news-feed-comment-user-profile-popup">
-                <img className="popup-news-feed-user-avatar-image" alt="user avatar" src={comment.userPhoto} />
-                <div>
-                  <div className="popup-news-feed-comment-neighborhood-name">
+                <img className="popup-news-feed-comment-user-avatar-image" alt="user avatar" src={comment.userPhoto} />
+                <div className="popup-news-feed-comment-user-info-container">
+                  <div className="popup-news-feed-comment-user-name">
                     {comment.authorFirstName}&nbsp;{comment.authorLastName}
                   </div>
-                  <div>
+                  <div className="popup-news-feed-comment-neighborhood-name">
                     {comment.neighborhoodName}
                   </div>
                 </div>
+              </div>
+              <div>
+                {comment.authorBio}
               </div>
             </div>
           )}
         </div>
         {/* <!-- Edit / delete dropdown --> */}
         {sessionUser && sessionUser.id === comment.authorId && (
-        <div className="news-feed-comment-delete-edit-dropdown-container">
-          <div className="sub-news-feed-comment-delete-edit-dropdown-container" onClick={handleDropdownClick}>
-            <svg className="news-feed-comment-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
-              <path fill="currentColor" d="M5.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM20.5 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"></path>
-            </svg>
-            {dropdownVisible && (
-              <div className="news-feed-comment-delete-edit-dropdown-menu-container">
-                <div className="news-feed-comment-delete-edit-dropdown-menu">
-                  <div className="news-feed-comment-delete-edit-dropdown-item" onClick={handleEditClick}>
-                    Edit Comment
-                  </div>
-                  <div className="news-feed-comment-delete-edit-dropdown-item" onClick={handleDeleteClick}>
-                    Delete Comment
+          <div className="news-feed-comment-delete-edit-dropdown-container">
+            <div className="sub-news-feed-comment-delete-edit-dropdown-container" onClick={handleDropdownClick}>
+              <svg className="news-feed-comment-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
+                <path fill="currentColor" d="M5.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM20.5 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"></path>
+              </svg>
+              {dropdownVisible && (
+                <div className="news-feed-comment-delete-edit-dropdown-menu-container">
+                  <div className="news-feed-comment-delete-edit-dropdown-menu">
+                    <div className="news-feed-comment-delete-edit-dropdown-item" onClick={handleEditClick}>
+                      Edit Comment
+                    </div>
+                    <div className="news-feed-comment-delete-edit-dropdown-item" onClick={handleDeleteClick}>
+                      Delete Comment
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
       <p>{comment.body}</p>
 
 
-      <PostCommentsStats comment={comment}/>
+      <PostCommentsStats comment={comment} />
 
     </>
 
