@@ -70,11 +70,11 @@ export default function PostOwnerInfo({ post }) {
               <div className="news-feed-post-user-profile-popup">
                 <div className="sub-news-feed-post-user-profile-popup">
                   <img className="popup-news-feed-user-avatar-image" alt="user avatar" src={post.userPhoto ? post.userPhoto : profile} />
-                  <div>
-                    <div className="popup-news-feed-post-neighborhood-name">
+                  <div className="popup-news-feed-user-info-container">
+                    <div className="popup-news-feed-post-user-name">
                       {post.authorFirstName}&nbsp;{post.authorLastName}
                     </div>
-                    <div>
+                    <div className="popup-news-feed-post-neighborhood-name">
                       {post.neighborhoodName}
                     </div>
                   </div>
