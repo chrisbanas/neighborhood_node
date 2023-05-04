@@ -29,6 +29,8 @@ json.posts do
   end
 end
 
+# This is the payload in the posts store. Since the comments are generated from the posts index we need to inlcude the comment likes
+
 json.likes do
   @posts.each do |post|
     post.likes.each do |like|

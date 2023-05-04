@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostLikes } from "../../../../../store/likes";
 import { createLike, deleteLike } from "../../../../../store/likes";
@@ -12,17 +12,15 @@ export default function PostStats({ post }) {
   const postLikes = useSelector(getPostLikes(post))
   const sessionUserLike = postLikes.find(like => sessionUser?.id === like.likerId) ? postLikes.find(like => sessionUser?.id === like.likerId) : false
 
-
+  // this is used to render the comments which is nested below and in further directories
   const { comments } = post;
 
   // used to set the like button to red
 
   const [isLiked, setIsLiked] = useState(sessionUserLike ? true : false);
-  // const [likeableId, setlikeableId] = useState(post.id);
-  // const [likeableType, setlikeableType] = useState("Post");
+
 
   // Like.create!( liker: user2, likeable_id: post2.id, likeable_type: :Post )
-  // sessionUser, post.id, "Post"
 
   const handleLikeClick = (e) => {
     e.preventDefault();

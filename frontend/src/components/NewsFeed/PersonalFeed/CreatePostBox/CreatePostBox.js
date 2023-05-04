@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../../../../store/posts";
 import "./CreatePostBox.css";
@@ -6,15 +6,13 @@ import profile from '../../../../assets/profile.png'
 
 export default function CreatePostBox() {
 
-  // Create Post
-
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user); // Grabs the current user from the state and used in a lot of places to verfiy live information
+
+  // Create Post
   const [body, setBody] = useState("");
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
-  
-  const posts = useSelector(state => state.posts);
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
@@ -35,10 +33,6 @@ export default function CreatePostBox() {
     toggleModal(); // call toggleModal first
     handlePostSubmit(e); // then call handlePostSubmit
   }
-
-  // Listen for changes to the posts state in Redux and update the component's state
-
-
 
   // Modal for Post
 
@@ -226,10 +220,6 @@ export default function CreatePostBox() {
               </span>
             </div>
           </div>
-
-
-
-
 
         </div>
       )}

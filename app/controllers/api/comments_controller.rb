@@ -45,6 +45,8 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  # do not say "render json: like" as that will cause a recursive loop.
+
   def like
     @like = Like.new(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Comment)
     if @like.save

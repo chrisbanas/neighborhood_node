@@ -76,7 +76,7 @@ class User < ApplicationRecord
     #SPIRE 2.0
 
     def self.find_by_credentials(credential, password)
-        field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :email # this had username
+        field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :email # this had username but nextdoor does not have a username so I used email.
         user = User.find_by(field => credential)
         user&.authenticate(password)
     end
@@ -95,4 +95,5 @@ class User < ApplicationRecord
     def ensure_session_token
         self.session_token ||= generate_unique_session_token
     end
+
 end

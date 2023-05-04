@@ -9,8 +9,10 @@
 #
 class Neighborhood < ApplicationRecord
 
+  # Validations
   validates :name, presence: true
 
+  # Active Record Associations
   has_many :users,
   foreign_key: :user_id,
   class_name: :User,

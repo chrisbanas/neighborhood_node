@@ -4,7 +4,10 @@ export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS'
 export const RECEIVE_POST = 'posts/RECEIVE_POST'
 export const REMOVE_POST = 'posts/REMOVE_POST'
 
-// includes posts and likes
+
+// Action objects used in the reducer
+
+// Includes comments and likes for comments in the payload. We use payload instead of comments because it includes more than just comments
 
 export function receivePosts(payload) {
   return {
@@ -13,6 +16,7 @@ export function receivePosts(payload) {
   }
 }
 
+// whats returnted -> {type: RECEIVE_POST, post: {id: 2, body: hello}}
 export function receivePost(post) {
   return {
     type: RECEIVE_POST,
@@ -36,6 +40,8 @@ export function getPost(postId) {
 export function getPosts(state) {
   return state.posts ? Object.values(state.posts) : []
 }
+
+// Thunk actions. They start at dispatch
 
 export const fetchPosts = () => (dispatch) => (
   csrfFetch(`/api/posts`)
@@ -78,7 +84,7 @@ export const updatePost = post => (dispatch) => (
     .then(res => res.json())
     .then(data => {
       dispatch(receivePost(data));
-      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts
+      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts need this or it won't auto update
     })
     .catch(error => console.error('something went wrong'))
 );
@@ -95,6 +101,7 @@ export const deletePost = postId => (dispatch) => (
     .catch(error => console.error('something went wrong'))
 )
 
+// Reducer which is used in the store. Since receive posts is a payload we have to key into the payload to grab posts
 
 export default function postsReducer(state = {}, action) {
   const newState = { ...state };
