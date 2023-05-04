@@ -1,7 +1,10 @@
 class Api::PostsController < ApplicationController
 
+
+  # my index is filtering to show only posts for the neighborhood of the current user and then ordering them to show the newest first
   def index
-    @posts = Post.all
+    neighborhood_id = current_user.neighborhood_id
+    @posts = Post.where(neighborhood_id: neighborhood_id).includes(:likes).order(updated_at: :desc)
     render :index
   end
 
@@ -42,20 +45,20 @@ class Api::PostsController < ApplicationController
   end
 
   def like
-    @like = Like.new(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
+    @like = Like.new(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Post)
     if @like.save
-      render json: like
+      render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def unlike
-    @like = Like.find_by(liker_id: params[:user_id], likeable_id: params[:id], likeable_type: :Post)
+    @like = Like.find_by(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Post)
     if @like.destroy
-      render json: like
+      render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getPostLikes } from "../../../../../store/likes";
 import { createLike, deleteLike } from "../../../../../store/likes";
 import PostComments from "./PostComments/PostComments";
 import './PostStats.css';
@@ -8,15 +9,17 @@ export default function PostStats({ post }) {
 
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const postLikes = useSelector(getPostLikes(post))
+  const sessionUserLike = postLikes.find(like => sessionUser?.id === like.likerId) ? postLikes.find(like => sessionUser?.id === like.likerId) : false
 
 
   const { comments } = post;
 
   // used to set the like button to red
 
-  const [isLiked, setIsLiked] = useState(false);
-  const [likeableId, setlikeableId] = useState(post.id);
-  const [likeableType, setlikeableType] = useState("Post");
+  const [isLiked, setIsLiked] = useState(sessionUserLike ? true : false);
+  // const [likeableId, setlikeableId] = useState(post.id);
+  // const [likeableType, setlikeableType] = useState("Post");
 
   // Like.create!( liker: user2, likeable_id: post2.id, likeable_type: :Post )
   // sessionUser, post.id, "Post"
@@ -25,16 +28,17 @@ export default function PostStats({ post }) {
     e.preventDefault();
     const like = {
       liker: sessionUser,
-      likeableId: likeableId,
-      likeableType: likeableType
-  };
-    // if (isLiked) {
-    //   dispatch(deleteLike(like));
-    // } else {
-    //   dispatch(createLike(like));
-    // }
+      likeableId: post.id,
+      likeableType: "Post"
+    };
+    if (isLiked) {
+      dispatch(deleteLike({ id: sessionUserLike.id, liker: sessionUser, likeableId: post.id, likeableType: "Post" }));
+    } else {
+      dispatch(createLike(like));
+    }
     setIsLiked(!isLiked);
   };
+
 
   // share menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,23 +67,23 @@ export default function PostStats({ post }) {
             <div className="parent-news-feed-posts-stats-count-container">
               <div className="child-news-feed-posts-stats-count-container">
                 <p className="news-feed-live-post-stats-count">
-                  {post.numLike} Likes
+                  {postLikes.length} Likes
                 </p>
               </div>
             </div>
             {/* <!-- comments - likes - share --> */}
             <div className="news-feed-post-comment-like-share-container">
               {/* like */}
-              <div className="news-feed-post-like-container">
-                <button aria-live="off" aria-label="Like" data-testid="reaction-button" type="button" className="news-feed-post-like-button">
-                  <svg onClick={handleLikeClick} className="news-feed-post-like-icon" width="24" height="24"
+              <div className="news-feed-post-like-container" onClick={handleLikeClick}>
+                <button className="news-feed-post-like-button">
+                  <svg className="news-feed-post-like-icon" width="24" height="24"
                     viewBox="0 0 24 24" data-testid="reaction-icon" alt="Like" role="img">
                     <path fill={isLiked ? 'red' : 'currentColor'} fillRule="evenodd"
                       d="M13.275 8.752a1.5 1.5 0 0 1-2.55 0C9.75 7.18 8.719 5.617 6.565 6.074 5.248 6.352 4 7.433 4 9.644c0 2.153 1.348 4.592 4.259 7.236A28.475 28.475 0 0 0 12 19.74a28.475 28.475 0 0 0 3.741-2.86C18.651 14.236 20 11.797 20 9.643c0-2.21-1.25-3.29-2.564-3.57-2.155-.456-3.187 1.106-4.16 2.68Zm-2.581-3.48C7.634 2.58 2 4.217 2 9.643c0 2.996 1.85 5.934 4.914 8.717 1.478 1.343 3.1 2.585 4.839 3.575a.5.5 0 0 0 .494 0c1.739-.99 3.361-2.232 4.84-3.575C20.148 15.577 22 12.64 22 9.643c0-5.426-5.634-7.062-8.694-4.371A5.287 5.287 0 0 0 12 7.04a5.287 5.287 0 0 0-1.306-1.77Z"
                       clipRule="evenodd"></path>
                   </svg>
                   <div className="news-feed-post-like-button-title-container">
-                    <div onClick={handleLikeClick} className="news-feed-post-like-button-title" data-testid="reaction-button-text">Like</div>
+                    <div className="news-feed-post-like-button-title" >Like</div>
                   </div>
                 </button>
               </div>
@@ -115,10 +119,14 @@ export default function PostStats({ post }) {
                     {isMenuOpen && (
                       <div className="news-feed-post-share-menu">
                         <button>
-                          <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
+                          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.neighborhoodnode.com/">
+                            <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
+                          </a>
+                          <script async src="https://platform.twitter.com/widgets.js" ></script>
                         </button>
                         <button>
-                          <a className="news-feed-social-share-company-logo" href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw"  data-show-count="false">Tweet #share
+                          <a href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw">
+                            <img className="news-feed-social-share-company-logo" src="https://www.vhv.rs/dpng/d/146-1461722_twitter-circle-twitter-logo-png-transparent-png.png" alt="twitter" />
                           </a>
                           <script async src="https://platform.twitter.com/widgets.js" ></script>
                         </button>
@@ -137,9 +145,9 @@ export default function PostStats({ post }) {
       {/* Conditionally render post comments */}
       {showComments && post.comments && Object.keys(post.comments).length > 0 && (
         Object.values(comments).map(comment => (
-        <div className="parent-news-feed-comment-user-info-container">
-          <PostComments comment={comment} />
-        </div>
+          <div className="parent-news-feed-comment-user-info-container" key={comment.id}>
+            <PostComments comment={comment} />
+          </div>
         ))
       )}
 

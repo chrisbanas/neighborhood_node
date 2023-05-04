@@ -1,13 +1,14 @@
 import csrfFetch from "./csrf.js";
+import { fetchPosts } from "./posts.js";
 
 export const RECEIVE_COMMENTS = 'comments/RECEIVE_COMMENTS'
 export const RECEIVE_COMMENT = 'comments/RECEIVE_COMMENT'
 export const REMOVE_COMMENT = 'comments/REMOVE_COMMENT'
 
-export function receiveComments(comments) {
+export function receiveComments(payload) {
   return {
     type: RECEIVE_COMMENTS,
-    comments // maybe call this payload because it contains more than just comments.
+    payload
   }
 }
 
@@ -55,10 +56,13 @@ export const createComment = comment => (dispatch) => (
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(comment)
+    body: JSON.stringify({ comment })
   })
     .then(response => response.json())
-    .then(data => dispatch(receiveComment(data)))
+    .then(data => {
+      dispatch(receiveComment(data));
+      dispatch(fetchPosts())
+    })
     .catch(error => console.error('something went wrong'))
 )
 
@@ -70,8 +74,11 @@ export const updateComment = comment => (dispatch) => (
     },
     body: JSON.stringify(comment)
   })
-    .then(res => res.json())
-    .then(data => dispatch(receiveComment(data)))
+    .then(response => response.json())
+    .then(data => {
+      dispatch(receiveComment(data));
+      dispatch(fetchPosts())
+    })
     .catch(error => console.error('something went wrong'))
 );
 
@@ -82,6 +89,7 @@ export const deleteComment = commentId => (dispatch) => (
     .then(response => {
       if (response.ok) {
         dispatch(removeComment(commentId))
+        dispatch(fetchPosts())
       }
     })
     .catch(error => console.error('something went wrong'))
@@ -92,7 +100,7 @@ export default function commentsReducer(state = {}, action) {
   const newState = { ...state };
   switch (action.type) {
     case RECEIVE_COMMENTS:
-      return action.comments //action.payload.comments
+      return action.payload.comments
     case RECEIVE_COMMENT:
       newState[action.comment.id] = action.comment
       return newState

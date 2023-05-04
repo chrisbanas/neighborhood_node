@@ -22,14 +22,14 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :destroy, :index, :show, :update] do
       member do
         post :like, to: 'posts#like', as: 'like'
-        post :unlike, to: 'posts#unlike', as: 'unlike'
+        delete :unlike, to: 'posts#unlike', as: 'unlike'
       end
     end
 
     resources :comments, only: [:create, :destroy, :index, :show, :update] do
       member do
         post :like, to: 'comments#like', as: 'like'
-        post :unlike, to: 'comments#unlike', as: 'unlike'
+        delete :unlike, to: 'comments#unlike', as: 'unlike'
       end
     end
 

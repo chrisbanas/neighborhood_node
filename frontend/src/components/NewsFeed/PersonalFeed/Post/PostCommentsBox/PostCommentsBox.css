@@ -101,10 +101,10 @@
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
+  margin-bottom: 1%;
 }
 
 .news-feed-post-comment-add-photo-and-location-buttons-container {
-  margin-bottom: 8px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -114,6 +114,7 @@
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   display: block;
+  padding-left: 11%;
 }
 
 .news-feed-post-comment-add-photo-button-container {
@@ -125,7 +126,6 @@
   margin-block: 0px;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
-  margin-top: 8px;
   margin-right: 8px;
   display: inline-flex;
   position: relative;
@@ -307,6 +307,7 @@
   -webkit-font-smoothing: antialiased;
   margin-top: 8px;
   display: flex;
+  padding-right: 3%;
 }
 
 .news-feed-post-comment-submit-button {

@@ -13,6 +13,7 @@ export default function CreatePostBox() {
   const [body, setBody] = useState("");
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
+  
   const posts = useSelector(state => state.posts);
 
   const handlePostSubmit = (e) => {
@@ -36,11 +37,7 @@ export default function CreatePostBox() {
   }
 
   // Listen for changes to the posts state in Redux and update the component's state
-  useEffect(() => {
-    if (posts.length > 0) {
-      setBody("");
-    }
-  }, [posts]);
+
 
 
   // Modal for Post

@@ -1,15 +1,45 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { createComment } from "../../../../../store/comments";
 import "./PostCommentsBox.css";
 import profile from '../../../../../assets/profile.png'
 
-export default function PostCommentsBox() {
+export default function PostCommentsBox({post}) {
+
   const [isExpanded, setIsExpanded] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
 
   const handleButtonClick = () => {
     setIsExpanded(!isExpanded);
   };
+
+
+  // create a comment
+  const dispatch = useDispatch();
+  const [body, setBody] = useState("");
+  const [authorId] = useState(sessionUser ? sessionUser.id : null);
+
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    const comment = {
+      body: body,
+      authorId: authorId,
+      postId: post.id
+    };
+    dispatch(createComment(comment))
+    setBody(""); // clear the textarea after submitting the form
+  };
+
+  const handleCreateComment = (e) => {
+    e.preventDefault();
+    if (!body) {
+      return; // if body is empty, do not submit the form
+    }
+    handleButtonClick(); // call toggleModal first
+    handleCommentSubmit(e); // then call handleCommentSubmit
+  }
+
 
   return (
     <>
@@ -24,7 +54,7 @@ export default function PostCommentsBox() {
           </span>
           <div className="parent-user-comment-modal-container">
             <div className="child-user-comment-modal-container">
-              <input type="text" className="grandchild-user-comment-modal-container" placeholder="Add a comment..." />
+              <input type="text" className="grandchild-user-comment-modal-container" placeholder="Add a comment..." value={body} onChange={e => setBody(e.target.value)} required/>
             </div>
           </div>
         </button>
@@ -80,7 +110,7 @@ export default function PostCommentsBox() {
 
                 {/* Comment submit */}
                 <div className="news-feed-post-comment-submit-button-container">
-                  <button className="news-feed-post-comment-submit-button">
+                  <button className="news-feed-post-comment-submit-button" onClick={handleCreateComment}>
                     <span className="news-feed-post-comment-submit-button-text-container">
                       <span className="news-feed-post-comment-submit-button-text">Comment</span>
                     </span>

@@ -1,23 +1,20 @@
 class Api::CommentsController < ApplicationController
 
+  # my index is filtering to show only comments for the neighborhood of the current user
+
   def index
-    case
-    when params[:author_id]
-      @comments = Comment.where(author_id: params[:author_id])
-    when params[:post_id]
-      @comments = Comment.where(post_id: params[:post_id])
-    else
-      @comments = Comment.all
-    end
-    render json: comments
+    @comments = Comment.joins(author: :neighborhood)
+      .where(neighborhoods: { id: current_user.neighborhood_id })
+      .includes(:likes)
+    render :index
   end
 
   def create
     @comment = Comment.new(comment_params)
-    if @comment.save
-      render json: comment, status: :created
+    if @comment&.save
+      render json: @comment
     else
-      render json: comment.errors.full_messages, status: :unprocessable_entity
+      render json: {errors: @comment.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -30,27 +27,39 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment = Comment.find_by(id: params[:id])
+    if @comment&.update(comment_params)
+      render :show
+    elsif !@comment
+      render json: ['Comment not found.'], status: 400
+    else
+      render json: {errors: @comment.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    render json: comment
+    if @comment&.destroy
+      head :no_content
+    end
   end
 
   def like
-    @like = Like.new(author_id: params[:user_id], likeable_id: params[:id], likeable_type: :Comment)
+    @like = Like.new(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Comment)
     if @like.save
-      render json: like
+      render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def unlike
-    @like = Like.find_by(author_id: params[:user_id], likeable_id: params[:id], likeable_type: :Comment)
+    @like = Like.find_by(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Comment)
     if @like.destroy
-      render json: like
+      render :like
     else
-      render json: like.errors.full_messages, status: :unprocessable_entity
+      render @like.errors.full_messages, status: :unprocessable_entity
     end
   end
 

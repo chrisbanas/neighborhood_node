@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getCommentLikes } from "../../../../../../../store/likes";
+import { createLike, deleteLike } from "../../../../../../../store/likes";
 import "./PostCommentsStats.css";
 
 export default function PostCommentsStats({ comment }) {
@@ -7,30 +9,32 @@ export default function PostCommentsStats({ comment }) {
 
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const commentLikes = useSelector(getCommentLikes(comment))
+  const sessionUserLike = commentLikes.find(like => sessionUser?.id === like.likerId) ? commentLikes.find(like => sessionUser?.id === like.likerId) : false
 
   // used to set the like button to red
+  const [isLiked, setIsLiked] = useState(sessionUserLike ? true : false);
 
-  const [isLiked, setIsLiked] = useState(false);
-  // const [likeableId, setlikeableId] = useState(post.id);
-  // const [likeableType, setlikeableType] = useState("Post");
 
-  // Like.create!( liker: user2, likeable_id: post2.id, likeable_type: :Post )
-  // sessionUser, post.id, "Post"
-
-  const handleLikeClick = (e) => {
-    e.preventDefault();
-    // const like = {
-    //   liker: sessionUser,
-    //   likeableId: likeableId,
-    //   likeableType: likeableType
-    // };
-    // if (isLiked) {
-    //   dispatch(deleteLike(like));
-    // } else {
-    //   dispatch(createLike(like));
-    // }
-    setIsLiked(!isLiked);
+  // handles the like thunk action
+const handleLikeClick = (e) => {
+  e.preventDefault();
+  const like = {
+    liker: sessionUser,
+    likeableId: comment.id,
+    likeableType: "Comment"
   };
+  if (isLiked) {
+    dispatch(deleteLike({id: sessionUserLike.id, liker: sessionUser, likeableId: comment.id, likeableType: "Comment" }));
+  } else {
+    dispatch(createLike(like));
+  }
+  console.log("isLiked before update:", isLiked);
+  console.log(commentLikes.length);
+  setIsLiked(!isLiked);
+  console.log("isLiked after update:", !isLiked);
+  console.log(commentLikes.length);
+};
 
   // share menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +55,7 @@ export default function PostCommentsStats({ comment }) {
             <div className="parent-news-feed-comments-stats-count-container">
               <div className="child-news-feed-comments-stats-count-container">
                 <p className="news-feed-live-comments-stats-count">
-                  {comment.numLike} Likes
+                  {commentLikes.length} Likes
                 </p>
               </div>
             </div>
@@ -103,10 +107,14 @@ export default function PostCommentsStats({ comment }) {
                     {isMenuOpen && (
                       <div className="news-feed-comments-share-menu">
                         <button>
-                          <img className="news-feed-comments-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
+                          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.neighborhoodnode.com/">
+                            <img className="news-feed-social-share-company-logo" src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/9c885269569db3947bfe.svg" alt="facebook" />
+                          </a>
+                          <script async src="https://platform.twitter.com/widgets.js" ></script>
                         </button>
                         <button>
-                          <a className="news-feed-comments-social-share-company-logo" href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw" data-show-count="false">Tweet #share
+                          <a href="https://twitter.com/intent/tweet?button_hashtag=share&ref_src=twsrc%5Etfw">
+                            <img className="news-feed-social-share-company-logo" src="https://www.vhv.rs/dpng/d/146-1461722_twitter-circle-twitter-logo-png-transparent-png.png" alt="twitter" />
                           </a>
                           <script async src="https://platform.twitter.com/widgets.js" ></script>
                         </button>

@@ -4,10 +4,12 @@ export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS'
 export const RECEIVE_POST = 'posts/RECEIVE_POST'
 export const REMOVE_POST = 'posts/REMOVE_POST'
 
-export function receivePosts(posts) {
+// includes posts and likes
+
+export function receivePosts(payload) {
   return {
     type: RECEIVE_POSTS,
-    posts
+    payload
   }
 }
 
@@ -60,7 +62,7 @@ export const createPost = post => (dispatch) => (
     .then(response => response.json())
     .then(data => {
       dispatch(receivePost(data));
-      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts
+      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts need this or it won't auto update
     })
     .catch(error => console.error('something went wrong'))
 )
@@ -98,7 +100,7 @@ export default function postsReducer(state = {}, action) {
   const newState = { ...state };
   switch (action.type) {
     case RECEIVE_POSTS:
-      return action.posts
+      return action.payload.posts
     case RECEIVE_POST:
       newState[action.post.id] = action.post
       return newState
