@@ -63,14 +63,85 @@ Neighborhood Node, a Nextdoor clone, is a private social networking platform for
 
 Implementing a polymorphic table for likes presented the challenge of reducing the amount of data that needs to be stored and queried, as well as minimizing the number of database queries required to retrieve likes for a particular object. The solution was to create a single Likes table that can be used across multiple other tables, rather than having separate tables for each type of object that can be liked. This approach simplifies the database schema and improves performance and scalability. Additionally, this approach enables easily adding new objects that can be liked without needing to create a new table every time.
 
+```ruby
+# Migration
+
+class CreateLikes < ActiveRecord::Migration[7.0]
+  def change
+    create_table :likes do |t|
+      t.references :liker, null: false, foreign_key: { to_table: :users }, index: false
+      t.references :likeable, polymorphic: true, null: false
+      t.timestamps
+    end
+    add_index :likes, [:liker_id, :likeable_type, :likeable_id], unique: true
+  end
+end
+
+# Schema
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "liker_id", null: false
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["liker_id", "likeable_type", "likeable_id"], name: "index_likes_on_liker_id_and_likeable_type_and_likeable_id", unique: true
+  end
+
+# Model
+
+class Like < ApplicationRecord
+  validates :liker_id,
+  uniqueness: { scope: %i[likeable_id likeable_type] }
+
+  belongs_to :liker,
+  class_name: :User
+
+  belongs_to :likeable,
+  polymorphic: true
+end
+
+```
+
 ---------
 
 ## RESTful backend API routes
 
 Implementing RESTful backend routes provided a standardized and predictable way to handle requests and responses. The challenge was to ensure that the backend routes adhered to the RESTful principles, with clear and consistent naming conventions and standardized response formats. The solution was to utilize a range of HTTP methods, including GET, POST, PUT, and DELETE, to support a wide range of resource creation, reading, updating, and deletion.
 
+```ruby
+namespace :api, defaults: { format: :json } do
+    resources :users, only: [:show, :create, :update, :destroy]
+    resource :session, only: [:show, :create, :destroy]
+
+    resources :posts, only: [:create, :destroy, :index, :show, :update] do
+      member do
+        post :like, to: 'posts#like', as: 'like'
+        delete :unlike, to: 'posts#unlike', as: 'unlike'
+      end
+    end
+
+    resources :comments, only: [:create, :destroy, :index, :show, :update] do
+      member do
+        post :like, to: 'comments#like', as: 'like'
+        delete :unlike, to: 'comments#unlike', as: 'unlike'
+      end
+    end
+  end
+
+  get '*path', to: "static_pages#frontend_index"
+
+end
+```
+
 ---------
 
 ## Third-Party APIs
 
 Incorporating third-party APIs like AWS S3 buckets and Google Maps API into a full-stack application can be challenging, but it can also provide a more intuitive and useful user experience. Neighborhood Node is a great example of this, as it utilizes both of these APIs to enhance the functionality and interactivity of the app. By integrating AWS S3 buckets, users can easily upload and share files and media, while Google Maps API allows users to quickly and accurately locate and interact with their local communities. Despite the challenges that come with incorporating third-party APIs, Neighborhood Node showcases the importance of leveraging these tools to provide a more seamless and enjoyable user experience.
+
+
+---------
+
+© Christopher Banas
