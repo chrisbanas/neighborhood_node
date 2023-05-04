@@ -47,7 +47,7 @@ ApplicationRecord.transaction do
 
   puts "Creating users..."
 
-  # Create two users for demos and testing
+  # Create a demo user for each neighborhood
 
     user1 = User.create!(
       email: "test@test.com",

@@ -23,7 +23,10 @@ export default function Hero() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password) {
+    if (!password) {
+      return setErrors(['Please input a password with atleast 6 characters']);
+    }
+    else {
       setErrors([]);
       dispatch(sessionActions.signup({ email, password, firstName, lastName, neighborhoodId }))
       .then(move => history.push("/news_feed"))
@@ -40,7 +43,6 @@ export default function Hero() {
           else setErrors([res.statusText]);
         });
     }
-    return setErrors(['Please input a password with atleast 6 characters']);
   };
 
   const handleDemo = (e) => {

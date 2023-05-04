@@ -24,11 +24,11 @@
 
 .news-feed-post-img {
   height: auto;
-  width: 50%;
+  width: 100%;
   cursor: pointer;
 }
 
-
+/* image modal */
 
 .news-feed-post-body-modal {
   position: fixed;

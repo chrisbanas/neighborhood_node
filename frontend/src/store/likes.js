@@ -1,5 +1,6 @@
 import csrfFetch from "./csrf.js";
 import { fetchPost } from "./posts.js";
+import { fetchComment } from "./comments.js";
 
 import { RECEIVE_POSTS } from "./posts.js";
 
@@ -47,6 +48,8 @@ export function getCommentLikes(comment) {
   }
 }
 
+
+
 export const createLike = like => (dispatch) => (
   csrfFetch(`/api/${like.likeableType.toLowerCase()}s/${like.likeableId}/like`, {
     method: 'POST',
@@ -58,7 +61,11 @@ export const createLike = like => (dispatch) => (
     .then(response => response.json())
     .then(data => {
       dispatch(receiveLike(data));
-      dispatch(fetchPost(like.likeableId)); // refetch the post that was just updated
+      // if (data.likeableType === 'Post') {
+      //   dispatch(fetchPost(data.likeableId)); // refetch the post that was just updated
+      // } else if (data.likeableType === 'Comment') {
+      //   dispatch(fetchComment(data.likeableId)); // fetch comments for the updated comment
+      // }
     })
     .catch(error => console.error('something went wrong'))
 )

@@ -9,8 +9,8 @@ import commentsReducer from './comments';
 const rootReducer = combineReducers({
     session,
     posts: postsReducer,
-    likes: likesReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    likes: likesReducer
 });
 
 let enhancer;

@@ -17,20 +17,24 @@ export default function PostCommentsStats({ comment }) {
 
 
   // handles the like thunk action
-  const handleLikeClick = (e) => {
-    e.preventDefault();
-    const like = {
-      liker: sessionUser,
-      likeableId: comment.id,
-      likeableType: "Comment"
+const handleLikeClick = (e) => {
+  e.preventDefault();
+  const like = {
+    liker: sessionUser,
+    likeableId: comment.id,
+    likeableType: "Comment"
   };
-    if (isLiked) {
-      dispatch(deleteLike({id: sessionUserLike.id, liker: sessionUser, likeableId: comment.id, likeableType: "Comment" }));
-    } else {
-      dispatch(createLike(like));
-    }
-    setIsLiked(!isLiked);
-  };
+  if (isLiked) {
+    dispatch(deleteLike({id: sessionUserLike.id, liker: sessionUser, likeableId: comment.id, likeableType: "Comment" }));
+  } else {
+    dispatch(createLike(like));
+  }
+  console.log("isLiked before update:", isLiked);
+  console.log(commentLikes.length);
+  setIsLiked(!isLiked);
+  console.log("isLiked after update:", !isLiked);
+  console.log(commentLikes.length);
+};
 
   // share menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);

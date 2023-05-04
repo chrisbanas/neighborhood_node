@@ -36,5 +36,12 @@ json.likes do
         json.extract! like, :id, :liker_id, :likeable_type, :likeable_id, :created_at, :updated_at
       end
     end
+    post.comments.each do |comment|
+      comment.likes.each do |like|
+        json.set! like.id do
+          json.extract! like, :id, :liker_id, :likeable_type, :likeable_id, :created_at, :updated_at
+        end
+      end
+    end
   end
 end
