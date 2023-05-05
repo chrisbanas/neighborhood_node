@@ -14,6 +14,8 @@ export default function CreatePostBox() {
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
 
+
+
   const handlePostSubmit = (e) => {
     e.preventDefault();
     const post = {
@@ -32,6 +34,43 @@ export default function CreatePostBox() {
     }
     toggleModal(); // call toggleModal first
     handlePostSubmit(e); // then call handlePostSubmit
+  }
+
+
+  // For photos
+
+  const [photoFile, setPhotoFile] = useState(null);
+  const [postPhoto, setPostPhoto] = useState(null);
+
+  const handlePostFile = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setPhotoFile(file);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPostPhoto(reader.result)
+    };
+    reader.readAsDataURL(file);
+  }
+
+  const handleCreatePostTest = (e) => {
+    e.preventDefault();
+    if (!body) {
+      return; // if body is empty, do not submit the form
+    }
+
+    const formData = new FormData();
+
+    formData.append('post[body]', body)
+    formData.append('post[authorId]', authorId)
+    formData.append('post[neighborhoodId]', neighborhoodId)
+
+    if (photoFile) {
+      formData.append(`post[photo]`, photoFile)
+    }
+
+    toggleModal(); // call toggleModal first
+    dispatch(createPost(formData)); // then call handlePostSubmit
   }
 
   // Modal for Post
@@ -53,8 +92,8 @@ export default function CreatePostBox() {
         >
           <span className="parent-news-feed-user-avatar">
             <div className="news-feed-user-avatar">
-            {sessionUser && (
-              <img className="news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto ? sessionUser.userPhoto : profile}/>
+              {sessionUser && (
+                <img className="news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto ? sessionUser.userPhoto : profile} />
               )}
             </div>
           </span>
@@ -88,7 +127,7 @@ export default function CreatePostBox() {
                       </svg>
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
-                      <button className="news-feed-post-modal-next-button" onClick={handleCreatePost} disabled={!body}>
+                      <button className="news-feed-post-modal-next-button" onClick={handleCreatePostTest} disabled={!body}>
                         <span className="news-feed-post-modal-next-button-text">Post</span>
                       </button>
                     </div>
@@ -154,9 +193,10 @@ export default function CreatePostBox() {
                           <span className="news-feed-post-modal-body-form-add-photo-text">Add a photo or video</span>
                         </div>
                         <label className="uploader-fileinput-label hidden">
-                          <input className="uploader-fileinput"
+                          {/* user load photo */}
+                          <input onChange={handlePostFile} className="uploader-fileinput"
                             name="13EA655A-BC56-40B6-8B41-49885FF9B443" type="file" multiple="" accept="image/*, video/*"
-                            aria-label="Add a photo or video" />
+                          />
                         </label>
                       </div>
 

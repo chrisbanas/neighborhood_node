@@ -108,7 +108,7 @@ end
 
 ## RESTful backend API routes
 
-Implementing RESTful backend routes provided a standardized and predictable way to handle requests and responses. The challenge was to ensure that the backend routes adhered to the RESTful principles, with clear and consistent naming conventions and standardized response formats. The solution was to utilize a range of HTTP methods, including GET, POST, PUT, and DELETE, to support a wide range of resource creation, reading, updating, and deletion.
+Implementing RESTful backend routes provided a standardized and predictable way to handle requests and responses. The challenge was to ensure that the backend routes adhered to the RESTful principles, with clear and consistent naming conventions and standardized response formats. The solution was to utilize a range of HTTP methods, including GET, POST, PUT, and DELETE, to support a wide range of resources for CRUD (Create, Read, Update, and Delete) operations.
 
 ```ruby
 namespace :api, defaults: { format: :json } do
@@ -140,6 +140,13 @@ end
 ## Third-Party APIs
 
 Incorporating third-party APIs like AWS S3 buckets and Google Maps API into a full-stack application can be challenging, but it can also provide a more intuitive and useful user experience. Neighborhood Node is a great example of this, as it utilizes both of these APIs to enhance the functionality and interactivity of the app. By integrating AWS S3 buckets, users can easily upload and share files and media, while Google Maps API allows users to quickly and accurately locate and interact with their local communities. Despite the challenges that come with incorporating third-party APIs, Neighborhood Node showcases the importance of leveraging these tools to provide a more seamless and enjoyable user experience.
+
+---------
+
+## Wiki
+
+Want to take a deeper dive into this project? Check the articles from the [wiki](https://github.com/chrisbanas/neighborhood_node/wiki).
+
 
 
 ---------
