@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createPost } from "../../../store/posts";
@@ -17,26 +17,103 @@ export default function FeedIndex() {
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
 
-  const handlePostSubmit = (e) => {
-    e.preventDefault();
-    const post = {
-      body: body,
-      authorId: authorId,
-      neighborhoodId: neighborhoodId
+  // const handlePostSubmit = (e) => {
+  //   e.preventDefault();
+  //   const post = {
+  //     body: body,
+  //     authorId: authorId,
+  //     neighborhoodId: neighborhoodId
+  //   };
+  //   dispatch(createPost(post))
+  //   setBody(""); // clear the textarea after submitting the form
+  // };
+
+  // const handleCreatePost = (e) => {
+  //   e.preventDefault();
+  //   if (!body) {
+  //     return; // if body is empty, do not submit the form
+  //   }
+  //   toggleModal(); // call toggleModal first
+  //   handlePostSubmit(e); // then call handlePostSubmit
+  // }
+
+
+    // for the google maps
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
+    const [showMap, setShowMap] = useState(false);
+    const mapRef = useRef();
+
+    useEffect(() => {
+      if (showMap && window.google) {
+        const newMap = new window.google.maps.Map(mapRef.current, {
+          center: { lat: 37.7749, lng: -122.4194 }, // Default to San Francisco
+          zoom: 8,
+        });
+
+        const marker = new window.google.maps.Marker({
+          position: { lat: 37.7749, lng: -122.4194 },
+          map: newMap,
+          draggable: true,
+        });
+
+        newMap.addListener('click', (event) => {
+          const lat = event.latLng.lat();
+          const lng = event.latLng.lng();
+          setLatitude(lat);
+          setLongitude(lng);
+          marker.setPosition(new window.google.maps.LatLng(lat, lng));
+        });
+      }
+    }, [showMap]);
+
+    const handleShowMap = () => {
+      setShowMap(prevShowMap => !prevShowMap);
     };
-    dispatch(createPost(post))
-    setBody(""); // clear the textarea after submitting the form
-  };
+
+
+  // For photos
+  const [photoFile, setPhotoFile] = useState(null);
+  const [postPhoto, setPostPhoto] = useState(null);
+
+  const handlePostFile = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setPhotoFile(file);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPostPhoto(reader.result)
+    };
+    reader.readAsDataURL(file);
+  }
 
   const handleCreatePost = (e) => {
     e.preventDefault();
     if (!body) {
       return; // if body is empty, do not submit the form
     }
+
+    const formData = new FormData();
+
+    formData.append('post[body]', body)
+    formData.append('post[authorId]', authorId)
+    formData.append('post[neighborhoodId]', neighborhoodId)
+    formData.append('post[latitude]', latitude)
+    formData.append('post[longitude]', longitude)
+
+    if (photoFile) {
+      formData.append(`post[photo]`, photoFile)
+    }
+
     toggleModal(); // call toggleModal first
-    handlePostSubmit(e); // then call handlePostSubmit
+    dispatch(createPost(formData)); // then call handlePostSubmit
+    setBody(""); // clear the textarea after submitting the form
+    setPostPhoto(null) // clears out the photo
   }
 
+  // this is for the photo preview in the post modal
+  let preview = null;
+  if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
 
   // Modal for Post
 
@@ -44,6 +121,7 @@ export default function FeedIndex() {
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+    setPostPhoto(null) // clears out the photo
   };
 
 
@@ -212,7 +290,7 @@ export default function FeedIndex() {
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
-                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1">
+                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1" onClick={handleShowMap}>
                             <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
                               <path fill="currentColor" fillRule="evenodd"
                                 d="M3 7c0-3.87 3.13-7 7-7s7 3.13 7 7c0 5.25-7 13-7 13S3 12.25 3 7Zm7 3c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3Z">
@@ -220,9 +298,17 @@ export default function FeedIndex() {
                             </svg>
                             <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
                           </div>
+                          {showMap && (
+                              <div ref={mapRef} style={{ height: "200px", width: "100%" }}></div>
+                            )}
                         </div>
                       </div>
                     </div>
+                    <br></br>
+                    {postPhoto !== null && (
+                      <button className="post-box-remove-photo-button" onClick={() => setPostPhoto(null)}>Remove Photo</button>
+                    )}
+                    {preview}
                   </form>
 
                   {/* Additional buttons */}
@@ -263,9 +349,10 @@ export default function FeedIndex() {
                           <span className="news-feed-post-modal-body-form-add-photo-text">Add a photo or video</span>
                         </div>
                         <label className="uploader-fileinput-label hidden">
-                          <input className="uploader-fileinput"
+                          {/* user load photo */}
+                          <input onChange={handlePostFile} className="uploader-fileinput"
                             name="13EA655A-BC56-40B6-8B41-49885FF9B443" type="file" multiple="" accept="image/*, video/*"
-                            aria-label="Add a photo or video" />
+                          />
                         </label>
                       </div>
 
