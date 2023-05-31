@@ -14,14 +14,10 @@ export default function CreatePostBox() {
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
 
-
   // for the google maps
-
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [showMap, setShowMap] = useState(false);
-
-
   const mapRef = useRef();
 
   useEffect(() => {
@@ -51,29 +47,7 @@ export default function CreatePostBox() {
     setShowMap(prevShowMap => !prevShowMap);
   };
 
-  // const handlePostSubmit = (e) => {
-  //   e.preventDefault();
-  //   const post = {
-  //     body: body,
-  //     authorId: authorId,
-  //     neighborhoodId: neighborhoodId
-  //   };
-  //   dispatch(createPost(post))
-  //   setBody(""); // clear the textarea after submitting the form
-  // };
-
-  // const handleCreatePost = (e) => {
-  //   e.preventDefault();
-  //   if (!body) {
-  //     return; // if body is empty, do not submit the form
-  //   }
-  //   toggleModal(); // call toggleModal first
-  //   handlePostSubmit(e); // then call handlePostSubmit
-  // }
-
-
   // For photos
-
   const [photoFile, setPhotoFile] = useState(null);
   const [postPhoto, setPostPhoto] = useState(null);
 
@@ -117,7 +91,6 @@ export default function CreatePostBox() {
   if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
 
   // Modal for Post
-
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
