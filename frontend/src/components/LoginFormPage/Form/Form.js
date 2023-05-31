@@ -89,12 +89,12 @@ export default function Form() {
                       Demo User Log In
                     </button>
                   </div>
-                  <div className="login-form-divider">
+                  {/* <div className="login-form-divider">
                     <div className="login-form-or">
                       <span>OR</span>
                     </div>
-                  </div>
-                  <div className="login-form-thrid-party-options">
+                  </div> */}
+                  {/* <div className="login-form-thrid-party-options">
                     <div className="login-form-social-registration">
                       <button className="login-form-social-registration-company" aria-disabled="false" type="button" id="google-button" aria-label="Continue with Google" >
                         <img src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/3cc4b0eb5bdb0c5cb9e5.svg" alt="google" />
@@ -113,7 +113,7 @@ export default function Form() {
                         <div className="login-form-social-registration-label">Continue with Apple</div>
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                 </form>
                 <div className="new-to-neighborhood-node-prompt">
                   <span className="new-to-neighborhood-node-prompt-label">New to Neighborhood Node?</span>

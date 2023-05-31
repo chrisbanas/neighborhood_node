@@ -7,7 +7,7 @@
   margin-block: 0px;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
-  padding: 0 20px 150px;
+  padding: 0 20px 20px; /* Used to be 150px*/
   color: white;
   background-color: #666f7c;
   text-align: left;

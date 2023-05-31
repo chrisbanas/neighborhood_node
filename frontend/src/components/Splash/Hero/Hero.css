@@ -1,5 +1,5 @@
 .hero {
-  height: 1300px;
+  height: 900px;
   background: rgba(0, 0, 0, 0.1);
   font-size: 16px;
   position: relative;
@@ -484,10 +484,10 @@
 
 .signup-disclamier-content {
 
-  color: #007b99;
+  /* color: #007b99; */
   text-decoration: none;
   background-color: transparent;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .have-a-business-prompt {

@@ -23,7 +23,7 @@
 }
 
 .side-nav-menu-icon {
-  background-image: url(https://d19rpgkrjeba2z.cloudfront.net/static/gen/6a809d16d48482a94c26.png);
+  /* background-image: url(https://d19rpgkrjeba2z.cloudfront.net/static/gen/6a809d16d48482a94c26.png); */
   width: 36px;
   box-sizing: border-box;
   margin-block: 0px;
@@ -33,7 +33,7 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
   display: inline-flex;
   background-size: 100%;
   background-repeat: no-repeat;

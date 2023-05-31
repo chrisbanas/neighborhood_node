@@ -68,7 +68,7 @@ export default function Hero() {
               <div className="sub-hero-signup-box-content">
                 <h1 className="sub-hero-signup-box-content-title">Discover your neighborhood</h1>
                 <div className="sub-hero-signup-box-content-choose-method">
-                  <div className="thrid-party-options">
+                  {/* <div className="thrid-party-options">
                     <div className="social-registration">
                       <button className="social-registration-company" aria-disabled="false" type="button" id="google-button" aria-label="Continue with Google" >
                         <img src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/3cc4b0eb5bdb0c5cb9e5.svg" alt="google" />
@@ -87,12 +87,12 @@ export default function Hero() {
                         <div className="social-registration-label">Continue with Apple</div>
                       </button>
                     </div>
-                  </div>
-                  <div className="divider">
+                  </div> */}
+                  {/* <div className="divider">
                     <div className="or">
                       <span>Or Signup Below</span>
                     </div>
-                  </div>
+                  </div> */}
                   {/* ------------------------Where the signup credentials go--------------------- */}
                   <form className="email-password" onSubmit={handleSubmit}>
                     <ul>
@@ -154,7 +154,7 @@ export default function Hero() {
                       </button>
                     </div>
                   </form>
-                  <p className="signup-disclamier">
+                  {/* <p className="signup-disclamier">
                     <span>By signing up, you agree to our&nbsp;
                       <a className="signup-disclamier-content" href="/" target="_blank">
                         Privacy Policy
@@ -171,11 +171,11 @@ export default function Hero() {
                       </a>
                       to verify your account.
                     </span>
-                  </p>
-                  <div className="have-a-business-prompt">
+                  </p> */}
+                  {/* <div className="have-a-business-prompt">
                     <span className="have-a-business-prompt-label">Have a business?</span>
                     <a className="have-a-business-prompt-label-link" href="/login">Get started</a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
