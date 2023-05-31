@@ -76,6 +76,28 @@ export const createPost = post => (dispatch) => {
     .catch(error => console.error('something went wrong'))
 }
 
+// export const updatePost = post => (dispatch) => {
+//   let postPackage = post;
+//   if (!(post instanceof FormData)) {
+//     postPackage = JSON.stringify({ post })
+//   }
+
+//   const postId = post instanceof FormData ? post.get('post[id]') : post.post.id;
+//   console.log(postId);
+
+//   csrfFetch(`/api/posts/${postId}`, {
+//     method: `PATCH`,
+//     body: postPackage
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       dispatch(receivePost(data));
+//       dispatch(fetchPosts());
+//     })
+//     .catch(error => console.error('Something went wrong:', error));
+// }
+
+
 export const updatePost = post => (dispatch) => (
   csrfFetch(`/api/posts/${post.id}`, {
     method: `PATCH`,

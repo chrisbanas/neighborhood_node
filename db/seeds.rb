@@ -8,6 +8,8 @@
 
 # rails db:seed:replant - replants the database if you want to update it
 
+# rails db:reset - to reset the database
+
 require 'faker'
 require "open-uri"
 

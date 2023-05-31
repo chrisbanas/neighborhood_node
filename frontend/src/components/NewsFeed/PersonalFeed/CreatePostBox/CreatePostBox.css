@@ -455,6 +455,7 @@
   line-height: 20px;
   cursor: pointer;
   display: flex;
+  margin-bottom: 10px;
 }
 
 .news-feed-post-modal-body-form-add-geo-tag-icon {

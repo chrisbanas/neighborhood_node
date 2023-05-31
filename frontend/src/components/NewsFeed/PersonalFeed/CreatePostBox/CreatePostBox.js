@@ -84,18 +84,28 @@ export default function CreatePostBox() {
     dispatch(createPost(formData)); // then call handlePostSubmit
     setBody(""); // clear the textarea after submitting the form
     setPostPhoto(null) // clears out the photo
+    setLatitude(null)
+    setLongitude(null)
   }
 
   // this is for the photo preview in the post modal
   let preview = null;
   if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
 
+  const clearImage = () => {
+    setPostPhoto(null);
+    setPhotoFile(null);
+  };
+
   // Modal for Post
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+    setPhotoFile(null)
     setPostPhoto(null) // clears out the photo
+    setLatitude(null)
+    setLongitude(null)
   };
 
 
@@ -178,7 +188,7 @@ export default function CreatePostBox() {
                     </div>
                     <br></br>
                     {postPhoto !== null && (
-                      <button className="post-box-remove-photo-button" onClick={() => setPostPhoto(null)}>Remove Photo</button>
+                      <button className="post-box-remove-photo-button" onClick={clearImage} >Remove Photo</button>
                     )}
                     {preview}
                   </form>
