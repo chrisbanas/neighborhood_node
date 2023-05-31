@@ -16,25 +16,25 @@ export default function CreatePostBox() {
 
 
 
-  const handlePostSubmit = (e) => {
-    e.preventDefault();
-    const post = {
-      body: body,
-      authorId: authorId,
-      neighborhoodId: neighborhoodId
-    };
-    dispatch(createPost(post))
-    setBody(""); // clear the textarea after submitting the form
-  };
+  // const handlePostSubmit = (e) => {
+  //   e.preventDefault();
+  //   const post = {
+  //     body: body,
+  //     authorId: authorId,
+  //     neighborhoodId: neighborhoodId
+  //   };
+  //   dispatch(createPost(post))
+  //   setBody(""); // clear the textarea after submitting the form
+  // };
 
-  const handleCreatePost = (e) => {
-    e.preventDefault();
-    if (!body) {
-      return; // if body is empty, do not submit the form
-    }
-    toggleModal(); // call toggleModal first
-    handlePostSubmit(e); // then call handlePostSubmit
-  }
+  // const handleCreatePost = (e) => {
+  //   e.preventDefault();
+  //   if (!body) {
+  //     return; // if body is empty, do not submit the form
+  //   }
+  //   toggleModal(); // call toggleModal first
+  //   handlePostSubmit(e); // then call handlePostSubmit
+  // }
 
 
   // For photos
@@ -53,7 +53,7 @@ export default function CreatePostBox() {
     reader.readAsDataURL(file);
   }
 
-  const handleCreatePostTest = (e) => {
+  const handleCreatePost = (e) => {
     e.preventDefault();
     if (!body) {
       return; // if body is empty, do not submit the form
@@ -73,12 +73,17 @@ export default function CreatePostBox() {
     dispatch(createPost(formData)); // then call handlePostSubmit
   }
 
+  // this is for the photo preview in the post modal
+  let preview = null;
+  if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
+
   // Modal for Post
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+    setPostPhoto(null) // clears out the photo
   };
 
 
@@ -127,7 +132,7 @@ export default function CreatePostBox() {
                       </svg>
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
-                      <button className="news-feed-post-modal-next-button" onClick={handleCreatePostTest} disabled={!body}>
+                      <button className="news-feed-post-modal-next-button" onClick={handleCreatePost} disabled={!body}>
                         <span className="news-feed-post-modal-next-button-text">Post</span>
                       </button>
                     </div>
@@ -153,6 +158,11 @@ export default function CreatePostBox() {
                         </div>
                       </div>
                     </div>
+                    <br></br>
+                    {postPhoto !== null && (
+                      <button className="post-box-remove-photo-button" onClick={() => setPostPhoto(null)}>Remove Photo</button>
+                    )}
+                    {preview}
                   </form>
 
                   {/* Additional buttons */}

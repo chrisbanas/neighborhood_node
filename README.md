@@ -151,4 +151,4 @@ Want to take a deeper dive into this project? Check the articles from the [wiki]
 
 ---------
 
-© Christopher Banas
+© Neighborhood Node

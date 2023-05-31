@@ -190,7 +190,7 @@ export default function PostComments({ comment }) {
                         <textarea className="news-feed-post-modal-body-form-text-area" placeholder={comment.body} spellCheck="false" value={body} onChange={e => setBody(e.target.value)} required>
                         {comment.body}</textarea>
                       </div>
-                      <div className="news-feed-post-modal-body-form-location-container">
+                      {/* <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
                           <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1">
                             <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
@@ -201,7 +201,7 @@ export default function PostComments({ comment }) {
                             <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </form>
 
@@ -210,7 +210,7 @@ export default function PostComments({ comment }) {
                     <div className="sub-news-feed-post-modal-body-form-additional-buttons-container">
 
                       {/* Add Photos */}
-                      <div className="news-feed-post-modal-body-form-add-photo-container">
+                      {/* <div className="news-feed-post-modal-body-form-add-photo-container">
                         <div className="sub-news-feed-post-modal-body-form-add-photo-container">
                           <div className="news-feed-post-modal-body-form-add-photo-icon-container">
                             <svg className="news-feed-post-modal-body-form-add-photo-icon" width="24" height="24"
@@ -232,7 +232,7 @@ export default function PostComments({ comment }) {
                             name="13EA655A-BC56-40B6-8B41-49885FF9B443" type="file" multiple="" accept="image/*, video/*"
                             aria-label="Add a photo or video" />
                         </label>
-                      </div>
+                      </div> */}
 
                     </div>
                   </div>
