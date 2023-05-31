@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import * as sessionActions from '../../../store/session';
 import './NavBar.css';
 
@@ -51,17 +51,17 @@ export default function NavBar(user) {
     <>
       <div className="news-feed-navbar-container">
         <div className="logo">
-          <a href="/news_feed/" className="news-feed-nav-bar-logo">
+          <Link to="/news_feed" className="news-feed-nav-bar-logo">
             <img src={textLogo} className="new-feed-neighborhood-node-logo" alt="Neighborhood Node logo" />
-          </a>
+          </Link>
         </div>
-        <div className="news-feed-search-container">
+        {/* <div className="news-feed-search-container">
           <form className="news-feed-search-bar-form">
             <div className="news-feed-search-input-field-container">
               <input className="news-feed-search-input-field" placeholder="Search Neighborhood Node" autoComplete="off" />
             </div>
           </form>
-        </div>
+        </div> */}
         <span className="nav-parent-news-feed-user-avatar" onClick={handleAvatarClick}>
           <div className="nav-news-feed-user-avatar">
             {sessionUser && sessionUser.userPhoto ? (

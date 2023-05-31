@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { createPost } from "../../../store/posts";
 import './FeedIndex.css';
 
@@ -53,15 +54,15 @@ export default function FeedIndex() {
       <div className="news-feed-index">
         <div className="news-feed-index-list">
           <li className="news-feed-index-list-item">
-            <a className="news-feed-index-list-item-container" href="/news_feed">
+            <Link className="news-feed-index-list-item-container" to="/news_feed">
               <svg className="news-feed-index-list-item-icon">
                 <path fill="currentColor" d="M16.669 4.257a1 1 0 0 0-1.338 0l-10 9A1 1 0 0 0 5 14v12a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h6v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V14a1 1 0 0 0-.331-.743l-10-9Z">
                 </path>
               </svg>
               <span className="news-feed-index-list-item-title" data-testid="Home">Home</span>
-            </a>
+            </Link>
           </li>
-          <li className="news-feed-index-list-item">
+          {/* <li className="news-feed-index-list-item">
             <a className="news-feed-index-list-item-container" href="/news_feed">
               <svg className="news-feed-index-list-item-icon" role="img">
                 <path fill="currentColor" fillRule="evenodd" d="M12.13 11.974a.2.2 0 0 0-.156.157l-1.915 9.575a.2.2 0 0 0 .235.235l9.575-1.915a.2.2 0 0 0 .157-.157l1.915-9.575a.2.2 0 0 0-.235-.235l-9.575 1.915ZM13.7 13.7l-1.15 5.75 5.75-1.15-4.6-4.6Z" clipRule="evenodd">
@@ -100,7 +101,7 @@ export default function FeedIndex() {
               </svg>
               <span className="news-feed-index-list-item-title" data-testid="Messages">Messages</span>
             </a>
-          </li>
+          </li> */}
           <div className="news-feed-index-post-button-container">
             <button className="news-feed-index-post-button" onClick={toggleModal}>
               <span className="news-feed-index-post-button-content">
@@ -118,7 +119,7 @@ export default function FeedIndex() {
         {/* Index footer */}
         <div className="news-feed-index-footer-menue-container">
           <footer className="news-feed-index-footer" tabIndex="0" aria-label="Footer">
-            <ul className="news-feed-index-footer-ul">
+            {/* <ul className="news-feed-index-footer-ul">
               <li>
                 <a className="news-feed-index-footer-li" href="/news_feed" target="_blank">Help&nbsp;&bull;&nbsp;</a>
               </li>
@@ -155,7 +156,7 @@ export default function FeedIndex() {
                 <a className="news-feed-index-footer-li" href="/news_feed">Limit the Use of My Sensitive Personal Information
                 </a>
               </li>
-            </ul>
+            </ul> */}
             <div className="news-feed-index-copyright-container">
               <div className="news-feed-footer-copyright">© 2023 Neighborhood Node</div>
               <div className="linkedin-logo">
@@ -228,7 +229,7 @@ export default function FeedIndex() {
                   <div className="news-feed-post-modal-body-form-additional-buttons-container">
                     <div className="sub-news-feed-post-modal-body-form-additional-buttons-container">
 
-                      {/* Classifieds */}
+                      {/* Classifieds
                       <div className="news-feed-post-modal-body-form-classifieds-container">
                         <div className="news-feed-post-modal-body-form-classifieds-icon-container">
                           <svg className="news-feed-post-modal-body-form-classifieds-icon" width="24" height="24" fill="none"
@@ -241,7 +242,7 @@ export default function FeedIndex() {
                         </div>
                         <span className="news-feed-post-modal-body-form-classifieds-text">Sell or give away an item
                         </span>
-                      </div>
+                      </div> */}
 
                       {/* Add Photos */}
                       <div className="news-feed-post-modal-body-form-add-photo-container">
@@ -268,7 +269,7 @@ export default function FeedIndex() {
                         </label>
                       </div>
 
-                      {/* Event */}
+                      {/* Event
                       <div className="news-feed-post-modal-body-form-event-container">
                         <div className="sub-news-feed-post-modal-body-form-event-container">
                           <div className="sub-news-feed-post-modal-body-form-event-icon-container">
@@ -285,9 +286,9 @@ export default function FeedIndex() {
                           <span className="sub-news-feed-post-modal-body-form-event-text">Create an event
                           </span>
                         </div>
-                      </div>
+                      </div> */}
 
-                      {/* Poll */}
+                      {/* Poll
                       <div className="news-feed-post-modal-body-form-poll-container">
                         <div className="sub-news-feed-post-modal-body-form-poll-container">
                           <div className="sub-news-feed-post-modal-body-form-poll-icon-container">
@@ -301,10 +302,10 @@ export default function FeedIndex() {
                           </div>
                           <span className="sub-news-feed-post-modal-body-form-poll-text">Poll your neighbors</span>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Safety */}
-                      <div className="news-feed-post-modal-body-form-safety-container">
+                      {/* <div className="news-feed-post-modal-body-form-safety-container">
                         <div className="sub-news-feed-post-modal-body-form-safety-container">
                           <div className="news-feed-post-modal-body-form-safety-icon-container">
                             <svg className="news-feed-post-modal-body-form-safety-icon" width="24" height="24" fill="none"
@@ -320,7 +321,7 @@ export default function FeedIndex() {
                           </div>
                           <span className="news-feed-post-modal-body-form-safety-text">Post about safety</span>
                         </div>
-                      </div>
+                      </div> */}
 
                     </div>
                   </div>

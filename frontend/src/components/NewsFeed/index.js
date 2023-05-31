@@ -10,11 +10,13 @@ export default function NewsFeed() {
 
   return (
     <>
+    <div className="news-feed-page-wrapper">
       <NavBar />
       <div className="news-feed-main-container">
         <FeedIndex />
         <PersonalFeed />
         <UserContent />
+      </div>
       </div>
     </>
   );

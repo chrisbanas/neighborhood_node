@@ -160,7 +160,7 @@ export default function CreatePostBox() {
                     <div className="sub-news-feed-post-modal-body-form-additional-buttons-container">
 
                       {/* Classifieds */}
-                      <div className="news-feed-post-modal-body-form-classifieds-container">
+                      {/* <div className="news-feed-post-modal-body-form-classifieds-container">
                         <div className="news-feed-post-modal-body-form-classifieds-icon-container">
                           <svg className="news-feed-post-modal-body-form-classifieds-icon" width="24" height="24" fill="none"
                             viewBox="0 0 24 24" role="img">
@@ -172,7 +172,7 @@ export default function CreatePostBox() {
                         </div>
                         <span className="news-feed-post-modal-body-form-classifieds-text">Sell or give away an item
                         </span>
-                      </div>
+                      </div> */}
 
                       {/* Add Photos */}
                       <div className="news-feed-post-modal-body-form-add-photo-container">
@@ -201,7 +201,7 @@ export default function CreatePostBox() {
                       </div>
 
                       {/* Event */}
-                      <div className="news-feed-post-modal-body-form-event-container">
+                      {/* <div className="news-feed-post-modal-body-form-event-container">
                         <div className="sub-news-feed-post-modal-body-form-event-container">
                           <div className="sub-news-feed-post-modal-body-form-event-icon-container">
                             <svg className="sub-news-feed-post-modal-body-form-event-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" role="img">
@@ -217,10 +217,10 @@ export default function CreatePostBox() {
                           <span className="sub-news-feed-post-modal-body-form-event-text">Create an event
                           </span>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Poll */}
-                      <div className="news-feed-post-modal-body-form-poll-container">
+                      {/* <div className="news-feed-post-modal-body-form-poll-container">
                         <div className="sub-news-feed-post-modal-body-form-poll-container">
                           <div className="sub-news-feed-post-modal-body-form-poll-icon-container">
                             <svg className="sub-news-feed-post-modal-body-form-poll-icon" width="24" height="24" fill="none"
@@ -233,10 +233,10 @@ export default function CreatePostBox() {
                           </div>
                           <span className="sub-news-feed-post-modal-body-form-poll-text">Poll your neighbors</span>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Safety */}
-                      <div className="news-feed-post-modal-body-form-safety-container">
+                      {/* <div className="news-feed-post-modal-body-form-safety-container">
                         <div className="sub-news-feed-post-modal-body-form-safety-container">
                           <div className="news-feed-post-modal-body-form-safety-icon-container">
                             <svg className="news-feed-post-modal-body-form-safety-icon" width="24" height="24" fill="none"
@@ -252,7 +252,7 @@ export default function CreatePostBox() {
                           </div>
                           <span className="news-feed-post-modal-body-form-safety-text">Post about safety</span>
                         </div>
-                      </div>
+                      </div> */}
 
                     </div>
                   </div>
