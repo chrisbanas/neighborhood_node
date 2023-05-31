@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, Link } from "react-router-dom";
 import textLogo from '../../../assets/text_logo.png'
 import './Form.css';
 
@@ -47,7 +47,7 @@ export default function Form() {
   return (
     <>
       <div className="login-form-logo-container">
-        < img src={textLogo} alt="neighborhood node" className="login-form-logo"/>
+        <Link to="/">< img src={textLogo} alt="neighborhood node" className="login-form-logo"/></Link>
       </div>
 
       <div className="login-info-box">
@@ -117,7 +117,7 @@ export default function Form() {
                 </form>
                 <div className="new-to-neighborhood-node-prompt">
                   <span className="new-to-neighborhood-node-prompt-label">New to Neighborhood Node?</span>
-                  <a className="new-to-neighborhood-node-prompt-label-link" href="/">Sign up</a>
+                  <Link className="new-to-neighborhood-node-prompt-label-link" to="/">Sign up</Link>
                 </div>
               </div>
             </div>
