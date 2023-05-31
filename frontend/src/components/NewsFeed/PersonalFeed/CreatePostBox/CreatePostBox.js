@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../../../../store/posts";
 import "./CreatePostBox.css";
@@ -15,6 +15,41 @@ export default function CreatePostBox() {
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
 
 
+  // for the google maps
+
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [showMap, setShowMap] = useState(false);
+
+
+  const mapRef = useRef();
+
+  useEffect(() => {
+    if (showMap && window.google) {
+      const newMap = new window.google.maps.Map(mapRef.current, {
+        center: { lat: 37.7749, lng: -122.4194 }, // Default to San Francisco
+        zoom: 8,
+      });
+
+      const marker = new window.google.maps.Marker({
+        position: { lat: 37.7749, lng: -122.4194 },
+        map: newMap,
+        draggable: true,
+      });
+
+      newMap.addListener('click', (event) => {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+        setLatitude(lat);
+        setLongitude(lng);
+        marker.setPosition(new window.google.maps.LatLng(lat, lng));
+      });
+    }
+  }, [showMap]);
+
+  const handleShowMap = () => {
+    setShowMap(prevShowMap => !prevShowMap);
+  };
 
   // const handlePostSubmit = (e) => {
   //   e.preventDefault();
@@ -64,6 +99,8 @@ export default function CreatePostBox() {
     formData.append('post[body]', body)
     formData.append('post[authorId]', authorId)
     formData.append('post[neighborhoodId]', neighborhoodId)
+    formData.append('post[latitude]', latitude)
+    formData.append('post[longitude]', longitude)
 
     if (photoFile) {
       formData.append(`post[photo]`, photoFile)
@@ -71,6 +108,8 @@ export default function CreatePostBox() {
 
     toggleModal(); // call toggleModal first
     dispatch(createPost(formData)); // then call handlePostSubmit
+    setBody(""); // clear the textarea after submitting the form
+    setPostPhoto(null) // clears out the photo
   }
 
   // this is for the photo preview in the post modal
@@ -147,13 +186,19 @@ export default function CreatePostBox() {
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
-                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1">
-                            <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
-                              <path fill="currentColor" fillRule="evenodd"
-                                d="M3 7c0-3.87 3.13-7 7-7s7 3.13 7 7c0 5.25-7 13-7 13S3 12.25 3 7Zm7 3c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3Z">
-                              </path>
-                            </svg>
-                            <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
+                          <div>
+                            <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" onClick={handleShowMap} tabIndex="-1">
+                              <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
+                                <path fill="currentColor" fillRule="evenodd"
+                                  d="M3 7c0-3.87 3.13-7 7-7s7 3.13 7 7c0 5.25-7 13-7 13S3 12.25 3 7Zm7 3c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3Z">
+                                </path>
+                              </svg>
+                              <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
+                            </div>
+
+                            {showMap && (
+                              <div ref={mapRef} style={{ height: "200px", width: "100%" }}></div>
+                            )}
                           </div>
                         </div>
                       </div>
