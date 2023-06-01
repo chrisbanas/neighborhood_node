@@ -76,43 +76,43 @@ export const createPost = post => (dispatch) => {
     .catch(error => console.error('something went wrong'))
 }
 
-// export const updatePost = post => (dispatch) => {
-//   let postPackage = post;
-//   if (!(post instanceof FormData)) {
-//     postPackage = JSON.stringify({ post })
-//   }
+export const updatePost = post => (dispatch) => {
+  let postPackage = post;
+  if (!(post instanceof FormData)) {
+    postPackage = JSON.stringify({ post })
+  }
 
-//   const postId = post instanceof FormData ? post.get('post[id]') : post.post.id;
-//   console.log(postId);
+  const postId = post instanceof FormData ? post.get('post[id]') : post.post.id;
+  console.log(postId);
 
-//   csrfFetch(`/api/posts/${postId}`, {
-//     method: `PATCH`,
-//     body: postPackage
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       dispatch(receivePost(data));
-//       dispatch(fetchPosts());
-//     })
-//     .catch(error => console.error('Something went wrong:', error));
-// }
-
-
-export const updatePost = post => (dispatch) => (
-  csrfFetch(`/api/posts/${post.id}`, {
+  csrfFetch(`/api/posts/${postId}`, {
     method: `PATCH`,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(post)
+    body: postPackage
   })
-    .then(res => res.json())
+    .then(response => response.json())
     .then(data => {
       dispatch(receivePost(data));
-      dispatch(fetchPosts()); // Dispatch a new action to fetch all posts need this or it won't auto update
+      dispatch(fetchPosts());
     })
-    .catch(error => console.error('something went wrong'))
-);
+    .catch(error => console.error('Something went wrong:', error));
+}
+
+
+// export const updatePost = post => (dispatch) => (
+//   csrfFetch(`/api/posts/${post.id}`, {
+//     method: `PATCH`,
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(post)
+//   })
+//     .then(res => res.json())
+//     .then(data => {
+//       dispatch(receivePost(data));
+//       dispatch(fetchPosts()); // Dispatch a new action to fetch all posts need this or it won't auto update
+//     })
+//     .catch(error => console.error('something went wrong'))
+// );
 
 export const deletePost = postId => (dispatch) => (
   csrfFetch(`/api/posts/${postId}`, {
