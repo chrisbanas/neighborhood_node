@@ -103,7 +103,6 @@ export default function PostOwnerInfo({ post }) {
     if (!body) {
       return; // if body is empty, do not submit the form
     }
-
     const formData = new FormData();
 
     formData.append('post[id]', postId)
@@ -113,8 +112,11 @@ export default function PostOwnerInfo({ post }) {
     formData.append('post[latitude]', latitude)
     formData.append('post[longitude]', longitude)
 
-    if (photoFile) {
-      formData.append(`post[photo]`, photoFile)
+    if ((post.photoUrls.length === 0 && photoFile === null) || (post.photoUrls[0] === '' && photoFile === null)) {}
+    else if (photoFile !== null) {
+      formData.append(`post[photo]`, photoFile);
+    } else {
+      formData.append(`post[photo]`, ''); // allows the user to remove the photo
     }
 
     toggleModal(); // call toggleModal first
@@ -127,31 +129,11 @@ export default function PostOwnerInfo({ post }) {
   let preview = null;
   if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
 
-
-
-  // Edit Post
-
-  // const handlePostSubmit = (e) => {
-  //   e.preventDefault();
-  //   const post = {
-  //     id: postId,
-  //     body: body,
-  //     authorId: authorId,
-  //     neighborhoodId: neighborhoodId
-  //   };
-  //   dispatch(updatePost(post))
-  //   setBody(""); // clear the textarea after submitting the form
-  // };
-
-  // const handleEditPost = (e) => {
-  //   e.preventDefault();
-  //   if (!body) {
-  //     return; // if body is empty, do not submit the form
-  //   }
-  //   toggleModal(); // call toggleModal first
-  //   handlePostSubmit(e); // then call handlePostSubmit
-  // }
-
+  // for the remove photo button
+  const clearImage = () => {
+    setPostPhoto(null);
+    setPhotoFile(null);
+  };
 
   // Delete Post
 
@@ -159,8 +141,6 @@ export default function PostOwnerInfo({ post }) {
     e.preventDefault();
     dispatch(deletePost(post.id))
   };
-
-
 
   // Modal for Edit Post
 
@@ -302,7 +282,7 @@ export default function PostOwnerInfo({ post }) {
                     </div>
                     <br></br>
                     {postPhoto !== null && (
-                      <button className="post-box-remove-photo-button" onClick={() => setPostPhoto(null)}>Remove Photo</button>
+                      <button className="post-box-remove-photo-button" onClick={clearImage}>Remove Photo</button>
                     )}
                     {preview}
                   </form>
