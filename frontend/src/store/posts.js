@@ -83,7 +83,6 @@ export const updatePost = post => (dispatch) => {
   }
 
   const postId = post instanceof FormData ? post.get('post[id]') : post.post.id;
-  console.log(postId);
 
   csrfFetch(`/api/posts/${postId}`, {
     method: `PATCH`,
@@ -96,23 +95,6 @@ export const updatePost = post => (dispatch) => {
     })
     .catch(error => console.error('Something went wrong:', error));
 }
-
-
-// export const updatePost = post => (dispatch) => (
-//   csrfFetch(`/api/posts/${post.id}`, {
-//     method: `PATCH`,
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(post)
-//   })
-//     .then(res => res.json())
-//     .then(data => {
-//       dispatch(receivePost(data));
-//       dispatch(fetchPosts()); // Dispatch a new action to fetch all posts need this or it won't auto update
-//     })
-//     .catch(error => console.error('something went wrong'))
-// );
 
 export const deletePost = postId => (dispatch) => (
   csrfFetch(`/api/posts/${postId}`, {

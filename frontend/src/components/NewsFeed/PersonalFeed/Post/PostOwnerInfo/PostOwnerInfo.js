@@ -74,8 +74,12 @@ export default function PostOwnerInfo({ post }) {
   }, [showMap, post]);
 
   const handleShowMap = () => {
-    setShowMap(prevShowMap => !prevShowMap);
-  };
+    if (post.latitude !== null && post.longitude !== null && post.latitude !== 0 && post.longitude !== 0) {
+        setShowMap(true);
+    } else {
+        setShowMap(false);
+    }
+};
 
 
 
@@ -164,7 +168,7 @@ export default function PostOwnerInfo({ post }) {
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
-    setPostPhoto(null) // clears out the photo
+    handleShowMap();
   };
 
 
