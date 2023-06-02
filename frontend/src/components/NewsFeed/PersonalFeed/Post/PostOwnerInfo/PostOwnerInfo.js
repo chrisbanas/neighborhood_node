@@ -88,8 +88,6 @@ export default function PostOwnerInfo({ post }) {
     }
   };
 
-
-
   // Function to reset latitude and longitude
   const removeLocation = () => {
     setLatitude(null);
@@ -281,8 +279,8 @@ export default function PostOwnerInfo({ post }) {
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
-                          {latitude && longitude &&
-                            <button onClick={removeLocation}>Remove Location</button>
+                          {latitude && latitude !== 0 && longitude && longitude !== 0 &&
+                            <button className="remove-location-button" onClick={removeLocation}>Remove Location</button>
                           }
                           <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1" onClick={handleShowMap}>
                             <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">

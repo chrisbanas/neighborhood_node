@@ -287,3 +287,35 @@
 .news-feed-post-delete-edit-dropdown-item:hover {
   background-color: #f5f5f5;
 }
+
+.remove-location-button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", Helvetica, Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  margin-block: 0px;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: 6px 16px;
+  width: fit-content;
+  border-width: 0px;
+  border-radius: 32px;
+  display: flex;
+  line-height: 24px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  vertical-align: baseline;
+  text-decoration: none;
+  transition: background 50ms ease 0s, color 50ms ease 0s, border-color 50ms ease 0s;
+  background-color: rgb(184, 236, 81);
+  border-color: rgb(184, 236, 81);
+  color: rgb(0, 97, 66);
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: none;
+  overflow: visible;
+  margin-left: auto;
+  margin-right: 0;
+}
