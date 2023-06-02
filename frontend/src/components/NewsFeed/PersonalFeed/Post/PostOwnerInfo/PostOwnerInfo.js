@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePost, deletePost } from "../../../../../store/posts";
 import './PostOwnerInfo.css';
@@ -40,29 +40,100 @@ export default function PostOwnerInfo({ post }) {
   }, [post.body]);
 
 
-  // Edit Post
 
-  const handlePostSubmit = (e) => {
-    e.preventDefault();
-    const post = {
-      id: postId,
-      body: body,
-      authorId: authorId,
-      neighborhoodId: neighborhoodId
+  // for the google maps
+  const [latitude, setLatitude] = useState(post.latitude);
+  const [longitude, setLongitude] = useState(post.longitude);
+  const [showMap, setShowMap] = useState(false);
+  const mapRef = useRef();
+
+  useEffect(() => {
+    if ((showMap || post.latitude || post.longitude) && window.google && mapRef.current) {
+      const lat = post.latitude || 37.7749; // Default to San Francisco
+      const lng = post.longitude || -122.4194;
+
+      const newMap = new window.google.maps.Map(mapRef.current, {
+        center: { lat, lng },
+        zoom: 8,
+      });
+
+      const marker = new window.google.maps.Marker({
+        position: { lat, lng },
+        map: newMap,
+        draggable: true,
+      });
+
+      newMap.addListener('click', (event) => {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+        setLatitude(lat);
+        setLongitude(lng);
+        marker.setPosition(new window.google.maps.LatLng(lat, lng));
+      });
+    }
+  }, [showMap, post]);
+
+  const handleShowMap = () => {
+    if (post.latitude !== null && post.longitude !== null && post.latitude !== 0 && post.longitude !== 0) {
+        setShowMap(true);
+    } else {
+        setShowMap(false);
+    }
+};
+
+
+
+  // For photos
+  const [photoFile, setPhotoFile] = useState(post.photoUrls[0]);
+  const [postPhoto, setPostPhoto] = useState(post.photoUrls[0]);
+
+  const handlePostFile = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setPhotoFile(file);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPostPhoto(reader.result)
     };
-    dispatch(updatePost(post))
-    setBody(""); // clear the textarea after submitting the form
-  };
+    reader.readAsDataURL(file);
+  }
 
-  const handleEditPost = (e) => {
+  const handleUpdatePost = (e) => {
     e.preventDefault();
     if (!body) {
       return; // if body is empty, do not submit the form
     }
+    const formData = new FormData();
+
+    formData.append('post[id]', postId)
+    formData.append('post[body]', body)
+    formData.append('post[authorId]', authorId)
+    formData.append('post[neighborhoodId]', neighborhoodId)
+    formData.append('post[latitude]', latitude)
+    formData.append('post[longitude]', longitude)
+
+    if ((post.photoUrls.length === 0 && photoFile === null) || (post.photoUrls[0] === '' && photoFile === null)) {}
+    else if (photoFile !== null) {
+      formData.append(`post[photo]`, photoFile);
+    } else {
+      formData.append(`post[photo]`, ''); // allows the user to remove the photo
+    }
+
     toggleModal(); // call toggleModal first
-    handlePostSubmit(e); // then call handlePostSubmit
+    dispatch(updatePost(formData)); // then call handlePostSubmit
+    setBody(""); // clear the textarea after submitting the form
+    setPostPhoto(null) // clears out the photo
   }
 
+  // this is for the photo preview in the post modal
+  let preview = null;
+  if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
+
+  // for the remove photo button
+  const clearImage = () => {
+    setPostPhoto(null);
+    setPhotoFile(null);
+  };
 
   // Delete Post
 
@@ -71,14 +142,13 @@ export default function PostOwnerInfo({ post }) {
     dispatch(deletePost(post.id))
   };
 
-
-
   // Modal for Edit Post
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+    handleShowMap();
   };
 
 
@@ -135,32 +205,32 @@ export default function PostOwnerInfo({ post }) {
 
           {/* <!-- Edit / delete dropdown --> */}
           {sessionUser && sessionUser.id === post.authorId && (
-          <div className="news-feed-post-delete-edit-dropdown-container">
-            <div className="sub-news-feed-post-delete-edit-dropdown-container" onClick={handleDropdownClick}>
-              <svg className="news-feed-post-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
-                <path fill="currentColor" d="M5.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM20.5 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"></path>
-              </svg>
-              {dropdownVisible && (
-                <div className="news-feed-post-delete-edit-dropdown-menu-container">
-                  <div className="news-feed-post-delete-edit-dropdown-menu">
-                    <div className="news-feed-post-delete-edit-dropdown-item" onClick={toggleModal}>
-                      Edit Post
-                    </div>
-                    <div className="news-feed-post-delete-edit-dropdown-item" onClick={handleDeleteClick}>
-                      Delete Post
+            <div className="news-feed-post-delete-edit-dropdown-container">
+              <div className="sub-news-feed-post-delete-edit-dropdown-container" onClick={handleDropdownClick}>
+                <svg className="news-feed-post-delete-edit-dropdown-icon" width="24" height="24" viewBox="0 0 24 24" role="img">
+                  <path fill="currentColor" d="M5.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM20.5 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"></path>
+                </svg>
+                {dropdownVisible && (
+                  <div className="news-feed-post-delete-edit-dropdown-menu-container">
+                    <div className="news-feed-post-delete-edit-dropdown-menu">
+                      <div className="news-feed-post-delete-edit-dropdown-item" onClick={toggleModal}>
+                        Edit Post
+                      </div>
+                      <div className="news-feed-post-delete-edit-dropdown-item" onClick={handleDeleteClick}>
+                        Delete Post
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
       </div>
 
 
 
-{/* Edit Post Modal */}
+      {/* Edit Post Modal */}
       {isModalVisible && (
         <div className="news-feed-parent-modal-container">
 
@@ -181,7 +251,7 @@ export default function PostOwnerInfo({ post }) {
                       </svg>
                     </button>
                     <div className="news-feed-post-modal-next-button-container">
-                      <button className="news-feed-post-modal-next-button" onClick={handleEditPost} disabled={!body}>
+                      <button className="news-feed-post-modal-next-button" onClick={handleUpdatePost} disabled={!body}>
                         <span className="news-feed-post-modal-next-button-text">Edit</span>
                       </button>
                     </div>
@@ -191,12 +261,12 @@ export default function PostOwnerInfo({ post }) {
                   <form className="news-feed-post-modal-body-form" noValidate="">
                     <div className="news-feed-post-modal-body-form-container">
                       <div className="news-feed-post-modal-body-form-text-area-container">
-                        <textarea className="news-feed-post-modal-body-form-text-area" placeholder={post.body}  spellCheck="false" value={body} onChange={e => setBody(e.target.value)} required>
-                        {post.body}</textarea>
+                        <textarea className="news-feed-post-modal-body-form-text-area" placeholder={post.body} spellCheck="false" value={body} onChange={e => setBody(e.target.value)} required>
+                          {post.body}</textarea>
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
-                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1">
+                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1" onClick={handleShowMap}>
                             <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
                               <path fill="currentColor" fillRule="evenodd"
                                 d="M3 7c0-3.87 3.13-7 7-7s7 3.13 7 7c0 5.25-7 13-7 13S3 12.25 3 7Zm7 3c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3Z">
@@ -204,9 +274,17 @@ export default function PostOwnerInfo({ post }) {
                             </svg>
                             <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
                           </div>
+                          {(showMap) && (
+                            <div ref={mapRef} style={{ height: "200px", width: "100%" }}></div>
+                          )}
                         </div>
                       </div>
                     </div>
+                    <br></br>
+                    {postPhoto !== null && (
+                      <button className="post-box-remove-photo-button" onClick={clearImage}>Remove Photo</button>
+                    )}
+                    {preview}
                   </form>
 
                   {/* Additional buttons */}
@@ -232,9 +310,10 @@ export default function PostOwnerInfo({ post }) {
                           <span className="news-feed-post-modal-body-form-add-photo-text">Add a photo or video</span>
                         </div>
                         <label className="uploader-fileinput-label hidden">
-                          <input className="uploader-fileinput"
+                          {/* user load photo */}
+                          <input onChange={handlePostFile} className="uploader-fileinput"
                             name="13EA655A-BC56-40B6-8B41-49885FF9B443" type="file" multiple="" accept="image/*, video/*"
-                            aria-label="Add a photo or video" />
+                          />
                         </label>
                       </div>
 

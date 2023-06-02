@@ -1,4 +1,3 @@
-# add another json.likes
 json.comments do
   @comments.each do |comment|
     json.set! comment.id do
@@ -14,6 +13,8 @@ json.comments do
     end
   end
 end
+
+# This is the payload in the comments store
 
 json.likes do
   @comments.each do |comment|

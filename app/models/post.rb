@@ -13,8 +13,10 @@
 #
 class Post < ApplicationRecord
 
+  # Validations
   validates :body, presence: true
 
+  # Active Record Associations
   belongs_to :author,
   foreign_key: :author_id,
   class_name: :User,

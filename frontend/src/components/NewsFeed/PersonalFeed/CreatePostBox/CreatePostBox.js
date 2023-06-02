@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../../../../store/posts";
 import "./CreatePostBox.css";
@@ -6,46 +6,106 @@ import profile from '../../../../assets/profile.png'
 
 export default function CreatePostBox() {
 
-  // Create Post
-
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user); // Grabs the current user from the state and used in a lot of places to verfiy live information
+
+  // Create Post
   const [body, setBody] = useState("");
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
-  
-  const posts = useSelector(state => state.posts);
 
-  const handlePostSubmit = (e) => {
-    e.preventDefault();
-    const post = {
-      body: body,
-      authorId: authorId,
-      neighborhoodId: neighborhoodId
-    };
-    dispatch(createPost(post))
-    setBody(""); // clear the textarea after submitting the form
+  // for the google maps
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [showMap, setShowMap] = useState(false);
+  const mapRef = useRef();
+
+  useEffect(() => {
+    if (showMap && window.google) {
+      const newMap = new window.google.maps.Map(mapRef.current, {
+        center: { lat: 37.7749, lng: -122.4194 }, // Default to San Francisco
+        zoom: 8,
+      });
+
+      const marker = new window.google.maps.Marker({
+        position: { lat: 37.7749, lng: -122.4194 },
+        map: newMap,
+        draggable: true,
+      });
+
+      newMap.addListener('click', (event) => {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+        setLatitude(lat);
+        setLongitude(lng);
+        marker.setPosition(new window.google.maps.LatLng(lat, lng));
+      });
+    }
+  }, [showMap]);
+
+  const handleShowMap = () => {
+    setShowMap(prevShowMap => !prevShowMap);
   };
+
+  // For photos
+  const [photoFile, setPhotoFile] = useState(null);
+  const [postPhoto, setPostPhoto] = useState(null);
+
+  const handlePostFile = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setPhotoFile(file);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPostPhoto(reader.result)
+    };
+    reader.readAsDataURL(file);
+  }
 
   const handleCreatePost = (e) => {
     e.preventDefault();
     if (!body) {
       return; // if body is empty, do not submit the form
     }
+
+    const formData = new FormData();
+
+    formData.append('post[body]', body)
+    formData.append('post[authorId]', authorId)
+    formData.append('post[neighborhoodId]', neighborhoodId)
+    formData.append('post[latitude]', latitude)
+    formData.append('post[longitude]', longitude)
+
+    if (photoFile) {
+      formData.append(`post[photo]`, photoFile)
+    }
+
     toggleModal(); // call toggleModal first
-    handlePostSubmit(e); // then call handlePostSubmit
+    dispatch(createPost(formData)); // then call handlePostSubmit
+    setBody(""); // clear the textarea after submitting the form
+    setPostPhoto(null) // clears out the photo
+    setLatitude(null)
+    setLongitude(null)
   }
 
-  // Listen for changes to the posts state in Redux and update the component's state
+  // this is for the photo preview in the post modal
+  let preview = null;
+  if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
 
-
+  const clearImage = () => {
+    setPostPhoto(null);
+    setPhotoFile(null);
+  };
 
   // Modal for Post
-
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+    setPhotoFile(null)
+    setPostPhoto(null) // clears out the photo
+    setLatitude(null)
+    setLongitude(null)
   };
 
 
@@ -59,8 +119,8 @@ export default function CreatePostBox() {
         >
           <span className="parent-news-feed-user-avatar">
             <div className="news-feed-user-avatar">
-            {sessionUser && (
-              <img className="news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto ? sessionUser.userPhoto : profile}/>
+              {sessionUser && (
+                <img className="news-feed-user-avatar-image" alt="user avatar" src={sessionUser.userPhoto ? sessionUser.userPhoto : profile} />
               )}
             </div>
           </span>
@@ -109,17 +169,28 @@ export default function CreatePostBox() {
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
-                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1">
-                            <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
-                              <path fill="currentColor" fillRule="evenodd"
-                                d="M3 7c0-3.87 3.13-7 7-7s7 3.13 7 7c0 5.25-7 13-7 13S3 12.25 3 7Zm7 3c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3Z">
-                              </path>
-                            </svg>
-                            <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
+                          <div>
+                            <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" onClick={handleShowMap} tabIndex="-1">
+                              <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
+                                <path fill="currentColor" fillRule="evenodd"
+                                  d="M3 7c0-3.87 3.13-7 7-7s7 3.13 7 7c0 5.25-7 13-7 13S3 12.25 3 7Zm7 3c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3Z">
+                                </path>
+                              </svg>
+                              <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
+                            </div>
+
+                            {showMap && (
+                              <div ref={mapRef} style={{ height: "200px", width: "100%" }}></div>
+                            )}
                           </div>
                         </div>
                       </div>
                     </div>
+                    <br></br>
+                    {postPhoto !== null && (
+                      <button className="post-box-remove-photo-button" onClick={clearImage} >Remove Photo</button>
+                    )}
+                    {preview}
                   </form>
 
                   {/* Additional buttons */}
@@ -127,7 +198,7 @@ export default function CreatePostBox() {
                     <div className="sub-news-feed-post-modal-body-form-additional-buttons-container">
 
                       {/* Classifieds */}
-                      <div className="news-feed-post-modal-body-form-classifieds-container">
+                      {/* <div className="news-feed-post-modal-body-form-classifieds-container">
                         <div className="news-feed-post-modal-body-form-classifieds-icon-container">
                           <svg className="news-feed-post-modal-body-form-classifieds-icon" width="24" height="24" fill="none"
                             viewBox="0 0 24 24" role="img">
@@ -139,7 +210,7 @@ export default function CreatePostBox() {
                         </div>
                         <span className="news-feed-post-modal-body-form-classifieds-text">Sell or give away an item
                         </span>
-                      </div>
+                      </div> */}
 
                       {/* Add Photos */}
                       <div className="news-feed-post-modal-body-form-add-photo-container">
@@ -160,14 +231,15 @@ export default function CreatePostBox() {
                           <span className="news-feed-post-modal-body-form-add-photo-text">Add a photo or video</span>
                         </div>
                         <label className="uploader-fileinput-label hidden">
-                          <input className="uploader-fileinput"
+                          {/* user load photo */}
+                          <input onChange={handlePostFile} className="uploader-fileinput"
                             name="13EA655A-BC56-40B6-8B41-49885FF9B443" type="file" multiple="" accept="image/*, video/*"
-                            aria-label="Add a photo or video" />
+                          />
                         </label>
                       </div>
 
                       {/* Event */}
-                      <div className="news-feed-post-modal-body-form-event-container">
+                      {/* <div className="news-feed-post-modal-body-form-event-container">
                         <div className="sub-news-feed-post-modal-body-form-event-container">
                           <div className="sub-news-feed-post-modal-body-form-event-icon-container">
                             <svg className="sub-news-feed-post-modal-body-form-event-icon" width="24" height="24" fill="none" viewBox="0 0 24 24" role="img">
@@ -183,10 +255,10 @@ export default function CreatePostBox() {
                           <span className="sub-news-feed-post-modal-body-form-event-text">Create an event
                           </span>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Poll */}
-                      <div className="news-feed-post-modal-body-form-poll-container">
+                      {/* <div className="news-feed-post-modal-body-form-poll-container">
                         <div className="sub-news-feed-post-modal-body-form-poll-container">
                           <div className="sub-news-feed-post-modal-body-form-poll-icon-container">
                             <svg className="sub-news-feed-post-modal-body-form-poll-icon" width="24" height="24" fill="none"
@@ -199,10 +271,10 @@ export default function CreatePostBox() {
                           </div>
                           <span className="sub-news-feed-post-modal-body-form-poll-text">Poll your neighbors</span>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Safety */}
-                      <div className="news-feed-post-modal-body-form-safety-container">
+                      {/* <div className="news-feed-post-modal-body-form-safety-container">
                         <div className="sub-news-feed-post-modal-body-form-safety-container">
                           <div className="news-feed-post-modal-body-form-safety-icon-container">
                             <svg className="news-feed-post-modal-body-form-safety-icon" width="24" height="24" fill="none"
@@ -218,7 +290,7 @@ export default function CreatePostBox() {
                           </div>
                           <span className="news-feed-post-modal-body-form-safety-text">Post about safety</span>
                         </div>
-                      </div>
+                      </div> */}
 
                     </div>
                   </div>
@@ -226,10 +298,6 @@ export default function CreatePostBox() {
               </span>
             </div>
           </div>
-
-
-
-
 
         </div>
       )}

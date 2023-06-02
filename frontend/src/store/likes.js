@@ -1,12 +1,12 @@
 import csrfFetch from "./csrf.js";
-import { fetchPost } from "./posts.js";
-import { fetchComment } from "./comments.js";
-
-import { RECEIVE_POSTS } from "./posts.js";
+import { RECEIVE_POSTS } from "./posts.js"; // Used in the reducer with the posts index payload
+import { RECEIVE_COMMENTS } from "./comments.js"; // Used in the reducer with the comments index payload
 
 export const RECEIVE_LIKES = 'likes/RECEIVE_LIKES'
 export const RECEIVE_LIKE = 'likes/RECEIVE_LIKE'
 export const REMOVE_LIKE = 'likes/REMOVE_LIKE'
+
+// Action objects used in the reducer
 
 export function receiveLikes(likes) {
   return {
@@ -20,7 +20,6 @@ export function receiveLike(like) {
     type: RECEIVE_LIKE,
     like
   }
-
 }
 
 export function removeLike(likeId) {
@@ -36,6 +35,8 @@ export function getLike(likeId) {
   }
 }
 
+// Custom functions to grab just the likes for posts or comments to be used in the component
+
 export function getPostLikes(post) {
   return function (state) {
     return state.likes ? Object.values(state.likes).filter(like => post.id === like.likeableId && like.likeableType === "Post") : []
@@ -48,7 +49,7 @@ export function getCommentLikes(comment) {
   }
 }
 
-
+// Thunk Actions
 
 export const createLike = like => (dispatch) => (
   csrfFetch(`/api/${like.likeableType.toLowerCase()}s/${like.likeableId}/like`, {
@@ -61,16 +62,9 @@ export const createLike = like => (dispatch) => (
     .then(response => response.json())
     .then(data => {
       dispatch(receiveLike(data));
-      // if (data.likeableType === 'Post') {
-      //   dispatch(fetchPost(data.likeableId)); // refetch the post that was just updated
-      // } else if (data.likeableType === 'Comment') {
-      //   dispatch(fetchComment(data.likeableId)); // fetch comments for the updated comment
-      // }
     })
     .catch(error => console.error('something went wrong'))
 )
-
-
 
 export const deleteLike = ({id, liker, likeableId, likeableType }) => (dispatch) => (
   csrfFetch(`/api/${likeableType.toLowerCase()}s/${likeableId}/unlike`, {
@@ -84,6 +78,8 @@ export const deleteLike = ({id, liker, likeableId, likeableType }) => (dispatch)
     .catch(error => console.error('something went wrong'))
 )
 
+// Reducer which is used in the store.
+
 export default function likesReducer(state = {}, action) {
   const newState = { ...state };
   switch (action.type) {
@@ -96,7 +92,9 @@ export default function likesReducer(state = {}, action) {
       delete newState[action.likeId]
       return newState
     case RECEIVE_POSTS:
-      return action.payload.likes
+      return action.payload.likes // this is needed to grab the likes for the posts
+    case RECEIVE_COMMENTS:
+      return action.payload.likes // this is needed to grab the likes for the comments although the site works without it
     default:
       return state
   }

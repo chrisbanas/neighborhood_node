@@ -10,7 +10,7 @@ export default function UserContent() {
         <div className="parent-news-feed-create-event-container">
           <div className="child-news-feed-create-event-container">
             <h2 className="news-feed-create-event-container-title">Invite your neighbors to a party, food drive, or meetup</h2>
-            <button className="news-feed-create-event-container-button">Create event</button>
+            {/* <button className="news-feed-create-event-container-button">Create event</button> */}
           </div>
         </div>
         <div className="parent-news-feed-create-business-container">
@@ -22,7 +22,7 @@ export default function UserContent() {
           <div className="news-feed-create-business-title-container">
             <h2 className="news-feed-create-business-title">Own a local business?</h2>
             <p className="news-feed-create-business-description">Create a business page to connect with neighbors, post updates in the feed, and gain new customers.</p>
-            <button className="news-feed-create-business-button">Create page</button>
+            {/* <button className="news-feed-create-business-button">Create page</button> */}
           </div>
         </div>
         <div className="parent-news-feed-neighbors-reccomendations-container">
@@ -36,17 +36,17 @@ export default function UserContent() {
               <div className="parent-single-neighbor-reccomendation-container">
                 <div className="child-single-neighbor-reccomendation-container">
                   <div className="single-neighbor-reccomendation-avatar-container">
-                    <a href="/news_feed">
+
                       <img className="single-neighbor-reccomendation-avatar"
                         src="https://d19rpgkrjeba2z.cloudfront.net/67d1cbcd8400bb59/static/nextdoorv2/images/avatars/color-24/e.png" alt="profile" />
-                    </a>
+
                   </div>
                   <div className="parent-single-neighbor-reccomendation-info-container">
                     <div className="child-single-neighbor-reccomendation-info-container">
                       <div className="single-neighbor-reccomendation-name-container">
-                        <a href="/news_feed">
+
                           <h2 className="single-neighbor-reccomendation-name">Em G.</h2>
-                        </a>
+
                       </div>
                       <div className="single-neighbor-reccomendation-neighborhood-container">
                         <svg className="single-neighbor-reccomendation-neighborhood-icon" width="16" height="16" fill="none" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ export default function UserContent() {
                     </div>
                   </div>
                   <div className="single-neighbor-reccomendation-button-container">
-                    <button className="single-neighbor-reccomendation-button">Message</button>
+                    {/* <button className="single-neighbor-reccomendation-button">Message</button> */}
                   </div>
                 </div>
               </div>
@@ -70,17 +70,17 @@ export default function UserContent() {
               <div className="parent-single-neighbor-reccomendation-container">
                 <div className="child-single-neighbor-reccomendation-container">
                   <div className="single-neighbor-reccomendation-avatar-container">
-                    <a href="/news_feed">
+
                       <img className="single-neighbor-reccomendation-avatar"
                         src="https://d19rpgkrjeba2z.cloudfront.net/ef463cfd00bd71be/static/nextdoorv2/images/avatars/color-11/s.png" alt="profile" />
-                    </a>
+
                   </div>
                   <div className="parent-single-neighbor-reccomendation-info-container">
                     <div className="child-single-neighbor-reccomendation-info-container">
                       <div className="single-neighbor-reccomendation-name-container">
-                        <a href="/news_feed">
+
                           <h2 className="single-neighbor-reccomendation-name">Sam P.</h2>
-                        </a>
+
                       </div>
                       <div className="single-neighbor-reccomendation-neighborhood-container">
                         <svg className="single-neighbor-reccomendation-neighborhood-icon" width="16" height="16" fill="none" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ export default function UserContent() {
                     </div>
                   </div>
                   <div className="single-neighbor-reccomendation-button-container">
-                    <button className="single-neighbor-reccomendation-button">Message</button>
+                    {/* <button className="single-neighbor-reccomendation-button">Message</button> */}
                   </div>
                 </div>
               </div>
@@ -104,17 +104,17 @@ export default function UserContent() {
               <div className="parent-single-neighbor-reccomendation-container">
                 <div className="child-single-neighbor-reccomendation-container">
                   <div className="single-neighbor-reccomendation-avatar-container">
-                    <a href="/news_feed">
+
                       <img className="single-neighbor-reccomendation-avatar"
                         src="https://d19rpgkrjeba2z.cloudfront.net/ef463cfd00bd71be/static/nextdoorv2/images/avatars/color-10/j.png" alt="profile" />
-                    </a>
+
                   </div>
                   <div className="parent-single-neighbor-reccomendation-info-container">
                     <div className="child-single-neighbor-reccomendation-info-container">
                       <div className="single-neighbor-reccomendation-name-container">
-                        <a href="/news_feed">
+
                           <h2 className="single-neighbor-reccomendation-name">Joe D.</h2>
-                        </a>
+
                       </div>
                       <div className="single-neighbor-reccomendation-neighborhood-container">
                         <svg className="single-neighbor-reccomendation-neighborhood-icon" width="16" height="16" fill="none" viewBox="0 0 24 24">
@@ -129,7 +129,7 @@ export default function UserContent() {
                     </div>
                   </div>
                   <div className="single-neighbor-reccomendation-button-container">
-                    <button className="single-neighbor-reccomendation-button">Message</button>
+                    {/* <button className="single-neighbor-reccomendation-button">Message</button> */}
                   </div>
                 </div>
               </div>

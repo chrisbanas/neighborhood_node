@@ -77,7 +77,7 @@ const handleLikeClick = (e) => {
               </div>
             </div>
             {/* reply */}
-            <div className="news-feed-comments-comment-like-share-container">
+            {/* <div className="news-feed-comments-comment-like-share-container">
               <div className="news-feed-comments-like-container">
                 <button className="news-feed-comments-like-button">
                   <svg className="news-feed-comments-like-icon" width="24" height="24"
@@ -91,7 +91,7 @@ const handleLikeClick = (e) => {
                   </div>
                 </button>
               </div>
-            </div>
+            </div> */}
             {/* share */}
             <div className="news-feed-comments-comment-like-share-container">
               <div className="news-feed-comments-like-container">

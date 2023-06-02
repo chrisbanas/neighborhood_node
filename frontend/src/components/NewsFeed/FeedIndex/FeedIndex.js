@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { createPost } from "../../../store/posts";
 import './FeedIndex.css';
 
@@ -16,26 +17,103 @@ export default function FeedIndex() {
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
 
-  const handlePostSubmit = (e) => {
-    e.preventDefault();
-    const post = {
-      body: body,
-      authorId: authorId,
-      neighborhoodId: neighborhoodId
+  // const handlePostSubmit = (e) => {
+  //   e.preventDefault();
+  //   const post = {
+  //     body: body,
+  //     authorId: authorId,
+  //     neighborhoodId: neighborhoodId
+  //   };
+  //   dispatch(createPost(post))
+  //   setBody(""); // clear the textarea after submitting the form
+  // };
+
+  // const handleCreatePost = (e) => {
+  //   e.preventDefault();
+  //   if (!body) {
+  //     return; // if body is empty, do not submit the form
+  //   }
+  //   toggleModal(); // call toggleModal first
+  //   handlePostSubmit(e); // then call handlePostSubmit
+  // }
+
+
+    // for the google maps
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
+    const [showMap, setShowMap] = useState(false);
+    const mapRef = useRef();
+
+    useEffect(() => {
+      if (showMap && window.google) {
+        const newMap = new window.google.maps.Map(mapRef.current, {
+          center: { lat: 37.7749, lng: -122.4194 }, // Default to San Francisco
+          zoom: 8,
+        });
+
+        const marker = new window.google.maps.Marker({
+          position: { lat: 37.7749, lng: -122.4194 },
+          map: newMap,
+          draggable: true,
+        });
+
+        newMap.addListener('click', (event) => {
+          const lat = event.latLng.lat();
+          const lng = event.latLng.lng();
+          setLatitude(lat);
+          setLongitude(lng);
+          marker.setPosition(new window.google.maps.LatLng(lat, lng));
+        });
+      }
+    }, [showMap]);
+
+    const handleShowMap = () => {
+      setShowMap(prevShowMap => !prevShowMap);
     };
-    dispatch(createPost(post))
-    setBody(""); // clear the textarea after submitting the form
-  };
+
+
+  // For photos
+  const [photoFile, setPhotoFile] = useState(null);
+  const [postPhoto, setPostPhoto] = useState(null);
+
+  const handlePostFile = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setPhotoFile(file);
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPostPhoto(reader.result)
+    };
+    reader.readAsDataURL(file);
+  }
 
   const handleCreatePost = (e) => {
     e.preventDefault();
     if (!body) {
       return; // if body is empty, do not submit the form
     }
+
+    const formData = new FormData();
+
+    formData.append('post[body]', body)
+    formData.append('post[authorId]', authorId)
+    formData.append('post[neighborhoodId]', neighborhoodId)
+    formData.append('post[latitude]', latitude)
+    formData.append('post[longitude]', longitude)
+
+    if (photoFile) {
+      formData.append(`post[photo]`, photoFile)
+    }
+
     toggleModal(); // call toggleModal first
-    handlePostSubmit(e); // then call handlePostSubmit
+    dispatch(createPost(formData)); // then call handlePostSubmit
+    setBody(""); // clear the textarea after submitting the form
+    setPostPhoto(null) // clears out the photo
   }
 
+  // this is for the photo preview in the post modal
+  let preview = null;
+  if (postPhoto) preview = <img className="post-user-uploaded-photo" src={postPhoto} alt="" />;
 
   // Modal for Post
 
@@ -43,6 +121,7 @@ export default function FeedIndex() {
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
+    setPostPhoto(null) // clears out the photo
   };
 
 
@@ -53,15 +132,15 @@ export default function FeedIndex() {
       <div className="news-feed-index">
         <div className="news-feed-index-list">
           <li className="news-feed-index-list-item">
-            <a className="news-feed-index-list-item-container" href="/news_feed">
+            <Link className="news-feed-index-list-item-container" to="/news_feed">
               <svg className="news-feed-index-list-item-icon">
                 <path fill="currentColor" d="M16.669 4.257a1 1 0 0 0-1.338 0l-10 9A1 1 0 0 0 5 14v12a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h6v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V14a1 1 0 0 0-.331-.743l-10-9Z">
                 </path>
               </svg>
               <span className="news-feed-index-list-item-title" data-testid="Home">Home</span>
-            </a>
+            </Link>
           </li>
-          <li className="news-feed-index-list-item">
+          {/* <li className="news-feed-index-list-item">
             <a className="news-feed-index-list-item-container" href="/news_feed">
               <svg className="news-feed-index-list-item-icon" role="img">
                 <path fill="currentColor" fillRule="evenodd" d="M12.13 11.974a.2.2 0 0 0-.156.157l-1.915 9.575a.2.2 0 0 0 .235.235l9.575-1.915a.2.2 0 0 0 .157-.157l1.915-9.575a.2.2 0 0 0-.235-.235l-9.575 1.915ZM13.7 13.7l-1.15 5.75 5.75-1.15-4.6-4.6Z" clipRule="evenodd">
@@ -100,7 +179,7 @@ export default function FeedIndex() {
               </svg>
               <span className="news-feed-index-list-item-title" data-testid="Messages">Messages</span>
             </a>
-          </li>
+          </li> */}
           <div className="news-feed-index-post-button-container">
             <button className="news-feed-index-post-button" onClick={toggleModal}>
               <span className="news-feed-index-post-button-content">
@@ -118,7 +197,7 @@ export default function FeedIndex() {
         {/* Index footer */}
         <div className="news-feed-index-footer-menue-container">
           <footer className="news-feed-index-footer" tabIndex="0" aria-label="Footer">
-            <ul className="news-feed-index-footer-ul">
+            {/* <ul className="news-feed-index-footer-ul">
               <li>
                 <a className="news-feed-index-footer-li" href="/news_feed" target="_blank">Help&nbsp;&bull;&nbsp;</a>
               </li>
@@ -155,7 +234,7 @@ export default function FeedIndex() {
                 <a className="news-feed-index-footer-li" href="/news_feed">Limit the Use of My Sensitive Personal Information
                 </a>
               </li>
-            </ul>
+            </ul> */}
             <div className="news-feed-index-copyright-container">
               <div className="news-feed-footer-copyright">© 2023 Neighborhood Node</div>
               <div className="linkedin-logo">
@@ -211,7 +290,7 @@ export default function FeedIndex() {
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
-                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1">
+                          <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1" onClick={handleShowMap}>
                             <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
                               <path fill="currentColor" fillRule="evenodd"
                                 d="M3 7c0-3.87 3.13-7 7-7s7 3.13 7 7c0 5.25-7 13-7 13S3 12.25 3 7Zm7 3c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3Z">
@@ -219,16 +298,24 @@ export default function FeedIndex() {
                             </svg>
                             <span className="news-feed-post-modal-body-form-add-geo-tag-text">Add a location</span>
                           </div>
+                          {showMap && (
+                              <div ref={mapRef} style={{ height: "200px", width: "100%" }}></div>
+                            )}
                         </div>
                       </div>
                     </div>
+                    <br></br>
+                    {postPhoto !== null && (
+                      <button className="post-box-remove-photo-button" onClick={() => setPostPhoto(null)}>Remove Photo</button>
+                    )}
+                    {preview}
                   </form>
 
                   {/* Additional buttons */}
                   <div className="news-feed-post-modal-body-form-additional-buttons-container">
                     <div className="sub-news-feed-post-modal-body-form-additional-buttons-container">
 
-                      {/* Classifieds */}
+                      {/* Classifieds
                       <div className="news-feed-post-modal-body-form-classifieds-container">
                         <div className="news-feed-post-modal-body-form-classifieds-icon-container">
                           <svg className="news-feed-post-modal-body-form-classifieds-icon" width="24" height="24" fill="none"
@@ -241,7 +328,7 @@ export default function FeedIndex() {
                         </div>
                         <span className="news-feed-post-modal-body-form-classifieds-text">Sell or give away an item
                         </span>
-                      </div>
+                      </div> */}
 
                       {/* Add Photos */}
                       <div className="news-feed-post-modal-body-form-add-photo-container">
@@ -262,13 +349,14 @@ export default function FeedIndex() {
                           <span className="news-feed-post-modal-body-form-add-photo-text">Add a photo or video</span>
                         </div>
                         <label className="uploader-fileinput-label hidden">
-                          <input className="uploader-fileinput"
+                          {/* user load photo */}
+                          <input onChange={handlePostFile} className="uploader-fileinput"
                             name="13EA655A-BC56-40B6-8B41-49885FF9B443" type="file" multiple="" accept="image/*, video/*"
-                            aria-label="Add a photo or video" />
+                          />
                         </label>
                       </div>
 
-                      {/* Event */}
+                      {/* Event
                       <div className="news-feed-post-modal-body-form-event-container">
                         <div className="sub-news-feed-post-modal-body-form-event-container">
                           <div className="sub-news-feed-post-modal-body-form-event-icon-container">
@@ -285,9 +373,9 @@ export default function FeedIndex() {
                           <span className="sub-news-feed-post-modal-body-form-event-text">Create an event
                           </span>
                         </div>
-                      </div>
+                      </div> */}
 
-                      {/* Poll */}
+                      {/* Poll
                       <div className="news-feed-post-modal-body-form-poll-container">
                         <div className="sub-news-feed-post-modal-body-form-poll-container">
                           <div className="sub-news-feed-post-modal-body-form-poll-icon-container">
@@ -301,10 +389,10 @@ export default function FeedIndex() {
                           </div>
                           <span className="sub-news-feed-post-modal-body-form-poll-text">Poll your neighbors</span>
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Safety */}
-                      <div className="news-feed-post-modal-body-form-safety-container">
+                      {/* <div className="news-feed-post-modal-body-form-safety-container">
                         <div className="sub-news-feed-post-modal-body-form-safety-container">
                           <div className="news-feed-post-modal-body-form-safety-icon-container">
                             <svg className="news-feed-post-modal-body-form-safety-icon" width="24" height="24" fill="none"
@@ -320,7 +408,7 @@ export default function FeedIndex() {
                           </div>
                           <span className="news-feed-post-modal-body-form-safety-text">Post about safety</span>
                         </div>
-                      </div>
+                      </div> */}
 
                     </div>
                   </div>

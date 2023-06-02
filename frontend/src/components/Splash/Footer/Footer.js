@@ -9,7 +9,7 @@ export default function Footer() {
     <>
       <div className="footer-container">
         <div className="sub-footer-container">
-          <div className="sub-footer-container-style">
+          {/* <div className="sub-footer-container-style">
             <div className="index-container">
               <p className="index-container-header">Neighborhood Node</p>
               <div><a href="/" className="index-container-content">About</a></div>
@@ -71,7 +71,7 @@ export default function Footer() {
                 <img className="app-selector" alt="Android download link" src="https://d19rpgkrjeba2z.cloudfront.net/static/images/signup/android_robot.svg" />
               </a>
             </div>
-          </div>
+          </div> */}
 
 
           <hr className="footer-separator" aria-orientation="horizontal" />

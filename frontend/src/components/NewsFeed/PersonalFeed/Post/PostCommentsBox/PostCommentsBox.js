@@ -65,7 +65,7 @@ export default function PostCommentsBox({post}) {
                 <div className="news-feed-post-comment-add-photo-and-location-buttons-container">
 
                   {/* Photo */}
-                  <div className="news-feed-post-comment-add-photo-button-container">
+                  {/* <div className="news-feed-post-comment-add-photo-button-container">
                     <button className="news-feed-post-comment-add-photo-button" >
                       <span className="news-feed-post-comment-add-photo-button-sub-container">
                         <svg className="news-feed-post-comment-add-photo-button-sub-container-svg" width="24" height="24" fill="none" viewBox="0 0 24 24" role="img">
@@ -83,14 +83,14 @@ export default function PostCommentsBox({post}) {
                       </span>
                     </button>
 
-                    {/* <label className="uploader-fileinput-label hidden">
+                    <label className="uploader-fileinput-label hidden">
                         <input className="uploader-fileinput" name="02CCD62E-8795-4EEA-B402-9759EA75AC30" type="file" multiple=""
                           accept="image/*, video/*" aria-label="Add a photo or video" />
-                      </label> */}
-                  </div>
+                      </label>
+                  </div> */}
 
                   {/* Location */}
-                  <div className="news-feed-post-comment-add-location-button-container">
+                  {/* <div className="news-feed-post-comment-add-location-button-container">
                     <button className="news-feed-post-comment-add-location-button">
                       <span className="news-feed-post-comment-add-location-button-sub-container">
                         <svg className="news-feed-post-comment-add-location-button-sub-container-svg" width="24" height="24" fill="none" viewBox="0 0 24 24" role="img">
@@ -104,7 +104,7 @@ export default function PostCommentsBox({post}) {
                         <span className="news-feed-post-comment-add-location-button-text">Add location</span>
                       </span>
                     </button>
-                  </div>
+                  </div> */}
 
                 </div>
 

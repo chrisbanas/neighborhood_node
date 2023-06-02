@@ -180,6 +180,9 @@
 .news-feed-index-copyright-container {
   display: flex; /* Set the container to use flexbox */
   align-items: center; /* Align the child elements vertically */
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5px;
 }
 
 .news-feed-footer-copyright,

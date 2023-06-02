@@ -4,7 +4,7 @@ class Api::PostsController < ApplicationController
   # my index is filtering to show only posts for the neighborhood of the current user and then ordering them to show the newest first
   def index
     neighborhood_id = current_user.neighborhood_id
-    @posts = Post.where(neighborhood_id: neighborhood_id).includes(:likes).order(updated_at: :desc)
+    @posts = Post.where(neighborhood_id: neighborhood_id).includes(:likes).order(created_at: :desc)
     render :index
   end
 
@@ -44,6 +44,9 @@ class Api::PostsController < ApplicationController
     end
   end
 
+
+  # do not say "render json: like" as that will cause a recursive loop.
+
   def like
     @like = Like.new(liker_id: current_user.id, likeable_id: params[:id], likeable_type: :Post)
     if @like.save
@@ -66,7 +69,7 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :author_id, :neighborhood_id, :longitude, :latitude)
+    params.require(:post).permit(:body, :author_id, :neighborhood_id, :longitude, :latitude, :photo)
   end
 
 

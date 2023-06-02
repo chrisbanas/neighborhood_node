@@ -17,8 +17,8 @@ export default function PersonalFeed(props) {
   // Filters the posts so that we only get the neighborhood associated with the current user
   const filteredPosts = posts.filter(post => post.neighborhoodId === sessionUser?.neighborhoodId);
 
-  // Sorts the posts so that the newest ones show first
-  const sortedPosts = filteredPosts.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+  // Sorts the posts so that the newest ones show first. Don't use updated at as if the user edits a post it will cause that post to snap back to the top.
+  const sortedPosts = filteredPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   useEffect(() => {
     dispatch(fetchPosts());

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, Link } from "react-router-dom";
 import textLogo from '../../../assets/text_logo.png'
 import './Form.css';
 
@@ -47,7 +47,7 @@ export default function Form() {
   return (
     <>
       <div className="login-form-logo-container">
-        < img src={textLogo} alt="neighborhood node" className="login-form-logo"/>
+        <Link to="/">< img src={textLogo} alt="neighborhood node" className="login-form-logo"/></Link>
       </div>
 
       <div className="login-info-box">
@@ -89,12 +89,12 @@ export default function Form() {
                       Demo User Log In
                     </button>
                   </div>
-                  <div className="login-form-divider">
+                  {/* <div className="login-form-divider">
                     <div className="login-form-or">
                       <span>OR</span>
                     </div>
-                  </div>
-                  <div className="login-form-thrid-party-options">
+                  </div> */}
+                  {/* <div className="login-form-thrid-party-options">
                     <div className="login-form-social-registration">
                       <button className="login-form-social-registration-company" aria-disabled="false" type="button" id="google-button" aria-label="Continue with Google" >
                         <img src="https://d19rpgkrjeba2z.cloudfront.net/static/gen/3cc4b0eb5bdb0c5cb9e5.svg" alt="google" />
@@ -113,11 +113,11 @@ export default function Form() {
                         <div className="login-form-social-registration-label">Continue with Apple</div>
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                 </form>
                 <div className="new-to-neighborhood-node-prompt">
                   <span className="new-to-neighborhood-node-prompt-label">New to Neighborhood Node?</span>
-                  <a className="new-to-neighborhood-node-prompt-label-link" href="/">Sign up</a>
+                  <Link className="new-to-neighborhood-node-prompt-label-link" to="/">Sign up</Link>
                 </div>
               </div>
             </div>
