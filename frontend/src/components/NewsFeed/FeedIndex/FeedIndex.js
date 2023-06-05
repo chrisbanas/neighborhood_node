@@ -17,27 +17,6 @@ export default function FeedIndex() {
   const [authorId] = useState(sessionUser ? sessionUser.id : null);
   const [neighborhoodId] = useState(sessionUser ? sessionUser.neighborhoodId : null);
 
-  // const handlePostSubmit = (e) => {
-  //   e.preventDefault();
-  //   const post = {
-  //     body: body,
-  //     authorId: authorId,
-  //     neighborhoodId: neighborhoodId
-  //   };
-  //   dispatch(createPost(post))
-  //   setBody(""); // clear the textarea after submitting the form
-  // };
-
-  // const handleCreatePost = (e) => {
-  //   e.preventDefault();
-  //   if (!body) {
-  //     return; // if body is empty, do not submit the form
-  //   }
-  //   toggleModal(); // call toggleModal first
-  //   handlePostSubmit(e); // then call handlePostSubmit
-  // }
-
-
     // for the google maps
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);

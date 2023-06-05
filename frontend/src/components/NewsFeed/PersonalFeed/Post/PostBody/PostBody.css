@@ -44,9 +44,11 @@
 }
 
 .news-feed-post-body-modal-content {
-  max-width: 80%;
-  max-height: 80%;
-  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
 }
 
 .news-feed-post-body-modal-img {

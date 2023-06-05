@@ -29,7 +29,7 @@ export default function Splash() {
         {showPopup && (
           <div className="mobile-popup-overlay">
             <div className="mobile-popup">
-              <p>Please use a desktop device for the best experience. Mobile development is in progress.</p>
+              <p className="popup-message">Please use a desktop device for the best experience. Mobile development is in progress.</p>
               <button className="mobile-close-button" onClick={handleClosePopup}>
                 Close
               </button>

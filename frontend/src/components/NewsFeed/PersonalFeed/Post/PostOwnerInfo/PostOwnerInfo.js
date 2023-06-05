@@ -44,7 +44,7 @@ export default function PostOwnerInfo({ post }) {
   // for the google maps
   const [latitude, setLatitude] = useState(post.latitude);
   const [longitude, setLongitude] = useState(post.longitude);
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(null);
   const mapRef = useRef();
 
   useEffect(() => {
@@ -74,13 +74,26 @@ export default function PostOwnerInfo({ post }) {
   }, [showMap, post]);
 
   const handleShowMap = () => {
-    if (post.latitude !== null && post.longitude !== null && post.latitude !== 0 && post.longitude !== 0) {
+    // if showMap is null (initial load), check if there are valid coordinates for the post
+    if (showMap === null) {
+      if (post.latitude && post.longitude && !isNaN(post.latitude) && !isNaN(post.longitude)) {
         setShowMap(true);
-    } else {
+      } else {
         setShowMap(false);
+      }
     }
-};
+    // if showMap is not null (after initial load), toggle its value
+    else {
+      setShowMap(prevShowMap => !prevShowMap);
+    }
+  };
 
+  // Function to reset latitude and longitude
+  const removeLocation = () => {
+    setLatitude(null);
+    setLongitude(null);
+    setShowMap(false); // This will hide the map
+  };
 
 
   // For photos
@@ -112,7 +125,7 @@ export default function PostOwnerInfo({ post }) {
     formData.append('post[latitude]', latitude)
     formData.append('post[longitude]', longitude)
 
-    if ((post.photoUrls.length === 0 && photoFile === null) || (post.photoUrls[0] === '' && photoFile === null)) {}
+    if ((post.photoUrls.length === 0 && photoFile === null) || (post.photoUrls[0] === '' && photoFile === null)) { }
     else if (photoFile !== null) {
       formData.append(`post[photo]`, photoFile);
     } else {
@@ -266,6 +279,9 @@ export default function PostOwnerInfo({ post }) {
                       </div>
                       <div className="news-feed-post-modal-body-form-location-container">
                         <div className="news-feed-post-modal-body-form-location-add-geo-tag-container">
+                          {latitude && latitude !== 0 && longitude && longitude !== 0 &&
+                            <button className="remove-location-button" onClick={removeLocation}>Remove Location</button>
+                          }
                           <div className="sub-news-feed-post-modal-body-form-location-add-geo-tag-container" tabIndex="-1" onClick={handleShowMap}>
                             <svg className="news-feed-post-modal-body-form-add-geo-tag-icon" width="20" height="20" viewBox="0 0 20 20" role="img">
                               <path fill="currentColor" fillRule="evenodd"
