@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useRef, useEffect } from 'react';
 import PostMapWrapper from "./PostMap/PostMap";
 import './PostBody.css';
 
@@ -24,7 +24,7 @@ export default function PostBody({ post }) {
       </div>
 
       {showModal && (
-        <div className="news-feed-post-body-modal">
+        <div className="news-feed-post-body-modal" onClick={toggleModal}>
           <div className="news-feed-post-body-modal-content">
             <img className="news-feed-post-body-modal-img" src={post.photoUrls[0]} alt="post" />
           </div>
