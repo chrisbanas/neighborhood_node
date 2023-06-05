@@ -319,3 +319,8 @@
   margin-left: auto;
   margin-right: 0;
 }
+
+.post-user-uploaded-photo {
+  height: auto;
+  width: 200px;
+}
